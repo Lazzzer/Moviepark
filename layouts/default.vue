@@ -1,8 +1,21 @@
 <template>
-  <div>
+  <div class="bg-m-blue-800 font-sans h-screen">
+    <Navbar></Navbar>
     <nuxt />
+    <Footer></Footer>
   </div>
 </template>
+<script>
+import Navbar from '@/components/global/Navbar.vue'
+import Footer from '@/components/global/Footer.vue'
+
+export default {
+  components: {
+    Navbar,
+    Footer
+  }
+}
+</script>
 
 <style>
 html {

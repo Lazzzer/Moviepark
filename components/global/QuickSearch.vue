@@ -1,5 +1,5 @@
 <template>
-  <div class="w-full max-w-lg lg:max-w-xs">
+  <div class="w-full max-w-lg lg:w-64">
     <form @submit.prevent>
       <div class="relative">
         <div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
@@ -13,7 +13,7 @@
         </div>
         <input
           id="search"
-          class="block w-full py-2 pl-10 pr-3 leading-5 text-white placeholder-gray-400 transition duration-150 ease-in-out bg-gray-700 border border-transparent rounded-md focus:outline-none focus:bg-gray-900 sm:text-sm"
+          class="block w-full py-2 pl-10 pr-3 leading-5 text-white placeholder-gray-400 transition duration-150 ease-in-out border border-transparent rounded-md bg-m-blue-900 lg:bg-m-blue-800 focus:outline-none hover:bg-m-blue-900 focus:bg-m-blue-900 sm:text-sm"
           placeholder="Quick search"
           type="search"
         />

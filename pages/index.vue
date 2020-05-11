@@ -1,6 +1,8 @@
 <template>
-  <div class="max-w-screen-xl px-4 mx-auto mt-10 sm:mt-12 sm:px-6 md:mt-16 lg:mt-20 xl:mt-28">
-    <section class="text-center">
+  <div
+    class="flex flex-col items-center justify-center max-w-screen-xl px-4 mx-auto mt-10 sm:mt-12 sm:px-6 md:mt-16 lg:mt-20 xl:mt-28"
+  >
+    <section class="mb-10 text-center">
       <div>
         <h2
           class="inline text-4xl font-extrabold leading-10 tracking-tight text-gray-200 align-middle sm:text-5xl sm:leading-none md:text-6xl"
@@ -29,12 +31,35 @@
       </div>
 
       <p
-        class="max-w-md mx-auto mt-2 text-base text-gray-400 sm:text-lg md:mt-5 md:text-xl md:max-w-3xl"
+        class="max-w-md mx-auto text-base text-gray-400 sm:text-lg md:mt-5 md:text-xl md:max-w-3xl"
       >Open source at the service of the cinephiles!</p>
     </section>
-    <section id="trending">
-      <h3 class="text-xl text-gray-300">Trending this week</h3>
-      <Card v-for="(card,index) in cards" :key="index" :movie-infos="card"></Card>
+
+    <section id="trending" class="flex flex-col items-center w-full">
+      <div class="w-full md:w-custom-cards">
+        <h3 class="mb-1 text-xl font-extrabold text-gray-300 sm:text-2xl">Trending this week</h3>
+        <div class="flex w-full space-x-4 overflow-x-scroll scrollbarDiv">
+          <Card v-for="(card,index) in trendingCards.slice(0,5)" :key="index" :movie-infos="card"></Card>
+        </div>
+      </div>
+    </section>
+
+    <section id="next" class="flex flex-col items-center w-full mt-6">
+      <div class="w-full md:w-custom-cards">
+        <h3 class="mb-1 text-xl font-extrabold text-gray-300 sm:text-2xl">Next in theaters</h3>
+        <div class="flex w-full space-x-4 overflow-x-scroll scrollbarDiv">
+          <Card v-for="(card,index) in nextCards.slice(0,5)" :key="index" :movie-infos="card"></Card>
+        </div>
+      </div>
+    </section>
+
+    <section id="discover" class="mt-10">
+      <nuxt-link to="/discover" class="inline-flex rounded-md shadow-sm">
+        <button
+          type="button"
+          class="inline-flex items-center px-6 py-3 text-base font-medium leading-6 text-white transition duration-150 ease-in-out border border-transparent rounded-md bg-m-burgundy-700 hover:bg-m-burgundy-600 focus:outline-none focus:border-m-burgundy-600 active:bg-m-burgundy-600"
+        >Discover More</button>
+      </nuxt-link>
     </section>
   </div>
 </template>
@@ -45,17 +70,25 @@ export default {
   components: {
     Card
   },
-  asyncData({ $axios }) {
-    return $axios.get('http://localhost:3000/tmdb/trending').then((res) => {
-      console.log(res.data.results)
-      return {
-        cards: res.data.results
-      }
-    }).catch(() => {
-      return {
-        cards: []
-      }
-    })
+  async asyncData({ $axios, env }) {
+    try {
+      const trending = await $axios.get(`${env.BASE_URL}/tmdb/trendingDummy`)
+      const nextTheaters = await $axios.get(`${env.BASE_URL}/tmdb/nextTheatersDummy`)
+
+      return { trendingCards: trending.data.results, nextCards: nextTheaters.data.results }
+    } catch (err) {
+      return { trendingCards: [], nextCards: [] }
+    }
   }
 }
 </script>
+
+<style>
+  .scrollbarDiv{
+    scrollbar-width: none;
+  }
+  .scrollbarDiv::-webkit-scrollbar {
+    width: 0;
+    height: 0;
+  }
+</style>

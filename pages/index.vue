@@ -37,8 +37,10 @@
 
     <section id="trending" class="flex flex-col items-center w-full">
       <div class="w-full md:w-custom-cards">
-        <h3 class="mb-1 text-xl font-extrabold text-gray-300 sm:text-2xl">Trending this week</h3>
-        <div class="flex w-full space-x-4 overflow-x-scroll scrollbarDiv">
+        <h3
+          class="mb-1 text-xl font-extrabold text-gray-300 md:ml-3 sm:mb-0 sm:text-2xl"
+        >Trending this week</h3>
+        <div class="flex w-full space-x-4 overflow-x-scroll md:p-4 md:space-x-6 scrollbarDiv">
           <Card v-for="(card,index) in trendingCards.slice(0,5)" :key="index" :movie-infos="card"></Card>
         </div>
       </div>
@@ -46,8 +48,10 @@
 
     <section id="next" class="flex flex-col items-center w-full mt-6">
       <div class="w-full md:w-custom-cards">
-        <h3 class="mb-1 text-xl font-extrabold text-gray-300 sm:text-2xl">Next in theaters</h3>
-        <div class="flex w-full space-x-4 overflow-x-scroll scrollbarDiv">
+        <h3
+          class="mb-1 text-xl font-extrabold text-gray-300 md:ml-3 sm:mb-0 sm:text-2xl"
+        >Next in theaters</h3>
+        <div class="flex w-full space-x-4 overflow-x-scroll md:p-4 md:space-x-6 scrollbarDiv">
           <Card v-for="(card,index) in nextCards.slice(0,5)" :key="index" :movie-infos="card"></Card>
         </div>
       </div>

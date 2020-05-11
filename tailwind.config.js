@@ -29,7 +29,7 @@ module.exports = {
         'm-blue-800': '#02182B'
       },
       width: {
-        'custom-cards': '835px'
+        'custom-cards': '900px'
       }
     }
   },

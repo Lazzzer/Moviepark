@@ -1,5 +1,7 @@
 <template>
-  <div class="relative">
+  <div
+    class="relative duration-500 ease-in-out cursor-pointer hover:shadow-md md:transform md:transition hover:-translate-y-1 hover:scale-105"
+  >
     <img
       v-if="movieInfos.poster_path !== null"
       class="h-auto max-w-lg min-w-full rounded-md"

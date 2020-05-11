@@ -1,12 +1,12 @@
 <template>
-  <div class="mt-10 mx-auto max-w-screen-xl px-4 sm:mt-12 sm:px-6 md:mt-16 lg:mt-20 xl:mt-28">
-    <div class="text-center">
+  <div class="max-w-screen-xl px-4 mx-auto mt-10 sm:mt-12 sm:px-6 md:mt-16 lg:mt-20 xl:mt-28">
+    <section class="text-center">
       <div>
         <h2
-          class="inline align-middle text-4xl tracking-tight leading-10 font-extrabold text-gray-200 sm:text-5xl sm:leading-none md:text-6xl"
+          class="inline text-4xl font-extrabold leading-10 tracking-tight text-gray-200 align-middle sm:text-5xl sm:leading-none md:text-6xl"
         >Moviepark</h2>
         <svg
-          class="inline-block w-10 sm:w-16 md:w-20 h-auto"
+          class="inline-block w-10 h-auto sm:w-16 md:w-20"
           width="67"
           height="67"
           viewBox="0 0 67 67"
@@ -29,14 +29,33 @@
       </div>
 
       <p
-        class="mt-2 max-w-md mx-auto text-base text-gray-400 sm:text-lg md:mt-5 md:text-xl md:max-w-3xl"
+        class="max-w-md mx-auto mt-2 text-base text-gray-400 sm:text-lg md:mt-5 md:text-xl md:max-w-3xl"
       >Open source at the service of the cinephiles!</p>
-    </div>
+    </section>
+    <section id="trending">
+      <h3 class="text-xl text-gray-300">Trending this week</h3>
+      <Card v-for="(card,index) in cards" :key="index" :movie-infos="card"></Card>
+    </section>
   </div>
 </template>
 
 <script>
-
+import Card from '@/components/movie/Card.vue'
 export default {
+  components: {
+    Card
+  },
+  asyncData({ $axios }) {
+    return $axios.get('http://localhost:3000/tmdb/trending').then((res) => {
+      console.log(res.data.results)
+      return {
+        cards: res.data.results
+      }
+    }).catch(() => {
+      return {
+        cards: []
+      }
+    })
+  }
 }
 </script>

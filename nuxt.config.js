@@ -47,7 +47,7 @@ export default {
     '@nuxtjs/axios',
     '@nuxtjs/pwa',
     // Doc: https://github.com/nuxt-community/dotenv-module
-    '@nuxtjs/dotenv'
+    ['@nuxtjs/dotenv', { only: ['BASE_URL'] }]
   ],
   /*
   ** Axios module configuration
@@ -64,5 +64,8 @@ export default {
     */
     extend(config, ctx) {
     }
-  }
+  },
+  serverMiddleware: [
+    '~/serverMiddlewares/TmdbHandler.js'
+  ]
 }

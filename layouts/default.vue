@@ -1,5 +1,5 @@
 <template>
-  <div class="h-full font-sans bg-m-blue-800">
+  <div class="w-full h-full font-sans bg-m-blue-800">
     <Navbar></Navbar>
     <nuxt />
     <Footer></Footer>

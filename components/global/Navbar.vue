@@ -32,7 +32,7 @@
           <!-- Navbar-left desktop -->
           <div class="hidden lg:block lg:ml-6">
             <div class="flex">
-              <nuxt-link to="/about" class="ml-4 nav-button">Discover</nuxt-link>
+              <nuxt-link to="/discover" class="ml-4 nav-button">Discover</nuxt-link>
               <nuxt-link to="/about" class="ml-4 nav-button">About</nuxt-link>
             </div>
           </div>
@@ -155,7 +155,7 @@
     -->
     <div :class="isOpen ? 'block' : 'hidden'" class="border-b-2 border-teal-900 lg:hidden">
       <div class="px-2 pt-2 pb-3">
-        <nuxt-link to="/search" class="nav-button-mobile">Discover</nuxt-link>
+        <nuxt-link to="/discover" class="nav-button-mobile">Discover</nuxt-link>
         <nuxt-link to="/search" class="mt-1 nav-button-mobile">About</nuxt-link>
         <nuxt-link v-if="!isLogged" to="/search" class="mt-1 nav-button-mobile">Login</nuxt-link>
         <nuxt-link v-if="!isLogged" to="/search" class="mt-1 nav-button-mobile">Register</nuxt-link>

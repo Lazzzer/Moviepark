@@ -14,5 +14,11 @@ export default {
   },
   getNextInTheaters() {
     return tmdbApi.get(`movie/upcoming?api_key=${process.env.TMDB_API_KEY}&language=en-US&page=1`)
+  },
+  getGenresList() {
+    return tmdbApi.get(`genre/movie/list?api_key=${process.env.TMDB_API_KEY}&language=en-US`)
+  },
+  getPersonId(query) {
+    return tmdbApi.get(`search/person?api_key=${process.env.TMDB_API_KEY}&language=en-US&query=${query}&page=1&include_adult=false`)
   }
 }

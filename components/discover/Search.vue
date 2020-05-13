@@ -1,3 +1,327 @@
 <template>
-  <div>simple search</div>
+  <section id="menu" class="w-full px-3 lg:w-1/4">
+    <h2 class="text-3xl font-bold text-gray-300">Discover</h2>
+    <form @submit.prevent>
+      <!-- Name -->
+      <div class="pt-6 pb-3 mt-6 border-b-2 border-teal-900">
+        <div class="pb-1">
+          <div class="text-lg leading-7">
+            <button
+              @click="searchIsOpen = !searchIsOpen, filtersIsOpen = false"
+              class="flex items-start justify-between w-full text-left text-gray-400 focus:outline-none focus:text-gray-900"
+            >
+              <span class="font-medium text-gray-300">Search By Name</span>
+              <span class="flex items-center ml-6 h-7">
+                <svg
+                  :class="searchIsOpen ? '-rotate-180' : 'rotate-0'"
+                  class="w-6 h-6 text-gray-300 transform"
+                  stroke="currentColor"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M19 9l-7 7-7-7"
+                  />
+                </svg>
+              </span>
+            </button>
+          </div>
+          <transition
+            enter-active-class="transition duration-300 ease-out"
+            enter-class="transform -translate-y-4 opacity-0"
+            enter-to-class="transform opacity-100"
+            leave-active-class="transition duration-200 ease-in"
+            leave-class="transform opacity-100"
+            leave-to-class="transform -translate-y-4 opacity-0"
+          >
+            <div v-show="searchIsOpen" class="mt-2">
+              <div>
+                <label for="name" class="block text-sm font-medium leading-5 text-gray-300">Name</label>
+                <div class="relative mt-1 rounded-md shadow-sm">
+                  <input
+                    v-model.trim="query.movieName"
+                    @blur="query.movieName !== '' ? query.type = 'name' : query.type= null "
+                    @keydown="query.movieName !== '' ? query.type = 'name' : query.type= null "
+                    id="name"
+                    class="block w-full text-gray-300 border-transparent outline-none bg-m-blue-900 form-input sm:text-sm sm:leading-5 focus:outline-none hover:outline-none focus:border-teal-900 focus:shadow-none"
+                    placeholder="Ex: Avengers"
+                  />
+                </div>
+              </div>
+            </div>
+          </transition>
+        </div>
+      </div>
+
+      <!-- Filters -->
+      <div class="pt-1 pb-3 mt-6 border-b-2 border-teal-900">
+        <div class="pb-1">
+          <div class="text-lg leading-7">
+            <button
+              @click="filtersIsOpen = !filtersIsOpen, searchIsOpen = false"
+              class="flex items-start justify-between w-full text-left text-gray-400 focus:outline-none focus:text-gray-900"
+            >
+              <span class="font-medium text-gray-300">Search With Filters</span>
+              <span class="flex items-center ml-6 h-7">
+                <svg
+                  :class="filtersIsOpen ? '-rotate-180' : 'rotate-0'"
+                  class="w-6 h-6 text-gray-300 transform"
+                  stroke="currentColor"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M19 9l-7 7-7-7"
+                  />
+                </svg>
+              </span>
+            </button>
+          </div>
+          <transition
+            enter-active-class="transition duration-300 ease-out"
+            enter-class="transform -translate-y-4 opacity-0"
+            enter-to-class="transform opacity-100"
+            leave-active-class="transition duration-200 ease-in"
+            leave-class="transform opacity-100"
+            leave-to-class="transform -translate-y-4 opacity-0"
+          >
+            <div v-show="filtersIsOpen" class="mt-2">
+              <!-- Sort By -->
+              <div>
+                <label
+                  for="sortBy"
+                  class="block text-sm font-medium leading-5 text-gray-300"
+                >Sort By</label>
+                <div class="mb-3 sm:mt-0">
+                  <div class="mt-1 rounded-md shadow-sm">
+                    <select
+                      v-model="query.sortBy"
+                      id="sortBy"
+                      aria-label="language"
+                      class="block w-full text-gray-300 transition duration-150 ease-in-out border-transparent outline-none bg-m-blue-900 form-select sm:text-sm sm:leading-5 focus:outline-none hover:outline-none focus:border-teal-900 focus:shadow-none"
+                    >
+                      <option value="popularity.desc" selected>Popularity (Desc.)</option>
+                      <option value="popularity.asc">Popularity (Asc.)</option>
+                      <option value="original_title.desc">Title (Desc.)</option>
+                      <option value="original_title.asc">Title (Asc.)</option>
+                      <option value="release_date.desc">Release Date (Desc.)</option>
+                      <option value="release_date.asc">Release Date (Asc.)</option>
+                      <option value="vote_average.desc">Vote Average (Desc.)</option>
+                      <option value="vote_average.asc">Vote Average (Asc.)</option>
+                    </select>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Genres -->
+              <div class="mt-2">
+                <label
+                  for="genre"
+                  class="block mb-1 text-sm font-medium leading-5 text-gray-300"
+                >Genres</label>
+                <div class="flex flex-wrap mb-1 sm:mt-0">
+                  <span
+                    v-for="genre in genresList"
+                    :key="genre.id"
+                    @click="query.genre.includes(genre.id) ? query.genre = query.genre.filter(item => item !== genre.id) : query.genre.push(genre.id) "
+                    :class="['cursor-pointer inline-flex items-center px-3 py-1 mb-2 mr-2 text-xs font-medium leading-4  rounded-md', query.genre.includes(genre.id) ? 'bg-m-burgundy-700 text-white' : 'bg-m-blue-900 text-gray-300' ]"
+                  >
+                    {{ genre.name }}
+                    <button
+                      v-if="query.genre.includes(genre.id)"
+                      type="button"
+                      class="inline-flex flex-shrink-0 ml-1 text-gray-300 focus:outline-none focus:text-gray-100"
+                    >
+                      <svg
+                        class="w-2 h-2 text-white"
+                        stroke="currentColor"
+                        fill="none"
+                        viewBox="0 0 8 8"
+                      >
+                        <path stroke-linecap="round" stroke-width="1.5" d="M1 1l6 6m0-6L1 7" />
+                      </svg>
+                    </button>
+                  </span>
+                </div>
+              </div>
+
+              <!-- Release Dates -->
+              <div>
+                <span
+                  class="block mt-2 mb-1 text-sm font-medium leading-5 text-gray-300"
+                >Release Dates</span>
+                <label
+                  for="releaseDatesFrom"
+                  class="block text-xs font-medium leading-5 text-gray-300"
+                >From</label>
+                <div class="relative mt-1 rounded-md shadow-sm">
+                  <input
+                    v-model.trim="query.releaseDates[0]"
+                    id="releaseDatesFrom"
+                    type="date"
+                    class="block w-full text-gray-300 border-transparent outline-none bg-m-blue-900 form-input sm:text-sm sm:leading-5 focus:outline-none hover:outline-none focus:border-teal-900 focus:shadow-none"
+                    placeholder="Ex: Avengers"
+                  />
+                  <label
+                    for="releaseDatesFrom"
+                    class="block mt-1 text-xs font-medium leading-5 text-gray-300"
+                  >To</label>
+                  <div class="relative mt-1 rounded-md shadow-sm">
+                    <input
+                      v-model.trim="query.releaseDates[1]"
+                      id="releaseDatesTo"
+                      type="date"
+                      class="block w-full text-gray-300 border-transparent outline-none bg-m-blue-900 form-input sm:text-sm sm:leading-5 focus:outline-none hover:outline-none focus:border-teal-900 focus:shadow-none"
+                      placeholder="Ex: Avengers"
+                    />
+                  </div>
+                </div>
+              </div>
+
+              <!-- Person -->
+              <div class="mt-2">
+                <label
+                  for="person"
+                  class="block text-sm font-medium leading-5 text-gray-300"
+                >Actor/Director</label>
+                <div class="relative mt-1 rounded-md shadow-sm">
+                  <input
+                    v-model="selectedPersonName"
+                    @click="showPersonModal = !showPersonModal"
+                    @keydown.enter.prevent
+                    @keyup="delayedCall($event.target.value, 600)"
+                    id="person"
+                    class="block w-full text-gray-300 border-transparent outline-none bg-m-blue-900 form-input sm:text-sm sm:leading-5 focus:outline-none hover:outline-none focus:border-teal-900 focus:shadow-none"
+                    placeholder="Ex: Quentin Tarantino"
+                  />
+                  <div
+                    v-if="personNameResult.length > 0 && selectedPersonName.length > 2 && showPersonModal"
+                    class="absolute block w-48 overflow-y-scroll transition duration-150 ease-in-out rounded max-h-40 scrollbarDiv top-11 bg-m-blue-900"
+                  >
+                    <div
+                      v-for="person in personNameResult"
+                      :key="person.id"
+                      @click="query.person = person.id, selectedPersonName = person.name, personNameResult = []"
+                      class="p-1 pl-4 cursor-pointer hover:bg-m-burgundy-700"
+                    >
+                      <span class="text-sm text-gray-300">{{ person.name }}</span>
+                    </div>
+                  </div>
+                  <div
+                    v-if="noPersonResult && selectedPersonName.length > 2 && showPersonModal"
+                    class="absolute block w-64 h-10 transition duration-150 ease-in-out bg-gray-200 rounded"
+                  >
+                    <span>Person not found</span>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Votes Average -->
+              <div class="mt-2">
+                <label for="votesAverage" class="block text-sm font-medium leading-5 text-gray-300">
+                  Votes Average
+                  <span class="text-xs italic">with 100 votes min.</span>
+                </label>
+                <div class="mb-3 sm:mt-0">
+                  <div class="mt-1 rounded-md shadow-sm">
+                    <input
+                      v-model.trim="query.votesAverage"
+                      id="votesAverage"
+                      min="0"
+                      max="10"
+                      type="number"
+                      class="block w-20 text-gray-300 border-transparent outline-none bg-m-blue-900 form-input sm:text-sm sm:leading-5 focus:outline-none hover:outline-none focus:border-teal-900 focus:shadow-none"
+                      placeholder="10"
+                    />
+                  </div>
+                </div>
+              </div>
+            </div>
+          </transition>
+        </div>
+      </div>
+
+      <button
+        type="button"
+        class="inline-flex items-center justify-center w-full px-4 py-3 mt-6 text-base font-medium leading-4 text-gray-300 transition duration-150 ease-in-out border border-transparent rounded-md lg:px-3 lg:py-2 bg-m-burgundy-700 hover:bg-m-burgundy-600 focus:outline-none focus:border-m-burgundy-600 active:bg-m-burgundy-600"
+      >Discover</button>
+    </form>
+  </section>
 </template>
+
+<script>
+import { mapState } from 'vuex'
+export default {
+  components: {
+  },
+  data() {
+    return {
+      searchIsOpen: false,
+      filtersIsOpen: false,
+      query: {
+        type: null,
+        movieName: '',
+        sortBy: 'popularity.desc',
+        genre: [],
+        releaseDates: ['', ''],
+        votesAverage: '',
+        person: ''
+      },
+      personNameResult: [],
+      selectedPersonName: '',
+      showPersonModal: false,
+      noPersonResult: false
+    }
+  },
+  computed: {
+    ...mapState({
+      genresList: state => state.tmdb.genresList
+    })
+  },
+  methods: {
+    delayedCall(search, debounceDuration = 300) {
+      if (search !== ' ' && search.length > 2) {
+        if (this.timeoutId !== null) {
+          clearTimeout(this.timeoutId)
+        }
+        this.noPersonResult = false
+        this.timeoutId = setTimeout(() => {
+          this.$axios.get(`${process.env.BASE_URL}/tmdb/personDummy/${search}`)
+            .then((res) => {
+              console.log(res)
+              this.personNameResult = res.data.results
+              if (this.personNameResult.length === 0) { this.nopersonNameResult = true }
+              console.log('CALLING API FOR CAST', this.personNameResult)
+            })
+            .catch((err) => {
+              this.nopersonNameResult = true
+              console.log(err)
+            })
+        }, debounceDuration)
+      }
+    }
+  }
+}
+</script>
+
+<style>
+  input[type="date"]::-webkit-inner-spin-button,
+  input[type="date"]::-webkit-calendar-picker-indicator {
+    background-color: transparent;
+    color:#014451;
+    -webkit-appearance: none;
+ }
+ .scrollbarDiv{
+    scrollbar-width: none;
+  }
+  .scrollbarDiv::-webkit-scrollbar {
+    width: 0;
+    height: 0;
+  }
+</style>

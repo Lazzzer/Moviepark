@@ -120,7 +120,7 @@
             >
               <div
                 v-show="profileIsOpen"
-                class="absolute right-0 w-48 mt-2 origin-top-right rounded-md shadow-lg"
+                class="absolute right-0 z-10 w-48 mt-2 origin-top-right rounded-md shadow-lg"
               >
                 <div
                   class="py-1 rounded-md shadow-xs bg-m-blue-900"

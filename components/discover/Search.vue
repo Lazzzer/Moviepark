@@ -30,10 +30,11 @@
             </button>
           </div>
           <transition
+            mode="out-in"
             enter-active-class="transition duration-300 ease-out"
             enter-class="transform -translate-y-4 opacity-0"
             enter-to-class="transform opacity-100"
-            leave-active-class="transition duration-200 ease-in"
+            leave-active-class="transition duration-300 ease-in"
             leave-class="transform opacity-100"
             leave-to-class="transform -translate-y-4 opacity-0"
           >
@@ -43,8 +44,6 @@
                 <div class="relative mt-1 rounded-md shadow-sm">
                   <input
                     v-model.trim="query.movieName"
-                    @blur="query.movieName !== '' ? query.type = 'name' : query.type= null "
-                    @keydown="query.movieName !== '' ? query.type = 'name' : query.type= null "
                     id="name"
                     class="block w-full text-gray-300 border-transparent outline-none bg-m-blue-900 form-input sm:text-sm sm:leading-5 focus:outline-none hover:outline-none focus:border-teal-900 focus:shadow-none"
                     placeholder="Ex: Avengers"
@@ -84,10 +83,11 @@
             </button>
           </div>
           <transition
+            mode="out-in"
             enter-active-class="transition duration-300 ease-out"
             enter-class="transform -translate-y-4 opacity-0"
             enter-to-class="transform opacity-100"
-            leave-active-class="transition duration-200 ease-in"
+            leave-active-class="transition duration-300 ease-in"
             leave-class="transform opacity-100"
             leave-to-class="transform -translate-y-4 opacity-0"
           >
@@ -249,15 +249,16 @@
       </div>
 
       <button
+        @click="prepareSearch"
         type="button"
         class="inline-flex items-center justify-center w-full px-4 py-3 mt-6 text-base font-medium leading-4 text-gray-300 transition duration-150 ease-in-out border border-transparent rounded-md lg:px-3 lg:py-2 bg-m-burgundy-700 hover:bg-m-burgundy-600 focus:outline-none focus:border-m-burgundy-600 active:bg-m-burgundy-600"
-      >Discover</button>
+      >{{ searchLabel }}</button>
     </form>
   </section>
 </template>
 
 <script>
-import { mapState } from 'vuex'
+import { mapState, mapActions } from 'vuex'
 export default {
   components: {
   },
@@ -266,7 +267,7 @@ export default {
       searchIsOpen: false,
       filtersIsOpen: false,
       query: {
-        type: null,
+        type: 'discover',
         movieName: '',
         sortBy: 'popularity.desc',
         genre: [],
@@ -283,9 +284,19 @@ export default {
   computed: {
     ...mapState({
       genresList: state => state.tmdb.genresList
-    })
+    }),
+    searchLabel() {
+      if (!this.searchIsOpen && !this.filtersIsOpen) { return 'Discover' } else { return 'Search' }
+    }
   },
   methods: {
+    ...mapActions('search', ['setSearchQuery']),
+    prepareSearch() {
+      if (!this.searchIsOpen && !this.filtersIsOpen) { this.query.type = 'discover' } else if (this.searchIsOpen) { this.query.type = 'name' } else { this.query.type = 'filter' }
+
+      const query = Object.assign({}, JSON.parse(JSON.stringify(this.query)))
+      this.setSearchQuery(query)
+    },
     delayedCall(search, debounceDuration = 300) {
       if (search !== ' ' && search.length > 2) {
         if (this.timeoutId !== null) {
@@ -293,7 +304,7 @@ export default {
         }
         this.noPersonResult = false
         this.timeoutId = setTimeout(() => {
-          this.$axios.get(`${process.env.BASE_URL}/tmdb/personDummy/${search}`)
+          this.$axios.get(`${process.env.BASE_URL}/tmdb/search/personDummy/${search}`)
             .then((res) => {
               this.personNameResult = res.data.results
               if (this.personNameResult.length === 0) {

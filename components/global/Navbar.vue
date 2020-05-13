@@ -153,35 +153,44 @@
 
     Menu open: "block", Menu closed: "hidden"
     -->
-    <div :class="isOpen ? 'block' : 'hidden'" class="border-b-2 border-teal-900 lg:hidden">
-      <div class="px-2 pt-2 pb-3">
-        <nuxt-link to="/discover" class="nav-button-mobile">Discover</nuxt-link>
-        <nuxt-link to="/search" class="mt-1 nav-button-mobile">About</nuxt-link>
-        <nuxt-link v-if="!isLogged" to="/search" class="mt-1 nav-button-mobile">Login</nuxt-link>
-        <nuxt-link v-if="!isLogged" to="/search" class="mt-1 nav-button-mobile">Register</nuxt-link>
-      </div>
-      <!-- User's part -->
-      <div v-if="isLogged" class="pt-4 pb-3 border-t border-teal-900">
-        <div class="flex items-center px-5">
-          <div class="flex-shrink-0">
-            <img
-              class="w-10 h-10 rounded-full"
-              src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
-              alt
-            />
+    <transition
+      enter-active-class="transition duration-500 ease-out"
+      enter-class="transform -translate-y-8 opacity-0"
+      enter-to-class="transform opacity-100"
+      leave-active-class="transition duration-300 ease-linear"
+      leave-class="transform opacity-100"
+      leave-to-class="transform -translate-y-8 opacity-0"
+    >
+      <div v-show="isOpen" class="border-b-2 border-teal-900 lg:hidden">
+        <div class="px-2 pt-2 pb-3">
+          <nuxt-link to="/discover" class="nav-button-mobile">Discover</nuxt-link>
+          <nuxt-link to="/search" class="mt-1 nav-button-mobile">About</nuxt-link>
+          <nuxt-link v-if="!isLogged" to="/search" class="mt-1 nav-button-mobile">Login</nuxt-link>
+          <nuxt-link v-if="!isLogged" to="/search" class="mt-1 nav-button-mobile">Register</nuxt-link>
+        </div>
+        <!-- User's part -->
+        <div v-if="isLogged" class="pt-4 pb-3 border-t border-teal-900">
+          <div class="flex items-center px-5">
+            <div class="flex-shrink-0">
+              <img
+                class="w-10 h-10 rounded-full"
+                src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
+                alt
+              />
+            </div>
+            <div class="ml-3">
+              <div class="text-base font-medium leading-6 text-white">Tom Cook</div>
+              <div class="text-sm font-medium leading-5 text-gray-400">tom@example.com</div>
+            </div>
           </div>
-          <div class="ml-3">
-            <div class="text-base font-medium leading-6 text-white">Tom Cook</div>
-            <div class="text-sm font-medium leading-5 text-gray-400">tom@example.com</div>
+          <div class="px-2 mt-3">
+            <a href="#" class="nav-button-mobile">Your Profile</a>
+            <a href="#" class="nav-button-mobile">Settings</a>
+            <span class="nav-button-mobile">Sign out</span>
           </div>
         </div>
-        <div class="px-2 mt-3">
-          <a href="#" class="nav-button-mobile">Your Profile</a>
-          <a href="#" class="nav-button-mobile">Settings</a>
-          <span class="nav-button-mobile">Sign out</span>
-        </div>
       </div>
-    </div>
+    </transition>
   </nav>
 </template>
 

@@ -14,6 +14,9 @@ export default {
   async asyncData({ store }) {
     try {
       await store.dispatch('tmdb/setGenreList')
+      if (!store.state.search.userSearch) {
+        await store.dispatch('search/defaultMovieListDummy')
+      }
     } catch (err) {
       console.log(err)
     }

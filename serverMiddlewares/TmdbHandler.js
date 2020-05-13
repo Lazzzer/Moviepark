@@ -32,9 +32,18 @@ app.get('/genresList', async (req, res) => {
   }
 })
 
-app.get('/person/:query', async (req, res) => {
+app.get('/search/person/:query', async (req, res) => {
   try {
     const { data } = await tmdbApi.getPersonId(req.params.query)
+    res.send(data)
+  } catch (err) {
+    res.status(err.response.status).json({ status: err.response.status, error: err.response.statusText })
+  }
+})
+
+app.get('/search/defaultMovieList', async (req, res) => {
+  try {
+    const { data } = await tmdbApi.getSearchDefaultMovieList()
     res.send(data)
   } catch (err) {
     res.status(err.response.status).json({ status: err.response.status, error: err.response.statusText })
@@ -961,8 +970,8 @@ app.get('/genresListDummy', (req, res) => {
   )
 })
 
-app.get('/personDummy/:query', (req, res) => {
-  res.status(401).json(
+app.get('/search/personDummy/:query', (req, res) => {
+  res.status(200).json(
     {
       page: 1,
       total_results: 257,
@@ -1896,6 +1905,426 @@ app.get('/personDummy/:query', (req, res) => {
             }
           ],
           name: 'Quentin Hue'
+        }
+      ]
+    }
+  )
+})
+
+app.get('/search/defaultMovieListDummy', (req, res) => {
+  res.status(200).json(
+    {
+      page: 1,
+      total_results: 10000,
+      total_pages: 500,
+      results: [
+        {
+          popularity: 508.484,
+          vote_count: 3343,
+          video: false,
+          poster_path: '/xBHvZcjRiWyobQ9kxBhO6B2dtRI.jpg',
+          id: 419704,
+          adult: false,
+          backdrop_path: '/5BwqwxMEjeFtdknRV792Svo0K1v.jpg',
+          original_language: 'en',
+          original_title: 'Ad Astra',
+          genre_ids: [
+            18,
+            878
+          ],
+          title: 'Ad Astra',
+          vote_average: 6,
+          overview: 'The near future, a time when both hope and hardships drive humanity to look to the stars and beyond. While a mysterious phenomenon menaces to destroy life on planet Earth, astronaut Roy McBride undertakes a mission across the immensity of space and its many perils to uncover the truth about a lost expedition that decades before boldly faced emptiness and silence in search of the unknown.',
+          release_date: '2019-09-17'
+        },
+        {
+          popularity: 230.909,
+          vote_count: 4306,
+          video: false,
+          poster_path: '/pjeMs3yqRmFL3giJy4PMXWZTTPa.jpg',
+          id: 330457,
+          adult: false,
+          backdrop_path: '/xJWPZIYOEFIjZpBL7SVBGnzRYXp.jpg',
+          original_language: 'en',
+          original_title: 'Frozen II',
+          genre_ids: [
+            12,
+            16,
+            10751
+          ],
+          title: 'Frozen II',
+          vote_average: 7.2,
+          overview: 'Elsa, Anna, Kristoff and Olaf head far into the forest to learn the truth about an ancient mystery of their kingdom.',
+          release_date: '2019-11-20'
+        },
+        {
+          popularity: 194.739,
+          vote_count: 2186,
+          video: false,
+          poster_path: '/8WUVHemHFH2ZIP6NWkwlHWsyrEL.jpg',
+          id: 338762,
+          adult: false,
+          backdrop_path: '/ocUrMYbdjknu2TwzMHKT9PBBQRw.jpg',
+          original_language: 'en',
+          original_title: 'Bloodshot',
+          genre_ids: [
+            28,
+            18,
+            878
+          ],
+          title: 'Bloodshot',
+          vote_average: 7.1,
+          overview: "After he and his wife are murdered, marine Ray Garrison is resurrected by a team of scientists. Enhanced with nanotechnology, he becomes a superhuman, biotech killing machine—'Bloodshot'. As Ray first trains with fellow super-soldiers, he cannot recall anything from his former life. But when his memories flood back and he remembers the man that killed both him and his wife, he breaks out of the facility to get revenge, only to discover that there's more to the conspiracy than he thought.",
+          release_date: '2020-03-05'
+        },
+        {
+          popularity: 193.991,
+          vote_count: 1817,
+          video: false,
+          poster_path: '/wlfDxbGEsW58vGhFljKkcR5IxDj.jpg',
+          id: 545609,
+          adult: false,
+          backdrop_path: '/1R6cvRtZgsYCkh8UFuWFN33xBP4.jpg',
+          original_language: 'en',
+          original_title: 'Extraction',
+          genre_ids: [
+            28,
+            18,
+            53
+          ],
+          title: 'Extraction',
+          vote_average: 7.5,
+          overview: 'Tyler Rake, a fearless mercenary who offers his services on the black market, embarks on a dangerous mission when he is hired to rescue the kidnapped son of a Mumbai crime lord…',
+          release_date: '2020-04-24'
+        },
+        {
+          popularity: 162.224,
+          vote_count: 3808,
+          video: false,
+          poster_path: '/aQvJ5WPzZgYVDrxLX4R6cLJCEaQ.jpg',
+          id: 454626,
+          adult: false,
+          backdrop_path: '/stmYfCUGd8Iy6kAMBr6AmWqx8Bq.jpg',
+          original_language: 'en',
+          original_title: 'Sonic the Hedgehog',
+          genre_ids: [
+            28,
+            35,
+            878,
+            10751
+          ],
+          title: 'Sonic the Hedgehog',
+          vote_average: 7.6,
+          overview: 'Based on the global blockbuster videogame franchise from Sega, Sonic the Hedgehog tells the story of the world’s speediest hedgehog as he embraces his new home on Earth. In this live-action adventure comedy, Sonic and his new best friend team up to defend the planet from the evil genius Dr. Robotnik and his plans for world domination.',
+          release_date: '2020-02-12'
+        },
+        {
+          popularity: 154.036,
+          vote_count: 975,
+          video: false,
+          poster_path: '/33VdppGbeNxICrFUtW2WpGHvfYc.jpg',
+          id: 481848,
+          adult: false,
+          backdrop_path: '/9sXHqZTet3Zg5tgcc0hCDo8Tn35.jpg',
+          original_language: 'en',
+          original_title: 'The Call of the Wild',
+          genre_ids: [
+            12,
+            18,
+            10751
+          ],
+          title: 'The Call of the Wild',
+          vote_average: 7.3,
+          overview: 'Buck is a big-hearted dog whose blissful domestic life is turned upside down when he is suddenly uprooted from his California home and transplanted to the exotic wilds of the Yukon during the Gold Rush of the 1890s. As the newest rookie on a mail delivery dog sled team—and later its leader—Buck experiences the adventure of a lifetime, ultimately finding his true place in the world and becoming his own master.',
+          release_date: '2020-02-19'
+        },
+        {
+          popularity: 144.418,
+          vote_count: 3749,
+          video: false,
+          poster_path: '/h4VB6m0RwcicVEZvzftYZyKXs6K.jpg',
+          id: 495764,
+          adult: false,
+          backdrop_path: '/uozb2VeD87YmhoUP1RrGWfzuCrr.jpg',
+          original_language: 'en',
+          original_title: 'Birds of Prey (and the Fantabulous Emancipation of One Harley Quinn)',
+          genre_ids: [
+            28,
+            35,
+            80
+          ],
+          title: 'Birds of Prey (and the Fantabulous Emancipation of One Harley Quinn)',
+          vote_average: 7.2,
+          overview: 'Harley Quinn joins forces with a singer, an assassin and a police detective to help a young girl who had a hit placed on her after she stole a rare diamond from a crime lord.',
+          release_date: '2020-02-05'
+        },
+        {
+          popularity: 142.899,
+          vote_count: 7,
+          video: false,
+          poster_path: '/oiFxdnsQyGs3DBLzHzW92GrDR6w.jpg',
+          id: 682071,
+          adult: false,
+          backdrop_path: '/6I6ZhQrX4L4KIxSzlgg8zc1BSLr.jpg',
+          original_language: 'en',
+          original_title: 'To the Beat! Back 2 School',
+          genre_ids: [
+            35,
+            18,
+            10751
+          ],
+          title: 'To the Beat! Back 2 School',
+          vote_average: 3.6,
+          overview: 'Sisterhood is tested, rivalries heat up and new bonds are formed when students go back to their performing arts school to compete for an all-expense paid summer scholarship program to a prestigious Conservatory of Fine Arts.',
+          release_date: '2020-03-10'
+        },
+        {
+          popularity: 132.19,
+          vote_count: 303,
+          video: false,
+          poster_path: '/c01Y4suApJ1Wic2xLmaq1QYcfoZ.jpg',
+          id: 618344,
+          adult: false,
+          backdrop_path: '/sQkRiQo3nLrQYMXZodDjNUJKHZV.jpg',
+          original_language: 'en',
+          original_title: 'Justice League Dark: Apokolips War',
+          genre_ids: [
+            28,
+            12,
+            16,
+            14,
+            878
+          ],
+          title: 'Justice League Dark: Apokolips War',
+          vote_average: 8.8,
+          overview: 'Earth is decimated after intergalactic tyrant Darkseid has devastated the Justice League in a poorly executed war by the DC Super Heroes. Now the remaining bastions of good – the Justice League, Teen Titans, Suicide Squad and assorted others – must regroup, strategize and take the war to Darkseid in order to save the planet and its surviving inhabitants.',
+          release_date: '2020-05-05'
+        },
+        {
+          popularity: 124.112,
+          vote_count: 4515,
+          video: false,
+          poster_path: '/db32LaOibwEliAmSL2jjDF6oDdj.jpg',
+          id: 181812,
+          adult: false,
+          backdrop_path: '/jOzrELAzFxtMx2I4uDGHOotdfsS.jpg',
+          original_language: 'en',
+          original_title: 'Star Wars: The Rise of Skywalker',
+          genre_ids: [
+            28,
+            12,
+            878
+          ],
+          title: 'Star Wars: The Rise of Skywalker',
+          vote_average: 6.5,
+          overview: 'The surviving Resistance faces the First Order once again as the journey of Rey, Finn and Poe Dameron continues. With the power and knowledge of generations behind them, the final battle begins.',
+          release_date: '2019-12-18'
+        },
+        {
+          popularity: 116.648,
+          vote_count: 4794,
+          video: false,
+          poster_path: '/iZf0KyrE25z1sage4SYFLCCrMi9.jpg',
+          id: 530915,
+          adult: false,
+          backdrop_path: '/2lBOQK06tltt8SQaswgb8d657Mv.jpg',
+          original_language: 'en',
+          original_title: '1917',
+          genre_ids: [
+            28,
+            18,
+            36,
+            53,
+            10752
+          ],
+          title: '1917',
+          vote_average: 8,
+          overview: 'At the height of the First World War, two young British soldiers must cross enemy territory and deliver a message that will stop a deadly attack on hundreds of soldiers.',
+          release_date: '2019-12-25'
+        },
+        {
+          popularity: 106.082,
+          vote_count: 7213,
+          video: false,
+          poster_path: '/7IiTTgloJzvGI1TAYymCfbfl3vT.jpg',
+          id: 496243,
+          adult: false,
+          backdrop_path: '/ApiBzeaa95TNYliSbQ8pJv4Fje7.jpg',
+          original_language: 'ko',
+          original_title: '기생충',
+          genre_ids: [
+            35,
+            18,
+            53
+          ],
+          title: 'Parasite',
+          vote_average: 8.5,
+          overview: "All unemployed, Ki-taek's family takes peculiar interest in the wealthy and glamorous Parks for their livelihood until they get entangled in an unexpected incident.",
+          release_date: '2019-05-30'
+        },
+        {
+          popularity: 104.21,
+          vote_count: 3831,
+          video: false,
+          poster_path: '/y95lQLnuNKdPAzw9F9Ab8kJ80c3.jpg',
+          id: 38700,
+          adult: false,
+          backdrop_path: '/upUy2QhMZEmtypPW3PdieKLAHxh.jpg',
+          original_language: 'en',
+          original_title: 'Bad Boys for Life',
+          genre_ids: [
+            28,
+            80,
+            53
+          ],
+          title: 'Bad Boys for Life',
+          vote_average: 7.2,
+          overview: 'Marcus and Mike are forced to confront new threats, career changes, and midlife crises as they join the newly created elite team AMMO of the Miami police department to take down the ruthless Armando Armas, the vicious leader of a Miami drug cartel.',
+          release_date: '2020-01-15'
+        },
+        {
+          popularity: 98.821,
+          vote_count: 9294,
+          video: false,
+          poster_path: '/qa6HCwP4Z15l3hpsASz3auugEW6.jpg',
+          id: 920,
+          adult: false,
+          backdrop_path: '/sd4xN5xi8tKRPrJOWwNiZEile7f.jpg',
+          original_language: 'en',
+          original_title: 'Cars',
+          genre_ids: [
+            12,
+            16,
+            35,
+            10751
+          ],
+          title: 'Cars',
+          vote_average: 6.8,
+          overview: "Lightning McQueen, a hotshot rookie race car driven to succeed, discovers that life is about the journey, not the finish line, when he finds himself unexpectedly detoured in the sleepy Route 66 town of Radiator Springs. On route across the country to the big Piston Cup Championship in California to compete against two seasoned pros, McQueen gets to know the town's offbeat characters.",
+          release_date: '2006-06-08'
+        },
+        {
+          popularity: 96.759,
+          vote_count: 1689,
+          video: false,
+          poster_path: '/f4aul3FyD3jv3v4bul1IrkWZvzq.jpg',
+          id: 508439,
+          adult: false,
+          backdrop_path: '/xFxk4vnirOtUxpOEWgA1MCRfy6J.jpg',
+          original_language: 'en',
+          original_title: 'Onward',
+          genre_ids: [
+            12,
+            16,
+            35,
+            14,
+            10751
+          ],
+          title: 'Onward',
+          vote_average: 7.9,
+          overview: 'In a suburban fantasy world, two teenage elf brothers embark on an extraordinary quest to discover if there is still a little magic left out there.',
+          release_date: '2020-02-29'
+        },
+        {
+          popularity: 95.798,
+          vote_count: 12332,
+          video: false,
+          poster_path: '/udDclJoHjfjb8Ekgsd4FDteOkCU.jpg',
+          id: 475557,
+          adult: false,
+          backdrop_path: '/f5F4cRhQdUbyVbB5lTNCwUzD6BP.jpg',
+          original_language: 'en',
+          original_title: 'Joker',
+          genre_ids: [
+            80,
+            18,
+            53
+          ],
+          title: 'Joker',
+          vote_average: 8.2,
+          overview: 'During the 1980s, a failed stand-up comedian is driven insane and turns to a life of crime and chaos in Gotham City while becoming an infamous psychopathic crime figure.',
+          release_date: '2019-10-02'
+        },
+        {
+          popularity: 94.228,
+          vote_count: 1070,
+          video: false,
+          poster_path: '/gzlbb3yeVISpQ3REd3Ga1scWGTU.jpg',
+          id: 443791,
+          adult: false,
+          backdrop_path: '/ww7eC3BqSbFsyE5H5qMde8WkxJ2.jpg',
+          original_language: 'en',
+          original_title: 'Underwater',
+          genre_ids: [
+            28,
+            27,
+            878,
+            53
+          ],
+          title: 'Underwater',
+          vote_average: 6.4,
+          overview: 'After an earthquake destroys their underwater station, six researchers must navigate two miles along the dangerous, unknown depths of the ocean floor to make it to safety in a race against time.',
+          release_date: '2020-01-08'
+        },
+        {
+          popularity: 85.272,
+          vote_count: 13561,
+          video: false,
+          poster_path: '/6FfCtAuVAW8XJjZ7eWeLibRLWTw.jpg',
+          id: 11,
+          adult: false,
+          backdrop_path: '/pPj1yM2PXiC56GkUYmoT3qR9zka.jpg',
+          original_language: 'en',
+          original_title: 'Star Wars',
+          genre_ids: [
+            28,
+            12,
+            878
+          ],
+          title: 'Star Wars',
+          vote_average: 8.2,
+          overview: 'Princess Leia is captured and held hostage by the evil Imperial forces in their effort to take over the galactic Empire. Venturesome Luke Skywalker and dashing captain Han Solo team together with the loveable robot duo R2-D2 and C-3PO to rescue the beautiful princess and restore peace and justice in the Empire.',
+          release_date: '1977-05-25'
+        },
+        {
+          popularity: 77.221,
+          vote_count: 3503,
+          video: false,
+          poster_path: '/7GsM4mtM0worCtIVeiQt28HieeN.jpg',
+          id: 515001,
+          adult: false,
+          backdrop_path: '/lTyikzfGgRX5ZqIfVeT26APYfRL.jpg',
+          original_language: 'en',
+          original_title: 'Jojo Rabbit',
+          genre_ids: [
+            35,
+            18,
+            10752
+          ],
+          title: 'Jojo Rabbit',
+          vote_average: 8.2,
+          overview: 'A World War II satire that follows a lonely German boy whose world view is turned upside down when he discovers his single mother is hiding a young Jewish girl in their attic. Aided only by his idiotic imaginary friend, Adolf Hitler, Jojo must confront his blind nationalism.',
+          release_date: '2019-10-18'
+        },
+        {
+          popularity: 76.294,
+          vote_count: 18047,
+          video: false,
+          poster_path: '/7WsyChQLEftFiDOVTGkv3hFpyyt.jpg',
+          id: 299536,
+          adult: false,
+          backdrop_path: '/lmZFxXgJE3vgrciwuDib0N8CfQo.jpg',
+          original_language: 'en',
+          original_title: 'Avengers: Infinity War',
+          genre_ids: [
+            28,
+            12,
+            878
+          ],
+          title: 'Avengers: Infinity War',
+          vote_average: 8.3,
+          overview: 'As the Avengers and their allies have continued to protect the world from threats too large for any one hero to handle, a new danger has emerged from the cosmic shadows: Thanos. A despot of intergalactic infamy, his goal is to collect all six Infinity Stones, artifacts of unimaginable power, and use them to inflict his twisted will on all of reality. Everything the Avengers have fought for has led up to this moment - the fate of Earth and existence itself has never been more uncertain.',
+          release_date: '2018-04-25'
         }
       ]
     }

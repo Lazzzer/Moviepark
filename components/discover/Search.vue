@@ -195,19 +195,20 @@
                     v-model="selectedPersonName"
                     @click="showPersonModal = !showPersonModal"
                     @keydown.enter.prevent
-                    @keyup="delayedCall($event.target.value, 600)"
+                    @keyup="delayedCall($event.target.value, 800)"
                     id="person"
                     class="block w-full text-gray-300 border-transparent outline-none bg-m-blue-900 form-input sm:text-sm sm:leading-5 focus:outline-none hover:outline-none focus:border-teal-900 focus:shadow-none"
                     placeholder="Ex: Quentin Tarantino"
                   />
                   <div
                     v-if="personNameResult.length > 0 && selectedPersonName.length > 2 && showPersonModal"
+                    @blur="showPersonModal = !showPersonModal"
                     class="absolute block w-48 overflow-y-scroll transition duration-150 ease-in-out rounded max-h-40 scrollbarDiv top-11 bg-m-blue-900"
                   >
                     <div
                       v-for="person in personNameResult"
                       :key="person.id"
-                      @click="query.person = person.id, selectedPersonName = person.name, personNameResult = []"
+                      @click="query.person = person.id, selectedPersonName = person.name, showPersonModal = !showPersonModal"
                       class="p-1 pl-4 cursor-pointer hover:bg-m-burgundy-700"
                     >
                       <span class="text-sm text-gray-300">{{ person.name }}</span>
@@ -215,9 +216,9 @@
                   </div>
                   <div
                     v-if="noPersonResult && selectedPersonName.length > 2 && showPersonModal"
-                    class="absolute block w-64 h-10 transition duration-150 ease-in-out bg-gray-200 rounded"
+                    class="absolute flex items-center justify-center block w-48 h-10 border rounded max-h-40 top-11 bg-m-blue-900 border-m-burgundy-700"
                   >
-                    <span>Person not found</span>
+                    <span class="text-sm text-gray-300">Person not found</span>
                   </div>
                 </div>
               </div>
@@ -294,13 +295,18 @@ export default {
         this.timeoutId = setTimeout(() => {
           this.$axios.get(`${process.env.BASE_URL}/tmdb/personDummy/${search}`)
             .then((res) => {
-              console.log(res)
               this.personNameResult = res.data.results
-              if (this.personNameResult.length === 0) { this.nopersonNameResult = true }
+              if (this.personNameResult.length === 0) {
+                this.noPersonResult = true
+                this.showPersonModal = true
+              } else {
+                this.showPersonModal = true
+              }
               console.log('CALLING API FOR CAST', this.personNameResult)
             })
             .catch((err) => {
-              this.nopersonNameResult = true
+              this.personNameResult = ''
+              this.noPersonResult = true
               console.log(err)
             })
         }, debounceDuration)

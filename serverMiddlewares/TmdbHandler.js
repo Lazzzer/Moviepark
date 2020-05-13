@@ -962,7 +962,7 @@ app.get('/genresListDummy', (req, res) => {
 })
 
 app.get('/personDummy/:query', (req, res) => {
-  res.status(200).json(
+  res.status(401).json(
     {
       page: 1,
       total_results: 257,

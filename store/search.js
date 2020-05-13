@@ -27,7 +27,7 @@ export const actions = {
     commit('SET_USER_SEARCH', query)
   },
   async setDefaultMovieList({ commit }) {
-    await this.$axios.get(`${process.env.BASE_URL}/tmdb/search/defaultMovieList`)
+    await this.$axios.get(`${process.env.BASE_URL}/tmdb/search/defaultMovieListDummy`)
       .then((res) => {
         commit('SET_DEFAULT_MOVIE_LIST', res.data)
         console.log('CALLING SET_DEFAULT_MOVIE_LIST')

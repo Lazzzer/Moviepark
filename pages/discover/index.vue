@@ -1,21 +1,23 @@
 <template>
   <div class="container w-full h-full mx-auto mt-10 lg:flex">
     <Search></Search>
-    <section id="content" class="w-full bg-red-300 lg:w-3/4">Yolo</section>
+    <Content></Content>
   </div>
 </template>
 
 <script>
 import Search from '@/components/discover/Search.vue'
+import Content from '@/components/discover/Content.vue'
 export default {
   components: {
-    Search
+    Search,
+    Content
   },
   async asyncData({ store }) {
     try {
       await store.dispatch('tmdb/setGenreList')
       if (!store.state.search.userSearch) {
-        await store.dispatch('search/defaultMovieListDummy')
+        await store.dispatch('search/setDefaultMovieList')
       }
     } catch (err) {
       console.log(err)

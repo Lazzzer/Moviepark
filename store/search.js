@@ -35,7 +35,6 @@ export const mutations = {
 export const actions = {
   setSearchQuery({ commit, dispatch }, query) {
     commit('SET_SEARCH_QUERY', query)
-    dispatch('setUserSearch', true)
     dispatch('setMovieList')
   },
   setUserSearch({ commit }, value) {
@@ -57,7 +56,7 @@ export const actions = {
   async setMovieList({ commit, state }) {
     // TODO Changer le state d'user search à false quelque part
     if (state.searchQuery.type === 'name') {
-      return await this.$axios.get(`${process.env.BASE_URL}/tmdb/search/byName/${state.searchQuery.movieName}`)
+      return await this.$axios.get(`${process.env.BASE_URL}/tmdb/search/byNameDummy/${state.searchQuery.movieName}`)
         .then((res) => {
           commit('SET_SEARCHED_MOVIE_LIST', res.data)
           console.log('CALLING SET_SEARCHED_MOVIE_LIST')

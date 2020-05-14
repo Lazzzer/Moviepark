@@ -2341,6 +2341,417 @@ app.get('/search/defaultMovieListDummy', (req, res) => {
   )
 })
 
+app.get('/search/byNameDummy/:name', (req, res) => {
+  res.status(200).json(
+    {
+      page: 1,
+      total_results: 60,
+      total_pages: 3,
+      results: [
+        {
+          popularity: 28.434,
+          vote_count: 3744,
+          video: false,
+          poster_path: '/wgQ7APnFpf1TuviKHXeEe3KnsTV.jpg',
+          id: 447404,
+          adult: false,
+          backdrop_path: '/nDP33LmQwNsnPv29GQazz59HjJI.jpg',
+          original_language: 'en',
+          original_title: 'Pokémon Detective Pikachu',
+          genre_ids: [
+            28,
+            12,
+            14
+          ],
+          title: 'Pokémon Detective Pikachu',
+          vote_average: 7,
+          overview: 'In a world where people collect pocket-size monsters (Pokémon) to do battle, a boy comes across an intelligent monster who seeks to be a detective.',
+          release_date: '2019-05-03'
+        },
+        {
+          popularity: 2.165,
+          vote_count: 14,
+          video: false,
+          poster_path: '/32074c1u4bppuTkjrzCbjdJzX2v.jpg',
+          id: 227993,
+          adult: false,
+          backdrop_path: null,
+          original_language: 'en',
+          original_title: 'Pokémon Apokélypse',
+          genre_ids: [],
+          title: 'Pokémon Apokélypse',
+          vote_average: 6.6,
+          overview: 'Set in the near future, Pokemon battles have been outlawed and forced underground where they resemble dog fights. Crime Syndicate, Team Rocket threatens Misty and Professor Oak forcing Ash to throw a match. After doing so, Ash changes his mind and all out Pokewar between Ash and Team Rocket begins.',
+          release_date: '2010-09-20'
+        },
+        {
+          popularity: 15.094,
+          id: 10991,
+          video: false,
+          vote_count: 369,
+          vote_average: 6.3,
+          title: 'Pokémon 3: The Movie - Spell of the Unown',
+          release_date: '2000-07-08',
+          original_language: 'ja',
+          original_title: '劇場版ポケットモンスター 結晶塔の帝王 ENTEI',
+          genre_ids: [
+            12,
+            14,
+            16,
+            28,
+            10751
+          ],
+          backdrop_path: '/dLGQo5Xq6H18vPx00Czot8VHi3K.jpg',
+          adult: false,
+          overview: "When Me Snowdon's sadness of her father's disappearance get to her, she unknowingly uses the Unknown to create her own dream world along with Entei, who she believes to be her father. When Entei kidnaps Satoshi's mother, Satoshi along with Kasumi & Takeshi invade the mansion looking for his mom and trying to stop the mysteries of Me's Dream World and Entei!",
+          poster_path: '/g2C95ubS56O1ITXy1MgC69kAwF0.jpg'
+        },
+        {
+          popularity: 14.119,
+          vote_count: 175,
+          video: false,
+          poster_path: '/qHcZJ3MkTay6XCzgb8BPy22qHPR.jpg',
+          id: 33875,
+          adult: false,
+          backdrop_path: '/6nfEmbfWMuMBenYMOY6Vdho3Ycg.jpg',
+          original_language: 'ja',
+          original_title: '劇場版ポケットモンスター 水の都の護神 ラティアスとラティオス',
+          genre_ids: [
+            28,
+            12,
+            16,
+            14
+          ],
+          title: 'Pokémon Heroes: The Movie',
+          vote_average: 6.3,
+          overview: 'Satoshi, Pikachu and his friends try and stop a pair of thieves hiding out in the canals and alleyways of Altomare, the age-old water capital. Joining the adventure are two new legendary Pokémon, a pair of siblings named Latias and Latios, who serve as peacekeepers and protectors of the Soul Dew - a priceless treasure with a mysterious power.',
+          release_date: '2002-07-13'
+        },
+        {
+          popularity: 12.249,
+          vote_count: 505,
+          video: false,
+          poster_path: '/rBeh11AHRIyQw738pXLoJ2tLxyN.jpg',
+          id: 12599,
+          adult: false,
+          backdrop_path: '/5uAptC91ZTbJAsCFYYj7lErIe0A.jpg',
+          original_language: 'ja',
+          original_title: '劇場版ポケットモンスター 幻のポケモン ルギア爆誕',
+          genre_ids: [
+            12,
+            16,
+            14,
+            878,
+            10751
+          ],
+          title: 'Pokémon: The Movie 2000',
+          vote_average: 6.6,
+          overview: 'Satoshi must put his skill to the test when he attempts to save the world from destruction. The Greedy Pokemon collector Gelardan throws the universe into chaos after disrupting the balance of nature by capturing one of the Pokemon birds that rule the elements of fire, lightning and ice. Will Satoshi have what it takes to save the world?',
+          release_date: '1999-07-17'
+        },
+        {
+          popularity: 15.679,
+          vote_count: 884,
+          video: false,
+          poster_path: '/b9pFRQM6h4ONizRgAVkKmakT1nX.jpg',
+          id: 10228,
+          adult: false,
+          backdrop_path: '/d59cyYhl5xx4x4KQCY9JkwU8xRy.jpg',
+          original_language: 'ja',
+          original_title: '劇場版ポケットモンスター ミュウツーの逆襲',
+          genre_ids: [
+            28,
+            12,
+            16
+          ],
+          title: 'Pokémon: The First Movie - Mewtwo Strikes Back',
+          vote_average: 6.8,
+          overview: "The adventure explodes into action with the debut of Mewtwo, a bio-engineered Pokemon created from the DNA of Mew, the rarest of all Pokemon. Determined to prove its superiority, Mewtwo lures Satoshi, Pikachu and others into a Pokemon match like none before. Mewtwo vs. Mew. Super-clones vs. Pokemon. It's the ultimate showdown ... with the very future of the world at stake!",
+          release_date: '1998-07-18'
+        },
+        {
+          popularity: 12.61,
+          vote_count: 94,
+          video: false,
+          poster_path: '/fj9aVJP9bZGkB7NResSauAAImr0.jpg',
+          id: 16808,
+          adult: false,
+          backdrop_path: '/yLJeOFvP0DidEqkoSSrQFQh8J47.jpg',
+          original_language: 'ja',
+          original_title: '劇場版ポケットモンスター アドバンスジェネレーション ポケモンレンジャーと蒼海の王子 マナフィ',
+          genre_ids: [
+            16,
+            10751
+          ],
+          title: 'Pokémon Ranger and the Temple of the Sea',
+          vote_average: 6.1,
+          overview: "On their way through the Battle Frontier, Ash and friends meet up with a Pokémon Ranger who's mission is to deliever the egg of Manaphy to a temple on the ocean's floor. However, a greedy pirate wants the power of Manaphy to himself.",
+          release_date: '2006-07-15'
+        },
+        {
+          popularity: 13.33,
+          vote_count: 137,
+          video: false,
+          poster_path: '/9TcvVXElhZ1e4J3n6JUIDKpZiTE.jpg',
+          id: 25961,
+          adult: false,
+          backdrop_path: '/dGulOAB9N4qJlafWxI4YczXDA4I.jpg',
+          original_language: 'ja',
+          original_title: '劇場版ポケットモンスター ダイヤモンド&パール ディアルガVSパルキアVSダークライ',
+          genre_ids: [
+            12,
+            16,
+            14,
+            10751
+          ],
+          title: 'Pokémon: The Rise of Darkrai',
+          vote_average: 6.5,
+          overview: 'Ash and friends (this time accompanied by newcomer Dawn) arrive at an idyllic village on their way to their next Pokemon contest, where chaos will soon erupt with the prophecy of two Pokemon Gods (Dialga and Palkia) and the arrival of a mysterious, seemingly deadly Pokemon named Darkrai, which has the power to distort space and time.',
+          release_date: '2007-07-14'
+        },
+        {
+          popularity: 10.622,
+          vote_count: 142,
+          video: false,
+          poster_path: '/s27yVLDH6qs6TcVXhgXUcIzOSbI.jpg',
+          id: 34065,
+          adult: false,
+          backdrop_path: '/q2AAQdTJopOKjhoefLlmjzv4nSr.jpg',
+          original_language: 'ja',
+          original_title: '劇場版ポケットモンスター アドバンスジェネレーション 裂空の訪問者 デオキシス',
+          genre_ids: [
+            12,
+            16,
+            14,
+            10751
+          ],
+          title: 'Pokémon: Destiny Deoxys',
+          vote_average: 6.4,
+          overview: 'A comet bearing a deadly Pokemon creature crash-lands onto Earth, terrorising a nearby high-tech city, where Ash, Pikachu and friends are currently visiting...',
+          release_date: '2004-07-22'
+        },
+        {
+          popularity: 12.606,
+          vote_count: 136,
+          video: false,
+          poster_path: '/5TBXNazCYqi28PSqDVdeFnap3Wd.jpg',
+          id: 36218,
+          adult: false,
+          backdrop_path: '/yWl2xNPc30P9SAbCUduFpeiztUd.jpg',
+          original_language: 'ja',
+          original_title: '劇場版ポケットモンスター アドバンスジェネレーション 七夜の願い星 ジラーチ',
+          genre_ids: [
+            28,
+            12,
+            16,
+            10751
+          ],
+          title: 'Pokémon: Jirachi Wish Maker',
+          vote_average: 6.3,
+          overview: "Ash, May, Brock, and Max come upon the festival of the Wishing Star of Seven Nights. During their enjoyment, the legendary Pokemon--Jirachi, descends from the heavens and befriends Max. Jirachi, with the power to grant any wish, is sought after by many people wanting to claim its power. One man seeks to use its legendary power to revive an ancient Pokemon known as Groudon, unaware of the dangers hidden within Jirachi's powers",
+          release_date: '2003-07-19'
+        },
+        {
+          popularity: 11.003,
+          vote_count: 216,
+          video: false,
+          poster_path: '/4Vafl9UF5oCiZYOl9q1hh1uZosR.jpg',
+          id: 12600,
+          adult: false,
+          backdrop_path: '/sUAkLYDCkitizIhKg035m6KmrnE.jpg',
+          original_language: 'ja',
+          original_title: '劇場版ポケットモンスター セレビィ 時を超えた遭遇',
+          genre_ids: [
+            12,
+            16,
+            14,
+            878,
+            10751
+          ],
+          title: 'Pokémon 4Ever: Celebi - Voice of the Forest',
+          vote_average: 6.2,
+          overview: '40 years ago, a Celebi was being attacked by a Pokemon Hunter. Luckily, a young boy named Yukinari saved Celebi. Using its Time Traveling power, Celebi transported itself and Yukinari 40 years into the future. There, Satoshi, Kasumi, and Takeshi assist Yukinari to the healing lake in the forest so they can heal the wounded Celebi. Unfortunately an evil Team Rocket member, Vicious, tries to capture Celebi using his technology. As Satoshi and Co. try to get away from Vicious, they also run into Musashi, Kojiro, and Nyarth, who also want to capture Celebi. Soon it becomes a race against time to get Celebi and Yukinari back to the forest before Celebi is caught and is used to destroy the forest and themselves.',
+          release_date: '2001-07-06'
+        },
+        {
+          popularity: 10.691,
+          vote_count: 369,
+          video: false,
+          poster_path: '/cmpOaiRtjnhLNF2iPslMXCOcVJ.jpg',
+          id: 436931,
+          adult: false,
+          backdrop_path: '/k6KlehTEOAlC5nJUeIbbgim7GrV.jpg',
+          original_language: 'ja',
+          original_title: '劇場版ポケットモンスター　キミにきめた！',
+          genre_ids: [
+            16,
+            10751
+          ],
+          title: 'Pokémon the Movie: I Choose You!',
+          vote_average: 7,
+          overview: 'This is the story of how Satoshi and Pikachu first met. At first, Pikachu was disobedient towards Satoshi, but Satoshi only wanted to be friends with Pikachu. On the day they set out from Masara Town, both of them saw a Ho-Oh flying and they made a vow to meet it.',
+          release_date: '2017-07-15'
+        },
+        {
+          popularity: 12.785,
+          vote_count: 194,
+          video: false,
+          poster_path: '/xlO50h3EX1w99KGztTzsjQBwPfs.jpg',
+          id: 571891,
+          adult: false,
+          backdrop_path: '/olQLBp49qFpbWSt0z5OdNpFHP3g.jpg',
+          original_language: 'ja',
+          original_title: '劇場版ポケットモンスター ミュウツーの逆襲 EVOLUTION',
+          genre_ids: [
+            28,
+            12,
+            16,
+            14,
+            10751
+          ],
+          title: 'Pokémon: Mewtwo Strikes Back - Evolution',
+          vote_average: 6.7,
+          overview: "After a scientific experiment leads to the creation of Mewtwo, he sets out to destroy the world. Satoshi and his friends then decide to thwart Mewtwo's evil plans.",
+          release_date: '2019-07-12'
+        },
+        {
+          popularity: 0.6,
+          vote_count: 0,
+          video: false,
+          poster_path: '/xnHfSlXnn1xGiXwL9o2RsW0ynHS.jpg',
+          id: 641073,
+          adult: false,
+          backdrop_path: null,
+          original_language: 'en',
+          original_title: 'Pokémon Red & Blue',
+          genre_ids: [],
+          title: 'Pokémon Red & Blue',
+          vote_average: 0,
+          overview: 'A spin-off set in the same universe as the 2019 film Detective Pikachu, following the storyline of the hit 1996 games.  It is rumoured to be in development at Legendary Pictures.',
+          release_date: ''
+        },
+        {
+          popularity: 11.563,
+          id: 34067,
+          video: false,
+          vote_count: 137,
+          vote_average: 6.8,
+          title: 'Pokémon: Lucario and the Mystery of Mew',
+          release_date: '2005-07-16',
+          original_language: 'ja',
+          original_title: '劇場版ポケットモンスター アドバンスジェネレーション ミュウと波導の勇者 ルカリオ',
+          genre_ids: [
+            12,
+            16,
+            14
+          ],
+          backdrop_path: '/DjfbGlwfxj8XrVyOiNi3QuyS3g.jpg',
+          adult: false,
+          overview: 'In the legendary past, before Monster Balls were made; an aura-guiding hero Pokémon named Lucario sensed two groups of armies about to clash, and a threat of a massive war in front of Oldoran Castle in Kanto that would leave no survivors. He transferred this message to his master, the legendary hero Arlon, while he was being attacked by a violent group of Hellgar. During the battle, his sense of sight was lost and he was rendered unable to see. He used the detection of his Aura, and so with the offensive Wave Bomb, he eliminated them. Though by the threat, the queen of Rota, Lady Rin was resolute to die with her civilians, and so Arlon made a choice.',
+          poster_path: '/612lsEOZvsn3ELh07OGGGKCeEVj.jpg'
+        },
+        {
+          popularity: 8.924,
+          vote_count: 69,
+          video: false,
+          poster_path: '/eakBFzG1dZn0uouBgv6kYtPXLkT.jpg',
+          id: 494407,
+          adult: false,
+          backdrop_path: '/s53BMzThuq9VpwFc7Vqcv29b5sJ.jpg',
+          original_language: 'ja',
+          original_title: '劇場版ポケットモンスター みんなの物語',
+          genre_ids: [
+            16,
+            10751
+          ],
+          title: 'Pokémon the Movie: The Power of Us',
+          vote_average: 6.4,
+          overview: 'A young athlete whose running days might be behind her, a compulsive liar, a shy researcher, a bitter old woman, and a little girl with a big secret—the only thing they have in common is the annual Wind Festival in Fula City.  The festival celebrates the Legendary Pokémon Lugia, who brings the wind that powers this seaside city. When a series of threats endangers not just the festival, but all the people and Pokémon of Fula City, it’ll take more than just Satoshi and Pikachu to save the day! Can everyone put aside their differences and work together—or will it all end in destruction?',
+          release_date: '2018-07-13'
+        },
+        {
+          popularity: 7.672,
+          vote_count: 178,
+          video: false,
+          poster_path: '/fS8P1YLQ2LVhct7nvAKvkHLelBG.jpg',
+          id: 36897,
+          adult: false,
+          backdrop_path: '/7feJKyRZR10FyEgI79o7DoD1Y0v.jpg',
+          original_language: 'ja',
+          original_title: 'ミュウツー！我ハココニ在リ',
+          genre_ids: [
+            16,
+            10751
+          ],
+          title: 'Pokémon: Mewtwo Returns',
+          vote_average: 6.5,
+          overview: 'Satoshi, Kasumi, and Takeshi continue exploring the Johto region, then have to rescue Pikachu after Musashi and Kojiro kidnap him. The search leads them to the hidden plateau where Mewtwo has established a haven for the cloned Pokémon from the previous film. The evil Sakaki is plotting to recapture Mewtwo and renew his efforts to create an army of bio-engineered Pokémon. Aided by the reluctant Nyarth, Ash and his friends defeat Sakaki and his henchman.',
+          release_date: '2000-12-30'
+        },
+        {
+          popularity: 10.094,
+          vote_count: 69,
+          video: false,
+          poster_path: '/qPfo5ooRJWUczk3KXv8CnUmNkTl.jpg',
+          id: 115223,
+          adult: false,
+          backdrop_path: null,
+          original_language: 'ja',
+          original_title: '劇場版ポケットモンスター ベストウイッシュ ビクティニと白き英雄 レシラム',
+          genre_ids: [
+            12,
+            16,
+            10751
+          ],
+          title: 'Pokémon the Movie Black: Victini and Reshiram',
+          vote_average: 6.4,
+          overview: "The Kingdom of the People of the Earth once ruled over the land, but now all that remains is the Sword of the Earth. in the city of Eindoak. Satoshi, Iris, and Dent arrive in Eindoak during a harvest festival's Pokémon Tournament and meet the legendary Pokémon Victini who wishes to share its powers of victory to someone. Elsewhere in the city, a descendant of the People of the Earth named Dred Grangil has arrived who seeks to revive the kingdom's power with the Sword of the Earth, bringing them back into power over the land, and Satoshi and his friends must stop him before he destroys the land along with Victini.",
+          release_date: '2011-07-16'
+        },
+        {
+          popularity: 9.075,
+          vote_count: 121,
+          video: false,
+          poster_path: '/u5dybbTyhgJ3Trof4QZvfN5UoOP.jpg',
+          id: 39057,
+          adult: false,
+          backdrop_path: '/1WygXLVPO4wNYm6WUgUi7PNAvkU.jpg',
+          original_language: 'ja',
+          original_title: '劇場版ポケットモンスター ダイヤモンド&パール アルセウス 超克の時空へ',
+          genre_ids: [
+            16,
+            10751
+          ],
+          title: 'Pokémon: Arceus and the Jewel of Life',
+          vote_average: 7,
+          overview: "Long ago Arceus granted a fragment of its awesome power as the Jewel of Life to help Michina in the town's hour of need only to be betrayed when it was time for that power to be returned.  After so many years Arceus is about to return to reclaim its power - enraged vengeful and seemingly unstoppable. Not even the combined might of Dialga, Palkia and Giratina can stop Arceus from devastating all existence across multiple dimensions.  But Satoshi and his companions joining forces with their new friend Sheena, may have discovered the only way to redeem that ancient betrayal. Their journey will be both dangerous and uncertain: even if Satoshi and his friends can set an old wrong right again will there be time to return the Jewel of Life before Arceus destroys everything and everyone they've ever known?",
+          release_date: '2009-07-18'
+        },
+        {
+          popularity: 9.199,
+          vote_count: 106,
+          video: false,
+          poster_path: '/ujLIgISIV6Fv6j509SZp2Tmq2ZJ.jpg',
+          id: 350499,
+          adult: false,
+          backdrop_path: '/p0oItHbOAH6W00Zt8hnl4esJFet.jpg',
+          original_language: 'ja',
+          original_title: 'ポケモン・ザ・ムービーXY 光輪の超魔神 フーパ',
+          genre_ids: [
+            28,
+            12,
+            16
+          ],
+          title: 'Pokémon the Movie: Hoopa and the Clash of Ages',
+          vote_average: 6.2,
+          overview: 'Satoshi, Pikachu, and their friends come to a desert city by the sea. Here they meet the Mythical Pokémon Hoopa, which has the ability to summon things—including people and Pokémon—through its magic rings. After a scary incident, they learn of a story about a brave hero who stopped the rampage of a terrifying Pokémon long ago. Now, the threat that has been bottled up for years is in danger of breaking loose again.',
+          release_date: '2015-07-18'
+        }
+      ]
+    }
+  )
+})
+
 module.exports = {
   path: '/tmdb/',
   handler: app

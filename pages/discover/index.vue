@@ -18,6 +18,8 @@ export default {
       await store.dispatch('tmdb/setGenreList')
       if (!store.state.search.userSearch) {
         await store.dispatch('search/setDefaultMovieList')
+      } else {
+        await store.dispatch('search/setUserSearch', false)
       }
     } catch (err) {
       console.log(err)

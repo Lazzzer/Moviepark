@@ -1,6 +1,9 @@
 <template>
-  <div class="flex flex-wrap w-full ml-2 lg:w-3/4">
-    <Card v-for="(card,index) in movieList.results" :key="index" class="m-2" :movie-infos="card"></Card>
+  <div class="w-full ml-2 lg:w-3/4">
+    <h3 class="float-right mr-20 text-2xl font-bold text-gray-300">{{ movieListType }}</h3>
+    <div class="flex flex-wrap justify-center w-full">
+      <Card v-for="(card,index) in movieList.results" :key="index" class="m-2" :movie-infos="card"></Card>
+    </div>
   </div>
 </template>
 
@@ -13,7 +16,8 @@ export default {
   },
   computed: {
     ...mapState({
-      movieList: state => state.search.movieList
+      movieList: state => state.search.movieList,
+      movieListType: state => state.search.movieListType
     })
   }
 }

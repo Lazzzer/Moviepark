@@ -50,11 +50,18 @@
                   />
                 </div>
               </div>
+              <button
+                @click="prepareSearch"
+                type="button"
+                class="inline-flex items-center justify-center w-full px-4 py-3 mt-6 text-base font-medium leading-4 text-gray-300 transition duration-150 ease-in-out border border-transparent rounded-md lg:px-3 lg:py-2 bg-m-burgundy-700 hover:bg-m-burgundy-600 focus:outline-none focus:border-m-burgundy-600 active:bg-m-burgundy-600"
+              >Search</button>
             </div>
           </transition>
         </div>
       </div>
+    </form>
 
+    <form @submit.prevent>
       <!-- Filters -->
       <div class="pt-1 pb-3 mt-6 border-b-2 border-teal-900">
         <div class="pb-1">
@@ -243,16 +250,15 @@
                   </div>
                 </div>
               </div>
+              <button
+                @click="prepareSearch"
+                type="button"
+                class="inline-flex items-center justify-center w-full px-4 py-3 mt-6 text-base font-medium leading-4 text-gray-300 transition duration-150 ease-in-out border border-transparent rounded-md lg:px-3 lg:py-2 bg-m-burgundy-700 hover:bg-m-burgundy-600 focus:outline-none focus:border-m-burgundy-600 active:bg-m-burgundy-600"
+              >Search</button>
             </div>
           </transition>
         </div>
       </div>
-
-      <button
-        @click="prepareSearch"
-        type="button"
-        class="inline-flex items-center justify-center w-full px-4 py-3 mt-6 text-base font-medium leading-4 text-gray-300 transition duration-150 ease-in-out border border-transparent rounded-md lg:px-3 lg:py-2 bg-m-burgundy-700 hover:bg-m-burgundy-600 focus:outline-none focus:border-m-burgundy-600 active:bg-m-burgundy-600"
-      >{{ searchLabel }}</button>
     </form>
   </section>
 </template>
@@ -284,10 +290,7 @@ export default {
   computed: {
     ...mapState({
       genresList: state => state.tmdb.genresList
-    }),
-    searchLabel() {
-      if (!this.searchIsOpen && !this.filtersIsOpen) { return 'Discover' } else { return 'Search' }
-    }
+    })
   },
   methods: {
     ...mapActions('search', ['setSearchQuery']),

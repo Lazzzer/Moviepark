@@ -50,6 +50,16 @@ app.get('/search/defaultMovieList', async (req, res) => {
   }
 })
 
+app.get('/search/byName/:name', async (req, res) => {
+  try {
+    console.log(req.params)
+    const { data } = await tmdbApi.getSearchedByNameMovieList(req.params.name)
+    res.send(data)
+  } catch (err) {
+    res.status(err.response.status).json({ status: err.response.status, error: err.response.statusText })
+  }
+})
+
 app.get('/trendingDummy', (req, res) => {
   res.status(200).json(
     {

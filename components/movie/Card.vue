@@ -3,10 +3,10 @@
     class="relative duration-500 ease-in-out cursor-pointer hover:shadow-md md:transform md:transition hover:-translate-y-1 hover:scale-105"
   >
     <img
-      v-if="movieInfos.poster_path !== null"
-      class="h-auto max-w-lg min-w-full rounded-md"
-      :src="imgPath + movieInfos.poster_path"
+      class="object-cover h-auto min-w-full rounded-md md:w-card-lg md:h-card-lg w-card h-card"
+      :src="movieInfos.poster_path !== null ? imgPath + movieInfos.poster_path : require('~/assets/img/noPoster.jpg')"
       :alt="'Poster of ' + movieInfos.title "
+      :title="movieInfos.title"
     />
     <span
       :class="movieInfos.vote_average > 5.1 ? 'bg-green-500' : 'bg-red-500'"

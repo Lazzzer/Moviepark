@@ -54,7 +54,6 @@ export const actions = {
       })
   },
   async setMovieList({ commit, state }) {
-    // TODO Changer le state d'user search à false quelque part
     if (state.searchQuery.type === 'name') {
       return await this.$axios.get(`${process.env.BASE_URL}/tmdb/search/byNameDummy/${state.searchQuery.movieName}`)
         .then((res) => {
@@ -69,7 +68,36 @@ export const actions = {
         })
     }
     if (state.searchQuery.type === 'filters') {
+      let preparedQuery = ''
 
+      if (state.searchQuery.sortBy !== 'popularity.desc') {
+        preparedQuery += '&sort_by='
+        preparedQuery += state.searchQuery.sortBy
+      } else {
+        preparedQuery += '&sort_by=popularity.desc'
+      }
+      if (state.searchQuery.person !== '') {
+        preparedQuery += '&with_people='
+        preparedQuery += state.searchQuery.person
+      }
+
+      if (state.searchQuery.genre !== []) {
+        preparedQuery += '&with_genres='
+        preparedQuery += state.searchQuery.genre.join()
+      }
+      preparedQuery += '&include_adult=false&vote_count.gte=10'
+
+      return await this.$axios.get(`${process.env.BASE_URL}/tmdb/search/withFilters/${preparedQuery}`)
+        .then((res) => {
+          commit('SET_SEARCHED_MOVIE_LIST', res.data)
+          console.log('CALLING SET_SEARCHED_MOVIE_LIST')
+
+          commit('SET_MOVIE_LIST_TYPE', 'Results')
+          console.log('CALLING SET_MOVIE_LIST_TYPE')
+        })
+        .catch((err) => {
+          console.log(err)
+        })
     }
   }
 }

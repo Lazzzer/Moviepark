@@ -27,5 +27,8 @@ export default {
   },
   getSearchedByNameMovieList(name) {
     return tmdbApi.get(`search/movie?api_key=${process.env.TMDB_API_KEY}&language=en-US&query=${encodeURIComponent(name)}&include_adult=false`)
+  },
+  getSearchedWithFiltersMovieList(query) {
+    return tmdbApi.get(`discover/movie?api_key=${process.env.TMDB_API_KEY}&language=en-US&include_adult=false${query}`)
   }
 }

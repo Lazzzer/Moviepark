@@ -40,7 +40,7 @@ export default {
       const query = Object.assign({}, JSON.parse(JSON.stringify(this.query)))
       this.setSearchQuery(query)
 
-      if (this.$router.currentRoute.name !== 'Discover') {
+      if (this.$router.currentRoute.name !== 'discover') {
         this.setUserSearch(true)
         this.$router.push('/discover')
       }

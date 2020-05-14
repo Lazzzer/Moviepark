@@ -29,7 +29,13 @@ module.exports = {
         'm-blue-800': '#02182B'
       },
       width: {
-        'custom-cards': '900px'
+        'custom-cards': '900px',
+        'card-lg': '154px',
+        card: '120px'
+      },
+      height: {
+        'card-lg': '231px',
+        card: '180px'
       }
     }
   },

@@ -60,6 +60,16 @@ app.get('/search/byName/:name', async (req, res) => {
   }
 })
 
+app.get('/search/withFilters/:query', async (req, res) => {
+  try {
+    console.log(req.params)
+    const { data } = await tmdbApi.getSearchedWithFiltersMovieList(req.params.query)
+    res.send(data)
+  } catch (err) {
+    res.status(err.response.status).json({ status: err.response.status, error: err.response.statusText })
+  }
+})
+
 app.get('/trendingDummy', (req, res) => {
   res.status(200).json(
     {

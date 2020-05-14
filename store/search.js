@@ -56,7 +56,7 @@ export const actions = {
   },
   async setMovieList({ commit, state }) {
     // TODO Changer le state d'user search à false quelque part
-    if (state.searchQuery.type === 'name') { // REFACTOR SANS CA
+    if (state.searchQuery.type === 'name') {
       return await this.$axios.get(`${process.env.BASE_URL}/tmdb/search/byName/${state.searchQuery.movieName}`)
         .then((res) => {
           commit('SET_SEARCHED_MOVIE_LIST', res.data)
@@ -68,6 +68,9 @@ export const actions = {
         .catch((err) => {
           console.log(err)
         })
+    }
+    if (state.searchQuery.type === 'filters') {
+
     }
   }
 }

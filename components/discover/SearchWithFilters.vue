@@ -209,6 +209,7 @@ export default {
       isOpen: false,
       query: {
         type: 'filters',
+        page: 1,
         sortBy: 'popularity.desc',
         genre: [],
         releaseDates: ['', ''],

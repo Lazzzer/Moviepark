@@ -50,10 +50,10 @@ app.get('/search/defaultMovieList', async (req, res) => {
   }
 })
 
-app.get('/search/byName/:name', async (req, res) => {
+app.get('/search/byName/:name/:page', async (req, res) => {
   try {
     console.log(req.params)
-    const { data } = await tmdbApi.getSearchedByNameMovieList(req.params.name)
+    const { data } = await tmdbApi.getSearchedByNameMovieList(req.params.name, req.params.page)
     res.send(data)
   } catch (err) {
     res.status(err.response.status).json({ status: err.response.status, error: err.response.statusText })
@@ -62,7 +62,6 @@ app.get('/search/byName/:name', async (req, res) => {
 
 app.get('/search/withFilters/:query', async (req, res) => {
   try {
-    console.log(req.params)
     const { data } = await tmdbApi.getSearchedWithFiltersMovieList(req.params.query)
     res.send(data)
   } catch (err) {

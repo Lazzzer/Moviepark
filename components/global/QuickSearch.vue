@@ -30,6 +30,7 @@ export default {
     return {
       query: {
         type: 'name',
+        page: 1,
         movieName: ''
       }
     }

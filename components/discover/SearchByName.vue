@@ -69,6 +69,7 @@ export default {
       isOpen: false,
       query: {
         type: 'name',
+        page: 1,
         movieName: ''
       }
     }

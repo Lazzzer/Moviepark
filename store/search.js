@@ -3,6 +3,7 @@ export const state = () => ({
   searchQuery: {
     activeSearch: false,
     type: 'discover',
+    page: 1,
     movieName: '',
     sortBy: 'popularity.desc',
     genre: [],
@@ -11,6 +12,8 @@ export const state = () => ({
     person: ''
   },
   movieList: {},
+  movieListPage: '',
+  movieListTotalPages: '',
   movieListType: ''
 })
 
@@ -21,18 +24,35 @@ export const mutations = {
   SET_USER_SEARCH_VARIABLE(state, payload) {
     state.userSearch = payload
   },
+  SET_SEARCH_QUERY_TYPE(state, payload) {
+    state.searchQuery.type = payload
+  },
   SET_DEFAULT_SEARCHED_MOVIE_LIST(state, payload) {
     state.movieList = payload
   },
   SET_SEARCHED_MOVIE_LIST(state, payload) {
     state.movieList = payload
   },
+  SET_MOVIE_LIST_PAGES(state, { page, totalPages }) {
+    state.movieListPage = page
+    state.movieListTotalPages = totalPages
+  },
+
   SET_MOVIE_LIST_TYPE(state, payload) {
     state.movieListType = payload
+  },
+  INCREMENT_PAGE_MOVIE_LIST(state) {
+    state.searchQuery.page++
+  },
+  ADD_TO_SEARCHED_MOVIE_LIST(state, payload) {
+    state.movieList.push(...payload)
   }
 }
 
 export const actions = {
+  incrementPageMovieList({ commit }) {
+    commit('INCREMENT_PAGE_MOVIE_LIST')
+  },
   setSearchQuery({ commit, dispatch }, query) {
     commit('SET_SEARCH_QUERY', query)
     dispatch('setMovieList')
@@ -43,11 +63,9 @@ export const actions = {
   async setDefaultMovieList({ commit }) {
     await this.$axios.get(`${process.env.BASE_URL}/tmdb/search/defaultMovieListDummy`)
       .then((res) => {
-        commit('SET_DEFAULT_SEARCHED_MOVIE_LIST', res.data)
-        console.log('CALLING SET_DEFAULT_SEARCHED_MOVIE_LIST')
-
+        commit('SET_SEARCH_QUERY_TYPE', 'discover')
+        commit('SET_DEFAULT_SEARCHED_MOVIE_LIST', res.data.results)
         commit('SET_MOVIE_LIST_TYPE', 'Popular Movies')
-        console.log('CALLING SET_MOVIE_LIST_TYPE')
       })
       .catch((err) => {
         console.log(err)
@@ -55,13 +73,16 @@ export const actions = {
   },
   async setMovieList({ commit, state }) {
     if (state.searchQuery.type === 'name') {
-      return await this.$axios.get(`${process.env.BASE_URL}/tmdb/search/byNameDummy/${state.searchQuery.movieName}`)
+      return await this.$axios.get(`${process.env.BASE_URL}/tmdb/search/byName/${state.searchQuery.movieName}/${state.searchQuery.page}`)
         .then((res) => {
-          commit('SET_SEARCHED_MOVIE_LIST', res.data)
-          console.log('CALLING SET_SEARCHED_MOVIE_LIST')
-
-          commit('SET_MOVIE_LIST_TYPE', "Results for '" + state.searchQuery.movieName + "'")
-          console.log('CALLING SET_MOVIE_LIST_TYPE')
+          if (state.searchQuery.page > 1) {
+            commit('ADD_TO_SEARCHED_MOVIE_LIST', res.data.results)
+            commit('SET_MOVIE_LIST_PAGES', { page: res.data.page, totalPages: res.data.total_pages })
+          } else {
+            commit('SET_SEARCHED_MOVIE_LIST', res.data.results)
+            commit('SET_MOVIE_LIST_TYPE', "Results for '" + state.searchQuery.movieName + "'")
+            commit('SET_MOVIE_LIST_PAGES', { page: res.data.page, totalPages: res.data.total_pages })
+          }
         })
         .catch((err) => {
           console.log(err)
@@ -88,15 +109,18 @@ export const actions = {
       if (state.searchQuery.votesAverage !== '' && (state.searchQuery.votesAverage <= 10 && state.searchQuery.votesAverage >= 0)) {
         preparedQuery += `&vote_average.gte=${state.searchQuery.votesAverage}`
       }
-      preparedQuery += '&include_adult=false&vote_count.gte=10'
+      preparedQuery += `&include_adult=false&vote_count.gte=10&page=${state.searchQuery.page}`
 
       return await this.$axios.get(`${process.env.BASE_URL}/tmdb/search/withFilters/${preparedQuery}`)
         .then((res) => {
-          commit('SET_SEARCHED_MOVIE_LIST', res.data)
-          console.log('CALLING SET_SEARCHED_MOVIE_LIST')
-
-          commit('SET_MOVIE_LIST_TYPE', 'Results')
-          console.log('CALLING SET_MOVIE_LIST_TYPE')
+          if (state.searchQuery.page > 1) {
+            commit('ADD_TO_SEARCHED_MOVIE_LIST', res.data.results)
+            commit('SET_MOVIE_LIST_PAGES', { page: res.data.page, totalPages: res.data.total_pages })
+          } else {
+            commit('SET_SEARCHED_MOVIE_LIST', res.data.results)
+            commit('SET_MOVIE_LIST_TYPE', 'Results')
+            commit('SET_MOVIE_LIST_PAGES', { page: res.data.page, totalPages: res.data.total_pages })
+          }
         })
         .catch((err) => {
           console.log(err)

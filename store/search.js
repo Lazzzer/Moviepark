@@ -71,19 +71,22 @@ export const actions = {
       let preparedQuery = ''
 
       if (state.searchQuery.sortBy !== 'popularity.desc') {
-        preparedQuery += '&sort_by='
-        preparedQuery += state.searchQuery.sortBy
+        preparedQuery += `&sort_by=${state.searchQuery.sortBy}`
       } else {
         preparedQuery += '&sort_by=popularity.desc'
       }
+      if (state.searchQuery.releaseDates[0] !== '' && state.searchQuery.releaseDates[1] !== '') {
+        preparedQuery += `&release_date.gte=${state.searchQuery.releaseDates[0]}&release_date.lte=${state.searchQuery.releaseDates[1]}`
+      }
       if (state.searchQuery.person !== '') {
-        preparedQuery += '&with_people='
-        preparedQuery += state.searchQuery.person
+        preparedQuery += `&with_people=${state.searchQuery.person}`
       }
 
       if (state.searchQuery.genre !== []) {
-        preparedQuery += '&with_genres='
-        preparedQuery += state.searchQuery.genre.join()
+        preparedQuery += `&with_genres=${state.searchQuery.genre.join()}`
+      }
+      if (state.searchQuery.votesAverage !== '' && (state.searchQuery.votesAverage <= 10 && state.searchQuery.votesAverage >= 0)) {
+        preparedQuery += `&vote_average.gte=${state.searchQuery.votesAverage}`
       }
       preparedQuery += '&include_adult=false&vote_count.gte=10'
 

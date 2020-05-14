@@ -171,10 +171,10 @@
 
               <!-- Votes Average -->
               <div class="mt-2">
-                <label for="votesAverage" class="block text-sm font-medium leading-5 text-gray-300">
-                  Votes Average
-                  <span class="text-xs italic">with 100 votes min.</span>
-                </label>
+                <label
+                  for="votesAverage"
+                  class="block text-sm font-medium leading-5 text-gray-300"
+                >Votes Average Greater Than</label>
                 <div class="mb-3 sm:mt-0">
                   <div class="mt-1 rounded-md shadow-sm">
                     <input
@@ -225,6 +225,13 @@ export default {
     ...mapState({
       genresList: state => state.tmdb.genresList
     })
+  },
+  watch: {
+    selectedPersonName() {
+      if (this.selectedPersonName === '') {
+        this.query.person = ''
+      }
+    }
   },
   methods: {
     ...mapActions('search', ['setSearchQuery']),

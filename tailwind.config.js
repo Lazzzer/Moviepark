@@ -37,6 +37,7 @@ module.exports = {
       },
       width: {
         'custom-cards': '900px',
+        'custom-cards-mini': '670px',
         'card-lg': '154px',
         card: '120px',
         detailedCard: '92px'

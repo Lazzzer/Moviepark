@@ -38,11 +38,13 @@ module.exports = {
       width: {
         'custom-cards': '900px',
         'card-lg': '154px',
-        card: '120px'
+        card: '120px',
+        detailedCard: '92px'
       },
       height: {
         'card-lg': '231px',
-        card: '180px'
+        card: '180px',
+        detailedCard: '138px'
       }
     }
   },

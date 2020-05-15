@@ -80,7 +80,7 @@ export const actions = {
             commit('SET_MOVIE_LIST_PAGES', { page: res.data.page, totalPages: res.data.total_pages })
           } else {
             commit('SET_SEARCHED_MOVIE_LIST', res.data.results)
-            commit('SET_MOVIE_LIST_TYPE', "Results for '" + state.searchQuery.movieName + "'")
+            commit('SET_MOVIE_LIST_TYPE', res.data.total_results + " Results for '" + state.searchQuery.movieName + "'")
             commit('SET_MOVIE_LIST_PAGES', { page: res.data.page, totalPages: res.data.total_pages })
           }
         })
@@ -118,7 +118,7 @@ export const actions = {
             commit('SET_MOVIE_LIST_PAGES', { page: res.data.page, totalPages: res.data.total_pages })
           } else {
             commit('SET_SEARCHED_MOVIE_LIST', res.data.results)
-            commit('SET_MOVIE_LIST_TYPE', 'Results')
+            commit('SET_MOVIE_LIST_TYPE', res.data.total_results + ' Results')
             commit('SET_MOVIE_LIST_PAGES', { page: res.data.page, totalPages: res.data.total_pages })
           }
         })

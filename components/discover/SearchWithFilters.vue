@@ -192,7 +192,7 @@
               <button
                 @click="prepareSearch"
                 type="submit"
-                class="inline-flex items-center justify-center w-full px-4 py-3 mt-6 mb-3 text-base font-medium leading-4 text-gray-300 transition duration-150 ease-in-out border border-transparent rounded-md lg:px-3 lg:py-2 bg-m-burgundy-700 hover:bg-m-burgundy-600 focus:outline-none focus:border-m-burgundy-600 active:bg-m-burgundy-600"
+                class="inline-flex items-center justify-center w-full px-4 py-3 mt-6 mb-3 text-base font-medium leading-4 text-gray-300 transition duration-150 ease-in-out border border-transparent rounded-md lg:px-3 lg:py-3 bg-m-burgundy-700 hover:bg-m-burgundy-600 focus:outline-none focus:border-m-burgundy-600 active:bg-m-burgundy-600"
               >Search</button>
             </div>
           </transition>

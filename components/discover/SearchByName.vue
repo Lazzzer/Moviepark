@@ -66,7 +66,7 @@ import { mapActions } from 'vuex'
 export default {
   data() {
     return {
-      isOpen: false,
+      isOpen: true,
       query: {
         type: 'name',
         page: 1,

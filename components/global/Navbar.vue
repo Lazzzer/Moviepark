@@ -233,7 +233,7 @@ export default {
     @apply outline-none text-white bg-m-blue-900
   }
 
-  .router-link-active{
+  .nuxt-link-active{
     @apply bg-m-blue-900
   }
 </style>

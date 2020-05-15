@@ -25,8 +25,15 @@ module.exports = {
       colors: {
         'm-burgundy-600': '#E92A63',
         'm-burgundy-700': '#D70745',
-        'm-blue-900': '#000E1B',
-        'm-blue-800': '#02182B'
+        'm-burgundy-800': '#9F0533',
+        'm-burgundy-900': '#65001E',
+        'm-blue-300': '#CFDCE8',
+        'm-blue-400': '#9CCDE0',
+        'm-blue-500': '#5390A9',
+        'm-blue-600': '#2D6276',
+        'm-blue-700': '#193844',
+        'm-blue-800': '#02182B',
+        'm-blue-900': '#000E1B'
       },
       width: {
         'custom-cards': '900px',

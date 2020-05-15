@@ -206,7 +206,7 @@ import { mapState, mapActions } from 'vuex'
 export default {
   data() {
     return {
-      isOpen: false,
+      isOpen: true,
       query: {
         type: 'filters',
         page: 1,

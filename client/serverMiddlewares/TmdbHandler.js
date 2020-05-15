@@ -1,4 +1,4 @@
-/* eslint-disable space-before-function-paren */
+
 import tmdbApi from '../services/TmdbService'
 require('dotenv').config()
 

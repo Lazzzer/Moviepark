@@ -37,6 +37,5 @@ module.exports = {
     }],
     'quotes': [2, 'single', { 'avoidEscape': true }],
     'semi': [2, 'never'],
-    'space-before-function-paren': ['error', 'never']
   }
 }

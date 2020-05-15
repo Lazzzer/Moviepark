@@ -1,6 +1,7 @@
 {
-  "name": "server",
-  "version": "0.0.0",
+  "name": "moviepark-server",
+  "version": "1.0.0",
+  "author": "Lazar Pavicevic",
   "private": true,
   "scripts": {
     "build": "node ace build",

@@ -41,9 +41,9 @@ app.get('/search/person/:query', async (req, res) => {
   }
 })
 
-app.get('/search/defaultMovieList', async (req, res) => {
+app.get('/search/defaultMovieList/:page', async (req, res) => {
   try {
-    const { data } = await tmdbApi.getSearchDefaultMovieList()
+    const { data } = await tmdbApi.getSearchDefaultMovieList(req.params.page)
     res.send(data)
   } catch (err) {
     res.status(err.response.status).json({ status: err.response.status, error: err.response.statusText })
@@ -1930,7 +1930,7 @@ app.get('/search/personDummy/:query', (req, res) => {
   )
 })
 
-app.get('/search/defaultMovieListDummy', (req, res) => {
+app.get('/search/defaultMovieListDummy/:yolo', (req, res) => {
   res.status(200).json(
     {
       page: 1,

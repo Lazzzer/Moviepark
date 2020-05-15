@@ -61,17 +61,28 @@ export const actions = {
     commit('SET_USER_SEARCH_VARIABLE', value)
   },
   async setDefaultMovieList({ commit }) {
-    await this.$axios.get(`${process.env.BASE_URL}/tmdb/search/defaultMovieListDummy`)
+    await this.$axios.get(`${process.env.BASE_URL}/tmdb/search/defaultMovieListDummy/1`)
       .then((res) => {
         commit('SET_SEARCH_QUERY_TYPE', 'discover')
         commit('SET_DEFAULT_SEARCHED_MOVIE_LIST', res.data.results)
         commit('SET_MOVIE_LIST_TYPE', 'Popular Movies')
+        commit('SET_MOVIE_LIST_PAGES', { page: res.data.page, totalPages: res.data.total_pages })
       })
       .catch((err) => {
         console.log(err)
       })
   },
   async setMovieList({ commit, state }) {
+    if (state.searchQuery.type === 'discover') {
+      return await this.$axios.get(`${process.env.BASE_URL}/tmdb/search/defaultMovieListDummy/${state.searchQuery.page}`)
+        .then((res) => {
+          commit('ADD_TO_SEARCHED_MOVIE_LIST', res.data.results)
+          commit('SET_MOVIE_LIST_PAGES', { page: res.data.page, totalPages: res.data.total_pages })
+        })
+        .catch((err) => {
+          console.log(err)
+        })
+    }
     if (state.searchQuery.type === 'name') {
       return await this.$axios.get(`${process.env.BASE_URL}/tmdb/search/byName/${state.searchQuery.movieName}/${state.searchQuery.page}`)
         .then((res) => {

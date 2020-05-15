@@ -22,8 +22,8 @@ export default {
     // Aussi à encoder ??
     return tmdbApi.get(`search/person?api_key=${process.env.TMDB_API_KEY}&language=en-US&query=${query}&page=1&include_adult=false`)
   },
-  getSearchDefaultMovieList() {
-    return tmdbApi.get(`discover/movie?api_key=${process.env.TMDB_API_KEY}&language=en-US&sort_by=popularity.desc&include_adult=false`)
+  getSearchDefaultMovieList(page) {
+    return tmdbApi.get(`discover/movie?api_key=${process.env.TMDB_API_KEY}&language=en-US&sort_by=popularity.desc&include_adult=false&page=${page}`)
   },
   getSearchedByNameMovieList(name, page) {
     return tmdbApi.get(`search/movie?api_key=${process.env.TMDB_API_KEY}&language=en-US&query=${encodeURIComponent(name)}&include_adult=false&page=${page}`)

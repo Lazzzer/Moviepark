@@ -10,10 +10,8 @@ export const mutations = {
 
 export const actions = {
   async setGenreList ({ commit }) {
-    await this.$axios.get(`${process.env.BASE_URL}/tmdb/genresListDummy`)
+    await this.$axios.get(`${process.env.API_URL}/dummyTmdb/genresList`)
       .then((res) => {
-        console.log('CALLING SET_GENRES_LIST ')
-
         commit('SET_GENRES_LIST', res.data.genres)
       })
       .catch((err) => {

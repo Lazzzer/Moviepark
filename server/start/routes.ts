@@ -21,5 +21,29 @@
 import Route from '@ioc:Adonis/Core/Route'
 
 Route.get('/', async () => {
-  return { hello: 'world' }
+  return { message: 'Moviepark Adonis server' }
 })
+
+//TMDB General routes
+
+Route.get('/tmdb/trending', 'TmdbsController.getTrending')
+Route.get('/tmdb/nextTheaters', 'TmdbsController.getNextInTheaters')
+Route.get('/tmdb/genresList', 'TmdbsController.getGenresList')
+
+//TMDB Search routes
+Route.get('/tmdb/search/person/:query', 'TmdbsController.getPersonId')
+Route.get('/tmdb/search/defaultMovieList/:page', 'TmdbsController.getSearchDefaultMovieList')
+Route.get('/tmdb/search/byName/:name/:page', 'TmdbsController.getSearchedByNameMovieList')
+Route.get('/tmdb/search/withFilters/:query', 'TmdbsController.getSearchedWithFiltersMovieList')
+
+//Dummy TMDB General routes
+
+Route.get('/dummyTmdb/trending', 'DummyTmdbsController.getTrending')
+Route.get('/dummyTmdb/nextTheaters', 'DummyTmdbsController.getNextInTheaters')
+Route.get('/dummyTmdb/genresList', 'DummyTmdbsController.getGenresList')
+
+//Dummy TMDB Search routes
+Route.get('/dummyTmdb/search/person/:query', 'DummyTmdbsController.getPersonId')
+Route.get('/dummyTmdb/search/defaultMovieList/:page', 'DummyTmdbsController.getSearchDefaultMovieList')
+Route.get('/dummyTmdb/search/byName/:name/:page', 'DummyTmdbsController.getSearchedByNameMovieList')
+Route.get('/dummyTmdb/search/withFilters/:query', 'DummyTmdbsController.getSearchedWithFiltersMovieList')

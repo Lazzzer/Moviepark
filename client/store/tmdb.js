@@ -3,13 +3,13 @@ export const state = () => ({
 })
 
 export const mutations = {
-  SET_GENRES_LIST(state, list) {
+  SET_GENRES_LIST (state, list) {
     state.genresList = list
   }
 }
 
 export const actions = {
-  async setGenreList({ commit }) {
+  async setGenreList ({ commit }) {
     await this.$axios.get(`${process.env.BASE_URL}/tmdb/genresListDummy`)
       .then((res) => {
         console.log('CALLING SET_GENRES_LIST ')

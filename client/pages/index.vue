@@ -78,7 +78,7 @@ export default {
   components: {
     Card
   },
-  async asyncData({ $axios, env }) {
+  async asyncData ({ $axios, env }) {
     try {
       const trending = await $axios.get(`${env.BASE_URL}/tmdb/trendingDummy`)
       const nextTheaters = await $axios.get(`${env.BASE_URL}/tmdb/nextTheatersDummy`)

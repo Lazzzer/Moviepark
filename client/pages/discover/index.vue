@@ -13,7 +13,7 @@ export default {
     Search,
     Content
   },
-  async asyncData({ store }) {
+  async asyncData ({ store }) {
     try {
       await store.dispatch('tmdb/setGenreList')
       if (!store.state.search.userSearch) {

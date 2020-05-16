@@ -47,7 +47,7 @@ export default {
     Card,
     DetailedCard
   },
-  data() {
+  data () {
     return {
       isOn: false
     }
@@ -67,7 +67,7 @@ export default {
   },
   methods: {
     ...mapActions('search', ['setMovieList', 'incrementPageMovieList']),
-    callNextPage() {
+    callNextPage () {
       if (this.movieListPage < this.movieListTotalPages) {
         this.incrementPageMovieList()
         this.setMovieList()

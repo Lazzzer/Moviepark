@@ -26,7 +26,7 @@
 <script>
 import { mapActions } from 'vuex'
 export default {
-  data() {
+  data () {
     return {
       query: {
         type: 'name',
@@ -37,7 +37,7 @@ export default {
   },
   methods: {
     ...mapActions('search', ['setSearchQuery', 'setUserSearch']),
-    prepareSearch() {
+    prepareSearch () {
       const query = Object.assign({}, JSON.parse(JSON.stringify(this.query)))
       this.setSearchQuery(query)
 

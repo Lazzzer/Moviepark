@@ -77,7 +77,7 @@ export default {
       required: true
     }
   },
-  data() {
+  data () {
     return {
       imgPath: 'https://image.tmdb.org/t/p/w92',
       backdropPath: 'https://image.tmdb.org/t/p/w300'
@@ -89,7 +89,7 @@ export default {
     })
   },
   methods: {
-    formateDate(date) {
+    formateDate (date) {
       const formattedDate = new Date(date)
       return formattedDate.toLocaleDateString('fr-FR')
     }

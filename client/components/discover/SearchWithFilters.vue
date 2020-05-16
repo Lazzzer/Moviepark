@@ -204,7 +204,7 @@
 <script>
 import { mapState, mapActions } from 'vuex'
 export default {
-  data() {
+  data () {
     return {
       isOpen: true,
       query: {
@@ -228,7 +228,7 @@ export default {
     })
   },
   watch: {
-    selectedPersonName() {
+    selectedPersonName () {
       if (this.selectedPersonName === '') {
         this.query.person = ''
       }
@@ -236,11 +236,11 @@ export default {
   },
   methods: {
     ...mapActions('search', ['setSearchQuery']),
-    prepareSearch() {
+    prepareSearch () {
       const query = Object.assign({}, JSON.parse(JSON.stringify(this.query)))
       this.setSearchQuery(query)
     },
-    delayedCall(search, debounceDuration = 300) {
+    delayedCall (search, debounceDuration = 300) {
       if (search !== ' ' && search.length > 2) {
         if (this.timeoutId !== null) {
           clearTimeout(this.timeoutId)

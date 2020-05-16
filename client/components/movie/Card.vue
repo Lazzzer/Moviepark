@@ -25,7 +25,7 @@ export default {
       required: true
     }
   },
-  data() {
+  data () {
     return {
       imgPath: 'https://image.tmdb.org/t/p/w154'
     }

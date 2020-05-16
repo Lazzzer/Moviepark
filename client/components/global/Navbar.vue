@@ -200,7 +200,7 @@ export default {
   components: {
     QuickSearch
   },
-  data() {
+  data () {
     return {
       isOpen: false,
       profileIsOpen: false,

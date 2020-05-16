@@ -18,49 +18,49 @@ export const state = () => ({
 })
 
 export const mutations = {
-  SET_SEARCH_QUERY(state, query) {
+  SET_SEARCH_QUERY (state, query) {
     state.searchQuery = query
   },
-  SET_USER_SEARCH_VARIABLE(state, payload) {
+  SET_USER_SEARCH_VARIABLE (state, payload) {
     state.userSearch = payload
   },
-  SET_SEARCH_QUERY_TYPE(state, payload) {
+  SET_SEARCH_QUERY_TYPE (state, payload) {
     state.searchQuery.type = payload
   },
-  SET_DEFAULT_SEARCHED_MOVIE_LIST(state, payload) {
+  SET_DEFAULT_SEARCHED_MOVIE_LIST (state, payload) {
     state.movieList = payload
   },
-  SET_SEARCHED_MOVIE_LIST(state, payload) {
+  SET_SEARCHED_MOVIE_LIST (state, payload) {
     state.movieList = payload
   },
-  SET_MOVIE_LIST_PAGES(state, { page, totalPages }) {
+  SET_MOVIE_LIST_PAGES (state, { page, totalPages }) {
     state.movieListPage = page
     state.movieListTotalPages = totalPages
   },
 
-  SET_MOVIE_LIST_TYPE(state, payload) {
+  SET_MOVIE_LIST_TYPE (state, payload) {
     state.movieListType = payload
   },
-  INCREMENT_PAGE_MOVIE_LIST(state) {
+  INCREMENT_PAGE_MOVIE_LIST (state) {
     state.searchQuery.page++
   },
-  ADD_TO_SEARCHED_MOVIE_LIST(state, payload) {
+  ADD_TO_SEARCHED_MOVIE_LIST (state, payload) {
     state.movieList.push(...payload)
   }
 }
 
 export const actions = {
-  incrementPageMovieList({ commit }) {
+  incrementPageMovieList ({ commit }) {
     commit('INCREMENT_PAGE_MOVIE_LIST')
   },
-  setSearchQuery({ commit, dispatch }, query) {
+  setSearchQuery ({ commit, dispatch }, query) {
     commit('SET_SEARCH_QUERY', query)
     dispatch('setMovieList')
   },
-  setUserSearch({ commit }, value) {
+  setUserSearch ({ commit }, value) {
     commit('SET_USER_SEARCH_VARIABLE', value)
   },
-  async setDefaultMovieList({ commit }) {
+  async setDefaultMovieList ({ commit }) {
     await this.$axios.get(`${process.env.BASE_URL}/tmdb/search/defaultMovieListDummy/1`)
       .then((res) => {
         commit('SET_SEARCH_QUERY_TYPE', 'discover')
@@ -72,7 +72,7 @@ export const actions = {
         console.log(err)
       })
   },
-  async setMovieList({ commit, state }) {
+  async setMovieList ({ commit, state }) {
     if (state.searchQuery.type === 'discover') {
       return await this.$axios.get(`${process.env.BASE_URL}/tmdb/search/defaultMovieListDummy/${state.searchQuery.page}`)
         .then((res) => {

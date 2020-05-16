@@ -64,7 +64,7 @@
 <script>
 import { mapActions } from 'vuex'
 export default {
-  data() {
+  data () {
     return {
       isOpen: true,
       query: {
@@ -76,7 +76,7 @@ export default {
   },
   methods: {
     ...mapActions('search', ['setSearchQuery']),
-    prepareSearch() {
+    prepareSearch () {
       const query = Object.assign({}, JSON.parse(JSON.stringify(this.query)))
       this.setSearchQuery(query)
     }

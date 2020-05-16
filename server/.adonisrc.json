@@ -20,6 +20,7 @@
   ],
   "metaFiles": [
     ".env",
-    ".adonisrc.json"
+    ".adonisrc.json",
+    "./app/Files/genreslist.json"
   ]
 }

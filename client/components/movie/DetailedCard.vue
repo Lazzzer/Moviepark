@@ -91,7 +91,7 @@ export default {
   methods: {
     formateDate (date) {
       const formattedDate = new Date(date)
-      return formattedDate.toLocaleDateString('fr-FR')
+      return formattedDate instanceof Date && !isNaN(formattedDate) ? formattedDate.toLocaleDateString('fr-FR') : 'No date given'
     }
   }
 

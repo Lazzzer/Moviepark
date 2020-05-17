@@ -1,7 +1,5 @@
 <template>
-  <div
-    class="relative duration-500 ease-in-out cursor-pointer hover:shadow-md md:transform md:transition hover:-translate-y-1 hover:scale-105"
-  >
+  <nuxt-link :to="'/movies/'+ movieInfos.id" tag="div" no-prefetch class="relative duration-500 ease-in-out cursor-pointer hover:shadow-md md:transform md:transition hover:-translate-y-1 hover:scale-105">
     <div class="absolute z-20 w-full h-full px-3 py-2 duration-500 bg-opacity-75 rounded-md opacity-0 bg-m-blue-900 hover:opacity-100">
       <p class="font-bold leading-5 text-gray-300 "
          :class="movieInfos.title.length < 30 ? 'text-lg' : 'text-base'"
@@ -18,7 +16,7 @@
     >
       <span class="font-bold text-m-blue-900">{{ movieInfos.vote_average }}</span>
     </span>
-  </div>
+  </nuxt-link>
 </template>
 
 <script>

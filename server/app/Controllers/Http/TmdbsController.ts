@@ -29,6 +29,16 @@ export default class TmdbsController {
     response.status(200).json(JSON.parse(genresList))
   }
 
+  public async getMovieDetails ({ response, params }:HttpContextContract) {
+    try {
+      const { data } = await tmdbApi.getMovieDetails(params.id)
+      response.status(200).send(data)
+    } catch (err) {
+      console.log(err.response)
+      response.status(err.response.status).json({ status: err.response.status, error: err.response.statusText })
+    }
+  }
+
   //SEARCH
 
   public async getPersonId ({ response, params }:HttpContextContract) {

@@ -9,8 +9,8 @@
       :src="movieInfos.poster_path !== null ? imgPath + movieInfos.poster_path : require('~/assets/img/noPoster.jpg')"
       :alt="'Poster of ' + movieInfos.title "
     />
-    <div class="relative flex flex-col w-full h-full mt-10 ml-8 text-gray-300">
-      <h2 class="text-4xl font-extrabold leading-8 text-gray-300">{{ movieInfos.title }}</h2>
+    <div class="relative flex flex-col w-full h-full mt-6 ml-8 text-gray-300 lg:mt-10">
+      <h2 class="text-2xl font-extrabold leading-7 text-gray-300 lg:leading-8 lg:text-4xl">{{ movieInfos.title }}</h2>
       <div class="mt-1">
 
         <span class="font-bold">Release: </span>

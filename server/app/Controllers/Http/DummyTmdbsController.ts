@@ -1,5 +1,7 @@
 /* eslint-disable max-len */
 import { HttpContextContract } from '@ioc:Adonis/Core/HttpContext'
+import fs from 'fs'
+import path from 'path'
 
 export default class DummyTmdbsController {
   public async getTrending ({ response }:HttpContextContract) {
@@ -838,10 +840,7 @@ export default class DummyTmdbsController {
   }
 
   public async getGenresList ({ response }:HttpContextContract) {
-    const fs = require('fs')
-    const path = require('path')
-    const genresList = fs.readFileSync(path.join(__dirname,'../../Files/genreslist.json'))
-
+    const genresList:any = fs.readFileSync(path.join(__dirname,'../../Files/genreslist.json'))
     response.status(200).json(JSON.parse(genresList))
   }
 

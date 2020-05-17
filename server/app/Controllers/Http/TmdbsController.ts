@@ -1,5 +1,7 @@
 import { HttpContextContract } from '@ioc:Adonis/Core/HttpContext'
 import tmdbApi from '../../Services/TmdbService'
+import fs from 'fs'
+import path from 'path'
 
 export default class TmdbsController {
   public async getTrending ({ response }:HttpContextContract) {
@@ -23,13 +25,8 @@ export default class TmdbsController {
   }
 
   public async getGenresList ({ response }:HttpContextContract) {
-    try {
-      const { data } = await tmdbApi.getGenresList()
-      response.status(200).send(data)
-    } catch (err) {
-      console.log(err.response)
-      response.status(err.response.status).json({ status: err.response.status, error: err.response.statusText })
-    }
+    const genresList:any = fs.readFileSync(path.join(__dirname,'../../Files/genreslist.json'))
+    response.status(200).json(JSON.parse(genresList))
   }
 
   //SEARCH

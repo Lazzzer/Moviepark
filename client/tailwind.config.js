@@ -40,12 +40,15 @@ module.exports = {
         'custom-cards-mini': '670px',
         'card-lg': '154px',
         card: '120px',
-        detailedCard: '92px'
+        detailedCard: '92px',
+        'yt-modal-lg': '750px'
       },
       height: {
         'card-lg': '231px',
         card: '180px',
-        detailedCard: '138px'
+        detailedCard: '138px',
+        'yt-modal-lg': '422px'
+
       }
     }
   },

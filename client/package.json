@@ -18,7 +18,8 @@
     "@nuxtjs/dotenv": "^1.4.0",
     "@nuxtjs/pwa": "^3.0.0-0",
     "@tailwindcss/ui": "^0.3.0",
-    "nuxt": "^2.0.0"
+    "nuxt": "^2.0.0",
+    "vue-js-modal": "^2.0.0-rc.3"
   },
   "devDependencies": {
     "@nuxtjs/tailwindcss": "^1.0.0",

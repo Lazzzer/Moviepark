@@ -29,6 +29,7 @@ export default {
   ** Plugins to load before mounting the App
   */
   plugins: [
+    { src: '~/plugins/vue-js-modal.js', mode: 'client' }
   ],
   /*
   ** Nuxt.js dev-modules

@@ -1,14 +1,20 @@
 <template>
   <div class="container mx-auto mt-10">
     <MovieDetails :movie-infos="movieInfos" />
+    <div>social medias</div>
+    <Videos v-if="movieInfos.videos.results.some(video => video.type === 'Trailer')" :videos-infos="movieInfos.videos.results" />
+
   </div>
 </template>
 
 <script>
 import MovieDetails from '@/components/movie/MovieDetails'
+import Videos from '@/components/movie/Videos'
+
 export default {
   components: {
-    MovieDetails
+    MovieDetails,
+    Videos
   },
   async asyncData ({ store, $axios, env, params }) {
     try {

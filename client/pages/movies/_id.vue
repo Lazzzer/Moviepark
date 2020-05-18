@@ -27,7 +27,7 @@ export default {
   },
   computed: {
     trailerId () {
-      return this.movieInfos.videos.results.find(video => video.type === 'Trailer').key
+      return this.movieInfos.videos.results.find(video => video.type === 'Trailer' && video.site === 'YouTube').key
     }
   }
 }

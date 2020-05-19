@@ -3,3 +3,51 @@
 @import 'tailwindcss/components';
 /* purgecss end ignore */
 @import 'tailwindcss/utilities';
+
+.noScrollbar{
+  scrollbar-width: none;
+}
+.noScrollbar::-webkit-scrollbar {
+  width: 0;
+  height: 0;
+}
+
+@responsive {
+  .scrollbar{
+    scrollbar-width: initial;
+  }
+  .scrollbar::-webkit-scrollbar {
+    width: 7px;
+    height: 7px;
+  }
+  .scrollbar::-webkit-scrollbar-button {
+    width: 7px;
+    height: 7px;
+  }
+  .scrollbar::-webkit-scrollbar-thumb {
+    background: #2D6276;
+    border: 0px none #ffffff;
+    border-radius: 40px;
+  }
+  .scrollbar::-webkit-scrollbar-thumb:hover {
+    background: #5390A9;
+  }
+  .scrollbar::-webkit-scrollbar-thumb:active {
+    background: #5390A9;
+  }
+  .scrollbar::-webkit-scrollbar-track {
+    background: #000E1B;
+    border: 0px none #ffffff;
+    border-radius: 40px;
+  }
+  .scrollbar::-webkit-scrollbar-track:hover {
+    background: #000E1B;
+  }
+  .scrollbar::-webkit-scrollbar-track:active {
+    background: #000E1B;
+  }
+  .scrollbar::-webkit-scrollbar-corner {
+    background: transparent;
+  }
+}
+

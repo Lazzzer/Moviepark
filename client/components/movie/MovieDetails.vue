@@ -1,5 +1,5 @@
 <template>
-  <div class="relative flex p-8 rounded-md bg-m-blue-900">
+  <div class="relative hidden p-8 rounded-md lg:flex bg-m-blue-900">
     <div
       class="absolute top-0 right-0 z-0 w-full h-full bg-cover rounded-md"
       :style="movieInfos.backdrop_path !== null ? 'background:url('+ backdropPath + movieInfos.backdrop_path + ') top center / cover no-repeat,linear-gradient(black,black);opacity:0.08;' : ''"

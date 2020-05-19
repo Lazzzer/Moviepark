@@ -6,15 +6,18 @@
         <iframe class="rounded-md w-yt-modal-lg h-yt-modal-lg" :src="'https://www.youtube-nocookie.com/embed/' + trailerId" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
       </modal>
     </client-only>
+    <Cast :cast-infos="movieInfos.credits.cast" />
   </div>
 </template>
 
 <script>
 import MovieDetails from '@/components/movie/MovieDetails'
+import Cast from '@/components/movie/Cast'
 
 export default {
   components: {
-    MovieDetails
+    MovieDetails,
+    Cast
   },
   async asyncData ({ store, $axios, env, params }) {
     try {

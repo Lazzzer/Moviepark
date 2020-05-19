@@ -4,13 +4,17 @@
 /* purgecss end ignore */
 @import 'tailwindcss/utilities';
 
-.noScrollbar{
-  scrollbar-width: none;
+
+@responsive {
+  .noScrollbar{
+    scrollbar-width: none;
+  }
+  .noScrollbar::-webkit-scrollbar {
+    width: 0;
+    height: 0;
+  }
 }
-.noScrollbar::-webkit-scrollbar {
-  width: 0;
-  height: 0;
-}
+
 
 @responsive {
   .scrollbar{

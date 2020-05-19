@@ -1,6 +1,6 @@
 <template>
   <div
-    class="flex flex-col items-center justify-center max-w-screen-xl px-4 mx-auto mt-10 sm:mt-12 sm:px-6 md:mt-16 lg:mt-20 xl:mt-28"
+    class="flex flex-col items-center justify-center max-w-screen-xl px-4 mx-auto mt-10 sm:mt-12 sm:px-6 md:mt-16"
   >
     <section class="mb-10 text-center">
       <div>
@@ -31,16 +31,16 @@
       </div>
 
       <p
-        class="max-w-md mx-auto text-base text-gray-400 sm:text-lg md:mt-5 md:text-xl md:max-w-3xl"
+        class="max-w-md mx-auto text-sm italic leading-7 text-gray-400 md:text-base md:leading-4 sm:text-lg md:mt-2 md:text-xl md:max-w-3xl"
       >Open source at the service of the cinephiles!</p>
     </section>
 
-    <section id="trending" class="flex flex-col items-center w-full">
-      <div class="w-full md:w-custom-cards">
+    <section id="trending" class="flex flex-col items-center w-full mb-4">
+      <div class="w-full lg:w-custom-cards">
         <h3
-          class="mb-1 text-xl font-extrabold text-gray-300 md:ml-3 sm:mb-0 sm:text-2xl"
+          class="mb-2 text-xl font-extrabold text-gray-300 md:ml-3 md:mb-0 sm:text-2xl"
         >Trending this week</h3>
-        <div class="w-full overflow-x-scroll scrollbarDiv">
+        <div class="w-full overflow-x-scroll noScrollbar md:scrollbar lg:noScrollbar">
           <div class="flex space-x-4 w-custom-cards-mini md:w-custom-cards md:p-4 md:space-x-6">
             <Card v-for="(card,index) in trendingCards.slice(0,5)" :key="index" :movie-infos="card" :animation="true"></Card>
           </div>
@@ -48,12 +48,12 @@
       </div>
     </section>
 
-    <section id="next" class="flex flex-col items-center w-full">
-      <div class="w-full md:w-custom-cards">
+    <section id="next" class="flex flex-col items-center w-full mb-4">
+      <div class="w-full lg:w-custom-cards">
         <h3
-          class="mb-1 text-xl font-extrabold text-gray-300 md:ml-3 sm:mb-0 sm:text-2xl"
+          class="mb-2 text-xl font-extrabold text-gray-300 md:ml-3 md:mb-0 sm:text-2xl"
         >Next in theaters</h3>
-        <div class="w-full overflow-x-scroll scrollbarDiv">
+        <div class="w-full overflow-x-scroll noScrollbar md:scrollbar lg:noScrollbar">
           <div class="flex space-x-4 w-custom-cards-mini md:w-custom-cards md:p-4 md:space-x-6">
             <Card v-for="(card,index) in nextCards.slice(0,5)" :key="index" :movie-infos="card" :animation="true"></Card>
           </div>
@@ -69,6 +69,7 @@
         >Discover More</button>
       </nuxt-link>
     </section>
+
   </div>
 </template>
 

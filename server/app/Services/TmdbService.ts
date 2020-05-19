@@ -31,6 +31,6 @@ export default {
     return tmdbApi.get(`discover/movie?api_key=${process.env.TMDB_API_KEY}&language=en-US&include_adult=false${query}`)
   },
   getMovieDetails (id) {
-    return tmdbApi.get(`movie/${id}?api_key=${process.env.TMDB_API_KEY}&language=en-US&append_to_response=videos%2Crecommendations%2Ckeywords%2Ccredits%2Creviews%2Cexternal_ids`)
+    return tmdbApi.get(`movie/${id}?api_key=${process.env.TMDB_API_KEY}&language=en-US&append_to_response=videos%2Crecommendations%2Csimilar%2Ckeywords%2Ccredits%2Creviews%2Cexternal_ids`)
   },
 }

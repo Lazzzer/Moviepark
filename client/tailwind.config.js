@@ -38,14 +38,16 @@ module.exports = {
       width: {
         'custom-cards': '900px',
         'custom-cards-mini': '670px',
-        'card-lg': '154px',
         card: '120px',
+        'card-lg': '154px',
+        'card-xl': '300px',
         detailedCard: '92px',
         'yt-modal-lg': '750px'
       },
       height: {
-        'card-lg': '231px',
         card: '180px',
+        'card-lg': '231px',
+        'card-xl': '450px',
         detailedCard: '138px',
         'yt-modal-lg': '422px'
 

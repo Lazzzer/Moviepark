@@ -5,7 +5,7 @@
       :style="movieInfos.backdrop_path !== null ? 'background:url('+ backdropPath + movieInfos.backdrop_path + ') top center / cover no-repeat,linear-gradient(black,black);opacity:0.08;' : ''"
     ></div>
     <img
-      class="relative object-cover rounded-md"
+      class="relative object-cover rounded-md w-card-xl h-card-xl"
       :src="movieInfos.poster_path !== null ? imgPath + movieInfos.poster_path : require('~/assets/img/noPoster.jpg')"
       :alt="'Poster of ' + movieInfos.title "
     />

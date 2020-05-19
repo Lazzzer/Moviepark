@@ -6,18 +6,25 @@
         <iframe class="rounded-md w-yt-modal-lg h-yt-modal-lg" :src="'https://www.youtube-nocookie.com/embed/' + trailerId" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
       </modal>
     </client-only>
-    <Cast :cast-infos="movieInfos.credits.cast" />
+    <Cast v-if="movieInfos.credits.cast.length > 0" :cast-infos="movieInfos.credits.cast" />
+    <div v-if="movieInfos.recommendations.total_results !== 0 && movieInfos.similar.total_results !== 0" class="mt-4 lg:mt-10 lg:flex lg:space-x-12">
+      <MovieListing :component-title="'Recommendations'" :infos="movieInfos.recommendations.results" />
+      <MovieListing :component-title="'Similar Movies'" :infos="movieInfos.similar.results" />
+    </div>
+
   </div>
 </template>
 
 <script>
 import MovieDetails from '@/components/movie/MovieDetails'
 import Cast from '@/components/movie/Cast'
+import MovieListing from '@/components/movie/MovieListing'
 
 export default {
   components: {
     MovieDetails,
-    Cast
+    Cast,
+    MovieListing
   },
   async asyncData ({ store, $axios, env, params }) {
     try {

@@ -1,5 +1,5 @@
 <template>
-  <nuxt-link :to="'/movies/'+ movieInfos.id" tag="div" no-prefetch class="relative flex p-2 m-4 duration-500 ease-in-out rounded-md cursor-pointer bg-m-blue-900 hover:shadow-md md:transform md:transition hover:scale-105">
+  <nuxt-link :to="'/movies/'+ movieInfos.id" tag="a" no-prefetch class="relative flex p-2 m-4 duration-500 ease-in-out rounded-md cursor-pointer bg-m-blue-900 hover:shadow-md md:transform md:transition hover:scale-105">
     <div
       class="absolute top-0 right-0 z-0 w-full h-full bg-cover rounded-md"
       :style="movieInfos.backdrop_path !== null ? 'background:url('+ backdropPath + movieInfos.backdrop_path + ') top center / cover no-repeat,linear-gradient(black,black);opacity:0.08;' : ''"

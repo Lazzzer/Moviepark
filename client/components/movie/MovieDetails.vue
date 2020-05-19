@@ -1,5 +1,5 @@
 <template>
-  <div class="relative hidden p-8 rounded-md lg:flex bg-m-blue-900">
+  <div class="relative p-8 rounded-md bg-m-blue-900">
     <div
       class="absolute top-0 right-0 z-0 w-full h-full bg-cover rounded-md"
       :style="movieInfos.backdrop_path !== null ? 'background:url('+ backdropPath + movieInfos.backdrop_path + ') top center / cover no-repeat,linear-gradient(black,black);opacity:0.08;' : ''"
@@ -12,15 +12,12 @@
     <div class="relative flex flex-col w-full h-full mt-6 ml-8 text-gray-300 lg:mt-10">
       <h2 class="text-2xl font-extrabold leading-7 text-gray-300 lg:leading-8 lg:text-4xl">{{ movieInfos.title }}</h2>
       <div class="mt-1">
-
         <span class="font-bold">Release: </span>
         <span>{{ formateDate(movieInfos.release_date) }}</span>
         <span class="font-bold">- Duration: </span>
         <span>{{ runtime }} </span>
-
       </div>
       <div class="mt-1">
-
         <span
           v-for="(genre, index) in movieInfos.genres"
           :key="index"
@@ -38,7 +35,7 @@
           <span class="font-bold text-m-blue-900">{{ movieInfos.vote_average }}</span>
         </span>
 
-        <span v-if="movieInfos.videos.results.some(video => video.type === 'Trailer')" @click="showTrailer" class="inline-flex items-center ml-4 text-gray-300 cursor-pointer hover:text-white">
+        <span v-if="trailerId !== ''" @click="showTrailer" class="inline-flex items-center ml-4 text-gray-300 cursor-pointer hover:text-white">
           <svg class="inline-block w-6 h-auto mr-2 stroke-current" viewBox="0 0 32 23" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path d="M30.0533 4.56016C29.8949 3.92738 29.5723 3.34759 29.1182 2.87937C28.664 2.41115 28.0943 2.07108 27.4666 1.8935C25.1733 1.3335 15.9999 1.3335 15.9999 1.3335C15.9999 1.3335 6.82662 1.3335 4.53328 1.94683C3.90561 2.12441 3.33592 2.46448 2.88174 2.9327C2.42757 3.40093 2.105 3.98071 1.94662 4.6135C1.5269 6.9409 1.3216 9.30191 1.33328 11.6668C1.31832 14.0496 1.52364 16.4286 1.94662 18.7735C2.12123 19.3866 2.45102 19.9444 2.90414 20.3928C3.35726 20.8412 3.91838 21.1652 4.53328 21.3335C6.82662 21.9468 15.9999 21.9468 15.9999 21.9468C15.9999 21.9468 25.1733 21.9468 27.4666 21.3335C28.0943 21.1559 28.664 20.8158 29.1182 20.3476C29.5723 19.8794 29.8949 19.2996 30.0533 18.6668C30.4698 16.3569 30.6751 14.0139 30.6666 11.6668C30.6816 9.2841 30.4763 6.90509 30.0533 4.56016V4.56016Z" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
             <path d="M13 16.0266L20.6667 11.6666L13 7.30664V16.0266Z" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
@@ -99,6 +96,10 @@ export default {
   props: {
     movieInfos: {
       type: Object,
+      required: true
+    },
+    trailerId: {
+      type: String,
       required: true
     }
   },

@@ -31,7 +31,7 @@
       </div>
 
       <p
-        class="max-w-md mx-auto text-sm leading-7 text-gray-300 md:text-base md:leading-4 sm:text-lg md:mt-2 md:text-lg md:max-w-3xl"
+        class="max-w-md mx-auto text-sm font-bold leading-7 text-m-burgundy-600 md:text-base md:leading-4 sm:text-lg md:mt-2 md:text-lg md:max-w-3xl"
       >Your movie night companion</p>
     </section>
 
@@ -61,13 +61,19 @@
       </div>
     </section>
 
-    <section id="discover" class="flex justify-center mt-10">
-      <nuxt-link to="/discover" class="relative inline-flex rounded-md shadow-sm ">
-        <button
-          type="button"
-          class="inline-flex items-center px-6 py-3 text-base font-medium leading-6 text-white transition duration-150 ease-in-out border border-transparent rounded-md bg-m-burgundy-700 hover:bg-m-burgundy-600 focus:outline-none focus:border-m-burgundy-600 active:bg-m-burgundy-600"
-        >Discover More</button>
-      </nuxt-link>
+    <section id="discover">
+      <div class="max-w-screen-xl px-4 py-20 mx-auto sm:px-6 lg:py-24 lg:px-8 lg:flex lg:items-center lg:justify-between">
+        <h2 class="text-3xl font-extrabold leading-9 tracking-tight text-gray-300 sm:text-4xl sm:leading-10">
+          Don't know what to watch?
+          <br />
+          <span class="text-2xl leading-8 sm:text-3xl text-m-burgundy-700 sm:leading-9">Check TMDB's rich catalog!</span>
+        </h2>
+        <div class="flex mt-8 lg:flex-shrink-0 lg:mt-0 lg:ml-14">
+          <nuxt-link to="/discover" class="inline-flex items-center justify-center w-full px-8 py-3 mx-5 text-base font-medium leading-6 text-white transition duration-150 ease-in-out border border-transparent rounded-md w-fullrelative bg-m-burgundy-700 hover:bg-m-burgundy-600 focus:outline-none focus:border-m-burgundy-600 active:bg-m-burgundy-600">
+            Discover
+          </nuxt-link>
+        </div>
+      </div>
     </section>
 
   </div>

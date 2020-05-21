@@ -1,5 +1,5 @@
 <template>
-  <div class="w-full lg:ml-2 lg:w-3/4">
+  <div class="relative w-full lg:ml-2 lg:w-3/4">
     <div class="flex flex-col items-center justify-center lg:flex-row lg:justify-between">
       <h3
         class="mb-4 text-xl font-bold text-center text-gray-300 lg:mb-0 lg:ml-20 lg:mt-0"

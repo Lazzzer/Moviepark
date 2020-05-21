@@ -1,3 +1,3 @@
 <template>
-  <div>Yolo</div>
+  <div class="relative">Yolo</div>
 </template>

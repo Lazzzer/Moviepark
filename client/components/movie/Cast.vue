@@ -1,5 +1,5 @@
 <template>
-  <section id="cast" class="w-full mt-6 sm:mx-0">
+  <section id="cast" class="relative w-full mt-6 sm:mx-0">
     <div class="w-11/12 mx-auto sm:w-full">
       <h3 class="mb-1 text-2xl font-extrabold text-gray-300 md:ml-3 sm:mb-0 sm:text-2xl">Cast</h3>
       <div class="flex w-full mt-2 space-x-4 overflow-x-scroll rounded-md noScrollbar sm:scrollbar">

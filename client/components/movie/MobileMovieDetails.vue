@@ -1,5 +1,5 @@
 <template>
-  <div class="w-full text-center text-gray-300">
+  <div class="relative w-full text-center text-gray-300">
     <div class="relative p-8 rounded-md bg-m-blue-900">
       <div
         class="absolute top-0 right-0 z-0 w-full h-full bg-cover rounded-md"

@@ -2,7 +2,7 @@
   <div
     class="flex flex-col items-center justify-center max-w-screen-xl px-4 mx-auto mt-10 sm:mt-12 sm:px-6 md:mt-16"
   >
-    <section class="mb-10 text-center">
+    <section class="relative mb-10 text-center">
       <div>
         <h2
           class="inline text-4xl font-extrabold leading-10 tracking-tight text-gray-200 align-middle sm:text-5xl sm:leading-none md:text-6xl"
@@ -31,11 +31,11 @@
       </div>
 
       <p
-        class="max-w-md mx-auto text-sm italic leading-7 text-gray-400 md:text-base md:leading-4 sm:text-lg md:mt-2 md:text-xl md:max-w-3xl"
-      >Open source at the service of the cinephiles!</p>
+        class="max-w-md mx-auto text-sm leading-7 text-gray-300 md:text-base md:leading-4 sm:text-lg md:mt-2 md:text-lg md:max-w-3xl"
+      >Your movie night companion</p>
     </section>
 
-    <section id="trending" class="flex flex-col items-center w-full mb-4">
+    <section id="trending" class="relative flex flex-col items-center w-full mb-4">
       <div class="w-full lg:w-custom-cards">
         <h3
           class="mb-2 text-xl font-extrabold text-gray-300 md:ml-3 md:mb-0 sm:text-2xl"
@@ -48,7 +48,7 @@
       </div>
     </section>
 
-    <section id="next" class="flex flex-col items-center w-full mb-4">
+    <section id="next" class="relative flex flex-col items-center w-full mb-4">
       <div class="w-full lg:w-custom-cards">
         <h3
           class="mb-2 text-xl font-extrabold text-gray-300 md:ml-3 md:mb-0 sm:text-2xl"
@@ -61,8 +61,8 @@
       </div>
     </section>
 
-    <section id="discover" class="mt-10">
-      <nuxt-link to="/discover" class="inline-flex rounded-md shadow-sm">
+    <section id="discover" class="flex justify-center mt-10">
+      <nuxt-link to="/discover" class="relative inline-flex rounded-md shadow-sm ">
         <button
           type="button"
           class="inline-flex items-center px-6 py-3 text-base font-medium leading-6 text-white transition duration-150 ease-in-out border border-transparent rounded-md bg-m-burgundy-700 hover:bg-m-burgundy-600 focus:outline-none focus:border-m-burgundy-600 active:bg-m-burgundy-600"

@@ -22,6 +22,9 @@ module.exports = {
       fontFamily: {
         sans: ['Inter var', ...defaultTheme.fontFamily.sans]
       },
+      transitionProperty: {
+        width: 'width'
+      },
       colors: {
         'm-burgundy-600': '#E92A63',
         'm-burgundy-700': '#D70745',
@@ -54,7 +57,10 @@ module.exports = {
       }
     }
   },
-  variants: {},
+  variants: {
+    transitionProperty: ['responsive', 'hover', 'focus'],
+    width: ['responsive', 'focus']
+  },
   plugins: [
     require('@tailwindcss/ui')
   ]

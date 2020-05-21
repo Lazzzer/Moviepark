@@ -1,5 +1,5 @@
 <template>
-  <div class="container w-full h-full mx-auto mt-10 lg:flex">
+  <div class="container w-full h-full mx-auto mt-2 sm:mt-10 md:mt-12 lg:flex">
     <Search></Search>
     <Content></Content>
   </div>

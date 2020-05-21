@@ -2,7 +2,7 @@
   <div>
     <form @submit.prevent="prepareSearch">
       <!-- Name -->
-      <div class="pt-6 pb-3 mt-6 border-b-2 border-teal-900">
+      <div class="pt-3 pb-3 mt-3 border-b-2 border-teal-900 lg:pt-6 lg:mt-6">
         <div class="pb-1">
           <div class="text-lg leading-7">
             <div

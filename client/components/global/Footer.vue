@@ -1,7 +1,8 @@
 <template>
-  <div class="relative mt-4">
+  <div class="relative py-8 mt-4 border-t border-teal-900 xl:py-10 bg-m-blue-900">
 
     <div class="max-w-screen-xl px-4 py-4 mx-auto overflow-hidden sm:px-6 lg:px-8">
+
       <nav class="flex flex-wrap justify-center -mx-5 -my-2">
         <div class="px-5 py-2">
           <nuxt-link to="/" class="text-base leading-6 text-gray-300 hover:text-white" active-class="">Home</nuxt-link>
@@ -13,7 +14,8 @@
           <nuxt-link to="/about" href="#" class="text-base leading-6 text-gray-300 hover:text-white" active-class="">About</nuxt-link>
         </div>
       </nav>
-      <div class="flex justify-center mt-4">
+
+      <div class="flex justify-center mt-4 mb-2">
         <div class="text-center">
           <p class="mb-1 text-xs italic" style="color:#90CEA1;">Powered by</p>
           <a href="https://www.themoviedb.org/" target="_blank">
@@ -29,7 +31,6 @@
             </svg>
           </a>
         </div>
-
       </div>
 
     </div>

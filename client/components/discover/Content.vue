@@ -32,7 +32,7 @@
       v-if="movieListPage < movieListTotalPages"
       @click="callNextPage"
       type="button"
-      class="items-center block w-64 px-4 py-2 mx-auto mt-4 text-base font-medium leading-6 text-white transition duration-150 ease-in-out border border-transparent rounded-md bg-m-burgundy-700 hover:bg-m-burgundy-600 focus:outline-none focus:border-m-burgundy-600 active:bg-m-burgundy-600"
+      class="items-center block w-64 px-4 py-2 mx-auto mt-8 text-base font-medium leading-6 text-white transition duration-150 ease-in-out border border-transparent rounded-md bg-m-burgundy-700 hover:bg-m-burgundy-600 focus:outline-none focus:border-m-burgundy-600 active:bg-m-burgundy-600"
     >Load More</button>
   </div>
 </template>

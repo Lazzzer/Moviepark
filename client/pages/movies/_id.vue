@@ -1,5 +1,5 @@
 <template>
-  <div class="container mx-auto mt-1 sm:mt-10">
+  <div class="container mx-auto mt-1 mb-16 sm:mt-10">
     <MovieDetails :movie-infos="movieInfos" :trailer-id="trailerId" class="hidden lg:flex" />
     <MobileMovieDetails :movie-infos="movieInfos" :trailer-id="trailerId" class="block lg:hidden" />
     <client-only>
@@ -8,10 +8,12 @@
       </modal>
     </client-only>
     <Cast v-if="movieInfos.credits.cast.length > 0" :cast-infos="movieInfos.credits.cast" />
+    <div v-else style="height:200px;"></div>
     <div v-if="movieInfos.recommendations.total_results !== 0 && movieInfos.similar.total_results !== 0" class="mt-2 lg:mt-10 lg:flex lg:space-x-12">
       <MovieListing :component-title="'Recommendations'" :infos="movieInfos.recommendations.results" />
       <MovieListing :component-title="'Similar Movies'" :infos="movieInfos.similar.results" />
     </div>
+    <div v-else style="height:200px;"></div>
   </div>
 </template>
 

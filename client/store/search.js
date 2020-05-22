@@ -95,21 +95,35 @@ export const actions = {
             commit('SET_MOVIE_LIST_PAGES', { page: res.data.page, totalPages: res.data.total_pages })
           }
         })
-        .catch((err) => {
-          console.log(err)
+        .catch(() => {
+          commit('SET_SEARCHED_MOVIE_LIST', [])
+          commit('SET_MOVIE_LIST_TYPE', '0 Result')
+          commit('SET_MOVIE_LIST_PAGES', { page: 1, totalPages: 1 })
         })
     }
     if (state.searchQuery.type === 'filters') {
       let preparedQuery = ''
+      let voteCount = 10
 
       if (state.searchQuery.sortBy !== 'popularity.desc') {
         preparedQuery += `&sort_by=${state.searchQuery.sortBy}`
+        if (state.searchQuery.sortBy === 'release_date.desc' || state.searchQuery.sortBy === 'release_date.asc') {
+          voteCount = 0
+        }
       } else {
         preparedQuery += '&sort_by=popularity.desc'
       }
       if (state.searchQuery.releaseDates[0] !== '' && state.searchQuery.releaseDates[1] !== '') {
-        preparedQuery += `&release_date.gte=${state.searchQuery.releaseDates[0]}&release_date.lte=${state.searchQuery.releaseDates[1]}`
+        voteCount = 0
+        preparedQuery += `&primary_release_date.gte=${state.searchQuery.releaseDates[0]}&primary_release_date.lte=${state.searchQuery.releaseDates[1]}`
+      } else if (state.searchQuery.releaseDates[0] !== '') {
+        voteCount = 0
+        preparedQuery += `&primary_release_date.gte=${state.searchQuery.releaseDates[0]}`
+      } else {
+        voteCount = 0
+        preparedQuery += `&primary_release_date.lte=${state.searchQuery.releaseDates[1]}`
       }
+
       if (state.searchQuery.person !== '') {
         preparedQuery += `&with_people=${state.searchQuery.person}`
       }
@@ -120,7 +134,7 @@ export const actions = {
       if (state.searchQuery.votesAverage !== '' && (state.searchQuery.votesAverage <= 10 && state.searchQuery.votesAverage >= 0)) {
         preparedQuery += `&vote_average.gte=${state.searchQuery.votesAverage}`
       }
-      preparedQuery += `&include_adult=false&vote_count.gte=10&page=${state.searchQuery.page}`
+      preparedQuery += `&include_adult=false&vote_count.gte=${voteCount}&region=US&page=${state.searchQuery.page}`
 
       return await this.$axios.get(`${process.env.API_URL}/tmdb/search/withFilters/${preparedQuery}`)
         .then((res) => {
@@ -133,8 +147,10 @@ export const actions = {
             commit('SET_MOVIE_LIST_PAGES', { page: res.data.page, totalPages: res.data.total_pages })
           }
         })
-        .catch((err) => {
-          console.log(err)
+        .catch(() => {
+          commit('SET_SEARCHED_MOVIE_LIST', [])
+          commit('SET_MOVIE_LIST_TYPE', '0 Result')
+          commit('SET_MOVIE_LIST_PAGES', { page: 1, totalPages: 1 })
         })
     }
   }

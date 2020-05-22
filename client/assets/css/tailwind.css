@@ -4,7 +4,6 @@
 /* purgecss end ignore */
 @import 'tailwindcss/utilities';
 
-
 @responsive {
   .noScrollbar{
     scrollbar-width: none;
@@ -14,7 +13,6 @@
     height: 0;
   }
 }
-
 
 @responsive {
   .scrollbar{

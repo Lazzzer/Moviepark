@@ -1,5 +1,5 @@
 <template>
-  <div class="relative w-full h-full min-h-screen font-sans bg-m-blue-800">
+  <div class="relative w-full h-full min-h-screen font-sans bg-m-blue-800 scrollbar">
     <div class="absolute top-0 right-0 z-0 hidden w-full sm:block h-2/3 md:h-1/2"
          :style="{ 'background': 'url('+ require('assets/img/layout-bg.png')+') 55% 0% / 100% auto no-repeat', 'opacity':0.2}"
     ></div>
@@ -24,18 +24,6 @@ export default {
 </script>
 
 <style>
-html {
-  font-family: 'Source Sans Pro', -apple-system, BlinkMacSystemFont, 'Segoe UI',
-    Roboto, 'Helvetica Neue', Arial, sans-serif;
-  font-size: 16px;
-  word-spacing: 1px;
-  -ms-text-size-adjust: 100%;
-  -webkit-text-size-adjust: 100%;
-  -moz-osx-font-smoothing: grayscale;
-  -webkit-font-smoothing: antialiased;
-  box-sizing: border-box;
-}
-
 *,
 *:before,
 *:after {
@@ -43,32 +31,14 @@ html {
   margin: 0;
 }
 
-.button--green {
-  display: inline-block;
-  border-radius: 4px;
-  border: 1px solid #3b8070;
-  color: #3b8070;
-  text-decoration: none;
-  padding: 10px 30px;
+.page-enter-active,
+.page-leave-active {
+  transition-property: opacity;
+  transition-timing-function: ease-in-out;
+  transition-duration: 500ms
 }
-
-.button--green:hover {
-  color: #fff;
-  background-color: #3b8070;
-}
-
-.button--grey {
-  display: inline-block;
-  border-radius: 4px;
-  border: 1px solid #35495e;
-  color: #35495e;
-  text-decoration: none;
-  padding: 10px 30px;
-  margin-left: 15px;
-}
-
-.button--grey:hover {
-  color: #fff;
-  background-color: #35495e;
+.page-enter,
+.page-leave-to {
+  opacity: 0;
 }
 </style>

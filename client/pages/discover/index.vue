@@ -13,7 +13,7 @@ export default {
     Search,
     Content
   },
-  async asyncData ({ store }) {
+  async asyncData ({ store, error }) {
     try {
       if (store.state.tmdb.genresList.length === 0) {
         await store.dispatch('tmdb/setGenreList')
@@ -24,7 +24,11 @@ export default {
         await store.dispatch('search/setUserSearch', false)
       }
     } catch (err) {
-      console.log(err)
+      if (err.response !== undefined) {
+        return error({ statusCode: err.response.status, message: err.response.statusText })
+      } else {
+        error({ statusCode: 503, message: 'Houston, we have a problem.' })
+      }
     }
   }
 }

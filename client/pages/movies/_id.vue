@@ -31,13 +31,16 @@ export default {
     Cast,
     MovieListing
   },
-  async asyncData ({ store, $axios, env, params }) {
+  async asyncData ({ store, $axios, env, params, error }) {
     try {
       const movieInfos = await $axios.get(`${env.API_URL}/tmdb/movie/${params.id}`)
       return { movieInfos: movieInfos.data }
     } catch (err) {
-      console.log(err)
-      return { movieInfos: {} }
+      if (err.response !== undefined) {
+        return error({ statusCode: err.response.status, message: err.response.statusText })
+      } else {
+        error({ statusCode: 503, message: 'Houston, we have a problem.' })
+      }
     }
   },
   computed: {

@@ -85,14 +85,18 @@ export default {
   components: {
     Card
   },
-  async asyncData ({ $axios, env }) {
+  async asyncData ({ $axios, env, error }) {
     try {
       const trending = await $axios.get(`${env.API_URL}/dummyTmdb/trending`)
       const nextTheaters = await $axios.get(`${env.API_URL}/dummyTmdb/nextTheaters`)
 
       return { trendingCards: trending.data.results, nextCards: nextTheaters.data.results }
     } catch (err) {
-      return { trendingCards: [], nextCards: [] }
+      if (err.response !== undefined) {
+        return error({ statusCode: err.response.status, message: err.response.statusText })
+      } else {
+        error({ statusCode: 503, message: 'Houston, we have a problem.' })
+      }
     }
   }
 }

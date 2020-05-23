@@ -31,7 +31,7 @@
       </div>
 
       <p
-        class="max-w-md mx-auto text-base font-bold leading-7 text-m-burgundy-700 md:leading-4 sm:text-lg md:mt-2 md:text-lg md:max-w-3xl"
+        class="max-w-md mx-auto text-base font-bold leading-7 text-m-burgundy-700 md:leading-4 sm:text-lg md:mt-3 md:text-xl md:max-w-3xl"
       >Your movie night companion</p>
     </section>
 

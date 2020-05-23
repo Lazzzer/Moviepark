@@ -19,6 +19,18 @@ export default {
   components: {
     Navbar,
     Footer
+  },
+  head () {
+    return {
+      titleTemplate: '%s - Moviepark',
+      meta: [
+        {
+          hid: 'description',
+          name: 'description',
+          content: 'Don\'t know what to watch? Discover hidden gems in Moviepark powered by TheMovieDB and its rich catalog of +500K movies.'
+        }
+      ]
+    }
   }
 }
 </script>

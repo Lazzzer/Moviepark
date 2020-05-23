@@ -98,6 +98,12 @@ export default {
         error({ statusCode: 503, message: 'Houston, we have a problem.' })
       }
     }
+  },
+  head () {
+    return {
+      title: 'Moviepark',
+      titleTemplate: null
+    }
   }
 }
 </script>

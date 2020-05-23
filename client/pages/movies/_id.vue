@@ -48,6 +48,19 @@ export default {
       const link = this.movieInfos.videos.results.find(video => video.type === 'Trailer' && video.site === 'YouTube')
       return link !== undefined ? link.key : ''
     }
+  },
+  head () {
+    return {
+      title: this.movieInfos.original_title,
+      meta: [
+        {
+          hid: 'description',
+          name: 'description',
+          content: this.movieInfos.overview
+        }
+      ]
+
+    }
   }
 }
 </script>

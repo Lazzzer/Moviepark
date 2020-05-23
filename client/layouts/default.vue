@@ -27,7 +27,7 @@ export default {
         {
           hid: 'description',
           name: 'description',
-          content: 'Don\'t know what to watch? Discover hidden gems in Moviepark powered by TheMovieDB and its rich catalog of +500K movies.'
+          content: 'Don\'t know what to watch? Let\'s search and discover hidden gems on Moviepark!'
         }
       ]
     }

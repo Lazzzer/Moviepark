@@ -31,7 +31,7 @@
       </div>
 
       <p
-        class="max-w-md mx-auto text-sm font-bold leading-7 text-m-burgundy-600 md:text-base md:leading-4 sm:text-lg md:mt-2 md:text-lg md:max-w-3xl"
+        class="max-w-md mx-auto text-base font-bold leading-7 text-m-burgundy-700 md:leading-4 sm:text-lg md:mt-2 md:text-lg md:max-w-3xl"
       >Your movie night companion</p>
     </section>
 
@@ -66,7 +66,7 @@
         <h2 class="text-3xl font-extrabold leading-9 tracking-tight text-gray-300 sm:text-4xl sm:leading-10">
           Don't know what to watch?
           <br />
-          <span class="text-2xl leading-8 sm:text-3xl text-m-burgundy-700 sm:leading-9">Check TMDB's rich catalog!</span>
+          <span class="text-2xl leading-8 sm:text-3xl text-m-burgundy-700 sm:leading-9">Let's search it!</span>
         </h2>
         <div class="flex mt-8 lg:flex-shrink-0 lg:mt-0 lg:ml-14">
           <nuxt-link to="/discover" class="inline-flex items-center justify-center w-full px-8 py-3 mx-5 text-base font-medium leading-6 text-white transition duration-150 ease-in-out border border-transparent rounded-md w-fullrelative bg-m-burgundy-700 hover:bg-m-burgundy-600 focus:outline-none focus:border-m-burgundy-600 active:bg-m-burgundy-600">

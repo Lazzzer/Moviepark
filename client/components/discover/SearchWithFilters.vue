@@ -140,7 +140,7 @@
                   >Actor/Director</label>
                   <div class="relative mt-1 rounded-md shadow-sm">
                     <input
-                      v-model="selectedPersonName"
+                      v-model.trim="selectedPersonName"
                       @click="showPersonModal = !showPersonModal"
                       @keydown.enter.prevent
                       @keyup="delayedCall($event.target.value, 500)"

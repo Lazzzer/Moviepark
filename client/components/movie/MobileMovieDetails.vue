@@ -18,8 +18,8 @@
       />
 
     </div>
-    <h2 class="mx-4 mt-5 text-2xl font-extrabold leading-6 text-gray-300">{{ movieInfos.title }}</h2>
-    <div class="mx-4 mt-2 text-gray-300">
+    <h2 class="mx-6 mt-5 text-2xl font-extrabold leading-6 text-gray-300">{{ movieInfos.title }}</h2>
+    <div class="mx-6 mt-2 text-gray-300">
       <span class="font-bold">Release: </span>
       <span>{{ formateDate(movieInfos.release_date) }}</span>
       <span class="font-bold">- Duration: </span>
@@ -48,23 +48,23 @@
         </svg>
       </a>
     </div>
-    <p class="mx-4 mt-2 text-lg italic text-m-blue-500">{{ movieInfos.tagline }}</p>
-    <p class="mx-4 my-4 leading-5 text-justify text-gray-300">{{ movieInfos.overview }}</p>
+    <p class="mx-6 mt-2 text-lg italic text-m-blue-500">{{ movieInfos.tagline }}</p>
+    <p class="mx-6 my-4 leading-5 text-justify text-gray-300">{{ movieInfos.overview }}</p>
 
-    <div v-if="directorArray.length > 0" class="mx-4 mt-2">
+    <div v-if="directorArray.length > 0" class="mx-6 mt-2">
       <span class="font-bold">{{ directorArray.length > 1 ? 'Directors:' : 'Director:' }}</span>
       <span v-for="(director, index) in directorArray" :key="index">
         {{ director.name }}<span v-if="directorArray.length > 1 && index !== directorArray.length -1 ">,</span>
       </span>
     </div>
-    <div v-if="producerArray.length > 0" class="mx-4 mt-2">
+    <div v-if="producerArray.length > 0" class="mx-6 mt-2">
       <span class="font-bold">{{ producerArray.length > 1 ? 'Producers:' : 'Producer:' }}</span>
       <span v-for="(producer, index) in producerArray" :key="index">
         {{ producer.name }}<span v-if="producerArray.length > 1 && index !== producerArray.length -1 ">,</span>
       </span>
     </div>
 
-    <div class="mx-4 mt-2 space-x-2">
+    <div class="mx-6 mt-2 space-x-2">
       <span
         v-for="(genre, index) in movieInfos.genres"
         :key="index"
@@ -72,7 +72,7 @@
       >{{ genre.name }}</span>
     </div>
 
-    <div class="px-4">
+    <div class="px-6">
       <a v-if="trailerId !== ''" :href="'https://youtube.com/watch?v='+ trailerId" target="_blank" class="inline-flex items-center justify-center w-full px-4 py-3 mt-6 mb-3 text-base font-medium leading-4 text-gray-300 transition duration-150 ease-in-out border border-transparent rounded-md lg:px-3 lg:py-3 bg-m-burgundy-700 hover:bg-m-burgundy-600 focus:outline-none focus:border-m-burgundy-600 active:bg-m-burgundy-600">
         <svg class="inline-block w-6 h-auto mr-2 stroke-current" viewBox="0 0 32 23" fill="none" xmlns="http://www.w3.org/2000/svg">
           <path d="M30.0533 4.56016C29.8949 3.92738 29.5723 3.34759 29.1182 2.87937C28.664 2.41115 28.0943 2.07108 27.4666 1.8935C25.1733 1.3335 15.9999 1.3335 15.9999 1.3335C15.9999 1.3335 6.82662 1.3335 4.53328 1.94683C3.90561 2.12441 3.33592 2.46448 2.88174 2.9327C2.42757 3.40093 2.105 3.98071 1.94662 4.6135C1.5269 6.9409 1.3216 9.30191 1.33328 11.6668C1.31832 14.0496 1.52364 16.4286 1.94662 18.7735C2.12123 19.3866 2.45102 19.9444 2.90414 20.3928C3.35726 20.8412 3.91838 21.1652 4.53328 21.3335C6.82662 21.9468 15.9999 21.9468 15.9999 21.9468C15.9999 21.9468 25.1733 21.9468 27.4666 21.3335C28.0943 21.1559 28.664 20.8158 29.1182 20.3476C29.5723 19.8794 29.8949 19.2996 30.0533 18.6668C30.4698 16.3569 30.6751 14.0139 30.6666 11.6668C30.6816 9.2841 30.4763 6.90509 30.0533 4.56016V4.56016Z" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />

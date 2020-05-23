@@ -218,7 +218,7 @@ export default {
   },
   data () {
     return {
-      isOpen: true,
+      isOpen: this.$device.isDesktop,
       query: {
         type: 'filters',
         page: 1,

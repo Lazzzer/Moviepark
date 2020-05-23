@@ -76,7 +76,7 @@ export default {
   },
   data () {
     return {
-      isOpen: true,
+      isOpen: this.$device.isDesktop,
       query: {
         type: 'name',
         page: 1,

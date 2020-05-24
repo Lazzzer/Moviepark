@@ -23,10 +23,10 @@
       </div>
     </div>
     <div v-if="!isOn" class="flex flex-wrap justify-center w-full mt-2">
-      <Card v-for="(card,index) in movieList" :key="index" class="m-2" :movie-infos="card" :animation="true" :need-loading="userSearch"></Card>
+      <Card v-for="(card,index) in movieList" :key="index" class="m-2" :movie-infos="card" :animation="true" :is-searched="userSearch"></Card>
     </div>
     <div v-else class="w-full mx-auto my-2 md:w-11/12">
-      <DetailedCard v-for="(card,index) in movieList" :key="index" class :movie-infos="card"></DetailedCard>
+      <DetailedCard v-for="(card,index) in movieList" :key="index" class :movie-infos="card" :is-searched="userSearch"></DetailedCard>
     </div>
     <button
       v-if="movieListPage < movieListTotalPages"

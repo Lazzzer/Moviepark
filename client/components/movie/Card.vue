@@ -1,9 +1,9 @@
 <template>
-  <div>
-    <div v-if="needLoading" class="rounded-md bg-m-blue-900 md:w-card-lg md:h-card-lg w-card h-card placeholder-content"></div>
+  <div class="relative flex-shrink-0 block cursor-pointer hover:shadow-md">
+    <div v-if="isSearched" class="relative rounded-md bg-m-blue-900 md:w-card-lg md:h-card-lg w-card h-card placeholder-content"></div>
     <nuxt-link v-else :to="'/movies/'+ movieInfos.id" tag="a" no-prefetch
                :class="animation ? 'duration-500 ease-in-out md:transform md:transition hover:-translate-y-1 hover:scale-105' : ' '"
-               class="relative flex-shrink-0 block cursor-pointer hover:shadow-md "
+               class="relative flex-shrink-0 block cursor-pointer hover:shadow-md"
     >
       <div class="absolute z-20 w-full h-full px-3 py-2 duration-500 bg-opacity-75 rounded-md opacity-0 bg-m-blue-900 hover:opacity-100">
         <p class="font-bold leading-5 text-gray-300 "
@@ -28,7 +28,6 @@
 </template>
 
 <script>
-import { mapState } from 'vuex'
 export default {
   props: {
     movieInfos: {
@@ -39,7 +38,7 @@ export default {
       type: Boolean,
       required: true
     },
-    needLoading: {
+    isSearched: {
       type: Boolean,
       required: true
     }
@@ -48,18 +47,12 @@ export default {
     return {
       imgPath: 'https://image.tmdb.org/t/p/w154'
     }
-  },
-  computed: {
-    ...mapState({
-      userSearch: state => state.search.userSearch
-    })
   }
 }
 </script>
 
 <style>
   .placeholder-content {
-    height: 205px;
     overflow: hidden;
     background: #000E1B;
     position: relative;
@@ -72,10 +65,10 @@ export default {
     background: #000E1B;
     background: linear-gradient(to right, #000E1B 2%, #02182B 18%, #000E1B 33%);
     background-size: 1300px;
-}
+  }
 
-@keyframes placeholderAnimate {
+  @keyframes placeholderAnimate {
     0%{ background-position: -650px 0; }
     100%{ background-position: 650px 0; }
-}
+  }
 </style>

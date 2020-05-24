@@ -42,7 +42,7 @@
         >Trending this week</h3>
         <div class="w-full overflow-x-scroll noScrollbar md:scrollbar lg:noScrollbar">
           <div class="flex space-x-4 w-custom-cards-mini md:w-custom-cards md:p-4 md:space-x-6">
-            <Card v-for="(card,index) in trendingCards.slice(0,5)" :key="index" :movie-infos="card" :animation="true" :need-loading="false"></Card>
+            <Card v-for="(card,index) in trendingCards.slice(0,5)" :key="index" :movie-infos="card" :animation="true" :is-searched="false"></Card>
           </div>
         </div>
       </div>
@@ -55,7 +55,7 @@
         >Next in theaters</h3>
         <div class="w-full overflow-x-scroll noScrollbar md:scrollbar lg:noScrollbar">
           <div class="flex space-x-4 w-custom-cards-mini md:w-custom-cards md:p-4 md:space-x-6">
-            <Card v-for="(card,index) in nextCards.slice(0,5)" :key="index" :movie-infos="card" :animation="true" :need-loading="false"></Card>
+            <Card v-for="(card,index) in nextCards.slice(0,5)" :key="index" :movie-infos="card" :animation="true" :is-searched="false"></Card>
           </div>
         </div>
       </div>

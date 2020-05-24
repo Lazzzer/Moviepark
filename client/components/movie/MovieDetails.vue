@@ -34,10 +34,10 @@
       <div class="flex items-center mt-2">
         <span class="mr-1 font-bold">User score:</span>
         <span
-          :class="movieInfos.vote_average > 5.1 ? 'bg-green-500' : 'bg-red-500'"
+          :class="movieInfos.vote_average > 5.1 ? 'bg-green-500' : movieInfos.vote_count === 0 ? 'bg-gray-500' : 'bg-red-500'"
           class="inline-flex items-center justify-center w-8 h-8 text-sm border border-gray-300 rounded-full"
         >
-          <span class="font-bold text-m-blue-900">{{ movieInfos.vote_average }}</span>
+          <span class="font-bold text-m-blue-900">{{ movieInfos.vote_count === 0 ? 'N/A' : movieInfos.vote_average }}</span>
         </span>
 
         <span v-if="trailerId !== ''" @click="showTrailer" class="inline-flex items-center ml-4 text-gray-300 cursor-pointer hover:text-white">

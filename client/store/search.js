@@ -115,7 +115,7 @@ export const actions = {
       } else if (state.searchQuery.releaseDates[0] !== '') {
         voteCount = 0
         preparedQuery += `&primary_release_date.gte=${state.searchQuery.releaseDates[0]}`
-      } else {
+      } else if (state.searchQuery.releaseDates[1] !== '') {
         voteCount = 0
         preparedQuery += `&primary_release_date.lte=${state.searchQuery.releaseDates[1]}`
       }

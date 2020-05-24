@@ -23,7 +23,7 @@
       </div>
     </div>
     <div v-if="!isOn" class="flex flex-wrap justify-center w-full mt-2">
-      <Card v-for="(card,index) in movieList" :key="index" class="m-2" :movie-infos="card" :animation="true"></Card>
+      <Card v-for="(card,index) in movieList" :key="index" class="m-2" :movie-infos="card" :animation="true" :need-loading="userSearch"></Card>
     </div>
     <div v-else class="w-full mx-auto my-2 md:w-11/12">
       <DetailedCard v-for="(card,index) in movieList" :key="index" class :movie-infos="card"></DetailedCard>
@@ -54,16 +54,13 @@ export default {
   },
   computed: {
     ...mapState({
+      userSearch: state => state.search.userSearch,
       typeOfList: state => state.search.searchQuery.type,
       movieList: state => state.search.movieList,
       movieListPage: state => state.search.movieListPage,
       movieListTotalPages: state => state.search.movieListTotalPages,
       movieListType: state => state.search.movieListType
     })
-    // shortenedMovieList() {
-    //   const list = [...this.movieList]
-    //   return list.splice(0, 20)
-    // }
   },
   methods: {
     ...mapActions('search', ['setMovieList', 'incrementPageMovieList']),

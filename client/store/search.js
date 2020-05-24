@@ -53,9 +53,11 @@ export const actions = {
   incrementPageMovieList ({ commit }) {
     commit('INCREMENT_PAGE_MOVIE_LIST')
   },
-  setSearchQuery ({ commit, dispatch }, query) {
+  async setSearchQuery ({ commit, dispatch }, query) {
+    dispatch('setUserSearch', true)
     commit('SET_SEARCH_QUERY', query)
-    dispatch('setMovieList')
+    await dispatch('setMovieList')
+    dispatch('setUserSearch', false)
   },
   setUserSearch ({ commit }, value) {
     commit('SET_USER_SEARCH_VARIABLE', value)

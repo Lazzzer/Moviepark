@@ -20,8 +20,6 @@ export default {
       }
       if (!store.state.search.userSearch) {
         await store.dispatch('search/setDefaultMovieList')
-      } else {
-        await store.dispatch('search/setUserSearch', false)
       }
     } catch (err) {
       if (err.response !== undefined) {

@@ -6,12 +6,15 @@
         class="absolute top-0 right-0 z-0 w-full h-full bg-cover rounded-md"
         :style="movieInfos.backdrop_path !== null ? 'background:url('+ backdropPath + movieInfos.backdrop_path + ') top center / cover no-repeat,linear-gradient(black,black);opacity:0.08;' : ''"
       ></div>
-      <img
-        class="relative object-cover h-auto rounded-md w-detailedCard h-detailedCard"
-        :src="movieInfos.poster_path !== null ? imgPath + movieInfos.poster_path : require('~/assets/img/noPoster.jpg')"
-        :alt="'Poster of ' + movieInfos.title "
-        :title="movieInfos.title"
-      />
+      <VueLoadImage class="relative flex-shrink-0 rounded-md w-detailedCard h-detailedCard">
+        <img slot="image"
+             class="relative object-cover h-auto rounded-md w-detailedCard h-detailedCard"
+             :src="movieInfos.poster_path !== null ? imgPath + movieInfos.poster_path : require('~/assets/img/noPoster.jpg')"
+             :alt="'Poster of ' + movieInfos.title "
+             :title="movieInfos.title"
+        />
+        <div slot="preloader" class="rounded-md w-detailedCard h-detailedCard placeholder-content"></div>
+      </VueLoadImage>
       <div class="relative h-full mx-2">
         <!-- Display xl-->
         <div class="hidden xl:block">
@@ -71,7 +74,11 @@
 </template>
 <script>
 import { mapState } from 'vuex'
+import VueLoadImage from '@/components/global/VueLoadImage'
 export default {
+  components: {
+    VueLoadImage
+  },
   props: {
     movieInfos: {
       type: Object,

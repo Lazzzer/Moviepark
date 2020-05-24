@@ -30,7 +30,7 @@
     </div>
     <button
       v-if="movieListPage < movieListTotalPages"
-      @click="callNextPage"
+      @click="!isClicked ? callNextPage() : ''"
       type="button"
       class="items-center block w-64 px-4 py-2 mx-auto mt-8 text-base font-medium leading-6 text-white transition duration-150 ease-in-out border border-transparent rounded-md bg-m-burgundy-700 hover:bg-m-burgundy-600 focus:outline-none focus:border-m-burgundy-600 active:bg-m-burgundy-600"
     >Load More</button>
@@ -49,7 +49,8 @@ export default {
   },
   data () {
     return {
-      isOn: false
+      isOn: false,
+      isClicked: false
     }
   },
   computed: {
@@ -65,9 +66,13 @@ export default {
   methods: {
     ...mapActions('search', ['setMovieList', 'incrementPageMovieList']),
     callNextPage () {
-      if (this.movieListPage < this.movieListTotalPages) {
+      if (this.movieListPage < this.movieListTotalPages && !this.isClicked) {
+        this.isClicked = true
         this.incrementPageMovieList()
         this.setMovieList()
+        setTimeout(() => {
+          this.isClicked = false
+        }, 1000)
       }
     }
   }

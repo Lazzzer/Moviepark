@@ -11,10 +11,10 @@
   "devDependencies": {
     "@adonisjs/assembler": "^2.1.2",
     "adonis-preset-ts": "^1.0.4",
-    "eslint": "^7.0.0",
+    "eslint": "^7.1.0",
     "eslint-plugin-adonis": "^1.0.10",
     "pino-pretty": "^4.0.0",
-    "typescript": "^3.9.2",
+    "typescript": "^3.9.3",
     "youch": "^2.0.10",
     "youch-terminal": "^1.0.0"
   },

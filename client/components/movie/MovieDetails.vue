@@ -2,13 +2,18 @@
   <div class="relative p-8 rounded-md bg-m-blue-900">
     <div
       class="absolute top-0 right-0 z-0 w-full h-full bg-cover rounded-md"
-      :style="movieInfos.backdrop_path !== null ? 'background:url('+ backdropPath + movieInfos.backdrop_path + ') top center / cover no-repeat,linear-gradient(black,black);opacity:0.08;' : ''"
+      :style="movieInfos.backdrop_path !== null ? 'background:url('+ backdropPath + movieInfos.backdrop_path + ') top center / cover no-repeat,linear-gradient(#000E1B,#02182B);opacity:0.08;' : ''"
     ></div>
-    <img
-      class="relative object-cover rounded-md w-card-xl h-card-xl"
-      :src="movieInfos.poster_path !== null ? imgPath + movieInfos.poster_path : require('~/assets/img/noPoster.jpg')"
-      :alt="'Poster of ' + movieInfos.title "
-    />
+    <VueLoadImage class="relative flex-shrink-0 rounded-md w-card-xl h-card-xl">
+      <img
+        slot="image"
+        class="relative object-cover rounded-md w-card-xl h-card-xl"
+        :src="movieInfos.poster_path !== null ? imgPath + movieInfos.poster_path : require('~/assets/img/noPoster.jpg')"
+        :alt="'Poster of ' + movieInfos.title "
+      />
+      <div slot="preloader" class="rounded-md w-card-xl h-card-xl placeholder-content"></div>
+    </VueLoadImage>
+
     <div class="relative flex flex-col w-full h-full mt-6 ml-8 text-gray-300 lg:mt-10">
       <h2 class="text-2xl font-extrabold leading-7 text-gray-300 lg:leading-8 lg:text-4xl">{{ movieInfos.title }}</h2>
       <div class="mt-1">
@@ -92,7 +97,11 @@
 </template>
 
 <script>
+import VueLoadImage from '@/components/global/VueLoadImage'
 export default {
+  components: {
+    VueLoadImage
+  },
   props: {
     movieInfos: {
       type: Object,

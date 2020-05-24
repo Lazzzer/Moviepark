@@ -10,11 +10,17 @@
            :class="movieInfos.title.length < 30 ? 'text-lg' : 'text-base'"
         >{{ movieInfos.title.length > 100 ? movieInfos.title.slice(0,100) + '...' : movieInfos.title }}</p>
       </div>
-      <img
-        class="object-cover rounded-md md:w-card-lg md:h-card-lg w-card h-card"
-        :src="movieInfos.poster_path !== null ? imgPath + movieInfos.poster_path : require('~/assets/img/noPoster.jpg')"
-        :alt="'Poster of ' + movieInfos.title "
-      />
+
+      <VueLoadImage class="relative rounded-md md:w-card-lg md:h-card-lg w-card h-card">
+        <img
+          slot="image"
+          class="object-cover rounded-md md:w-card-lg md:h-card-lg w-card h-card"
+          :src="movieInfos.poster_path !== null ? imgPath + movieInfos.poster_path : require('~/assets/img/noPoster.jpg')"
+          :alt="'Poster of ' + movieInfos.title "
+        />
+        <div slot="preloader" class="rounded-md md:w-card-lg md:h-card-lg w-card h-card placeholder-content"></div>
+      </VueLoadImage>
+
       <span
         :class="movieInfos.vote_average > 5.1 ? 'bg-green-500' : 'bg-red-500'"
         class="absolute flex items-center justify-center w-8 h-8 text-xs border border-gray-300 rounded-full right-1 bottom-1"
@@ -28,7 +34,11 @@
 </template>
 
 <script>
+import VueLoadImage from '@/components/global/VueLoadImage'
 export default {
+  components: {
+    VueLoadImage
+  },
   props: {
     movieInfos: {
       type: Object,

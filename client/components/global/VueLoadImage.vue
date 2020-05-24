@@ -26,7 +26,7 @@ export default {
       this.status = value ? Status.LOADING : Status.PENDING
     }
   },
-  created () {
+  mounted () {
     const { attrs } = this.$slots.image[0].data
     this.src = attrs.src || attrs['data-src']
     if (this.src) {

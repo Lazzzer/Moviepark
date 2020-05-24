@@ -63,7 +63,7 @@ export const actions = {
     commit('SET_USER_SEARCH_VARIABLE', value)
   },
   async setDefaultMovieList ({ commit }) {
-    return await this.$axios.get(`${process.env.API_URL}/dummyTmdb/search/defaultMovieList/1`)
+    return await this.$axios.get(`${process.env.API_URL}/tmdb/search/defaultMovieList/1`)
       .then((res) => {
         commit('SET_SEARCH_QUERY_TYPE', 'discover')
         commit('SET_DEFAULT_SEARCHED_MOVIE_LIST', res.data.results)

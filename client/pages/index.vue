@@ -87,8 +87,8 @@ export default {
   },
   async asyncData ({ $axios, env, error }) {
     try {
-      const trending = await $axios.get(`${env.API_URL}/dummyTmdb/trending`)
-      const nextTheaters = await $axios.get(`${env.API_URL}/dummyTmdb/nextTheaters`)
+      const trending = await $axios.get(`${env.API_URL}/tmdb/trending`)
+      const nextTheaters = await $axios.get(`${env.API_URL}/tmdb/nextTheaters`)
 
       return { trendingCards: trending.data.results, nextCards: nextTheaters.data.results }
     } catch (err) {

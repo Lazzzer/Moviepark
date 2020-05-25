@@ -61,6 +61,20 @@ export default {
   /*
   ** Build configuration
   */
+  pwa: {
+    meta: {
+      name: 'Moviepark',
+      author: 'Lazar Pavicevic',
+      description: 'Moviepark is an open-source application for searching movies.',
+      theme_color: '#02182B'
+    },
+    manifest: {
+      short_name: 'Moviepark',
+      orientation: 'portrait',
+      background_color: '#02182B',
+      display: 'standalone'
+    }
+  },
   build: {
     /*
     ** You can extend webpack config here

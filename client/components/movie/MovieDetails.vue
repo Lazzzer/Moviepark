@@ -48,13 +48,13 @@
           <span class="font-bold ">Trailer</span>
         </span>
 
-        <a v-if="facebookId !== null" :href="'https://facebook.com/' + facebookId" target="_blank" class="ml-2">
+        <a v-if="facebookId !== null" :href="'https://facebook.com/' + facebookId" target="_blank" rel="noopener" class="ml-2">
           <svg class="inline-block w-auto h-6 stroke-current hover:text-white hover:fill-current" width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path d="M24 2.6665H20C18.2319 2.6665 16.5362 3.36888 15.286 4.61913C14.0358 5.86937 13.3334 7.56506 13.3334 9.33317V13.3332H9.33337V18.6665H13.3334V29.3332H18.6667V18.6665H22.6667L24 13.3332H18.6667V9.33317C18.6667 8.97955 18.8072 8.64041 19.0572 8.39036C19.3073 8.14031 19.6464 7.99984 20 7.99984H24V2.6665Z" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
           </svg>
         </a>
 
-        <a v-if="instagramId !== null" :href="'https://instagram.com/' + instagramId" target="_blank" class="ml-1">
+        <a v-if="instagramId !== null" :href="'https://instagram.com/' + instagramId" target="_blank" rel="noopener" class="ml-1">
 
           <svg class="inline-block w-auto h-6 stroke-current hover:text-white hover:fill-current" width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path d="M22.6666 2.6665H9.33329C5.65139 2.6665 2.66663 5.65127 2.66663 9.33317V22.6665C2.66663 26.3484 5.65139 29.3332 9.33329 29.3332H22.6666C26.3485 29.3332 29.3333 26.3484 29.3333 22.6665V9.33317C29.3333 5.65127 26.3485 2.6665 22.6666 2.6665Z" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
@@ -64,7 +64,7 @@
 
         </a>
 
-        <a v-if="twitterId !== null" :href="'https://twitter.com/' + twitterId" target="_blank" class="ml-2">
+        <a v-if="twitterId !== null" :href="'https://twitter.com/' + twitterId" target="_blank" rel="noopener" class="ml-2">
           <svg class="inline-block w-auto h-6 stroke-current hover:text-white hover:fill-current" width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path d="M30.6667 4.00022C29.3899 4.90086 27.9762 5.5897 26.48 6.04022C25.677 5.11691 24.6098 4.46248 23.4228 4.16546C22.2357 3.86844 20.986 3.94315 19.8428 4.3795C18.6996 4.81584 17.718 5.59276 17.0307 6.60518C16.3434 7.6176 15.9836 8.81667 16 10.0402V11.3736C13.6569 11.4343 11.3351 10.9146 9.24139 9.86082C7.1477 8.807 5.34713 7.25174 4.00004 5.33356C4.00004 5.33356 -1.33329 17.3336 10.6667 22.6669C7.92074 24.5308 4.64958 25.4655 1.33337 25.3336C13.3334 32.0002 28 25.3336 28 10.0002C27.9988 9.62883 27.9631 9.25835 27.8934 8.89356C29.2542 7.55155 30.2145 5.85717 30.6667 4.00022V4.00022Z" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
           </svg>

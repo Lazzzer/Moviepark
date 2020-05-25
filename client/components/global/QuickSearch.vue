@@ -1,7 +1,7 @@
 <template>
   <div class="w-full lg:flex lg:justify-end">
     <ValidationObserver ref="form" v-slot="{ handleSubmit }">
-      <form @submit.prevent="handleSubmit(prepareSearch)">
+      <form @submit.prevent="handleSubmit(prepareSearch)" id="quickSearchForm">
         <div class="relative">
           <div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
             <svg class="w-5 h-5 text-gray-300" fill="currentColor" viewBox="0 0 20 20">
@@ -16,6 +16,7 @@
             <input
               v-model="query.movieName"
               id="search"
+              for="quickSearchForm"
               :class=" failed && !changed ? 'border-red-400' : 'border-transparent'"
               class="block w-full py-2 pl-10 pr-3 leading-5 text-white placeholder-gray-300 border border-transparent rounded-md lg:transition-all bg-m-blue-900 lg:bg-transparent focus:outline-none hover:bg-m-blue-900 focus:bg-m-blue-900 sm:text-sm lg:duration-300 lg:ease-in lg:w-40 lg:focus:w-96"
               placeholder="Quick search"

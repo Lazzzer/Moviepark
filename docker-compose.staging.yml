@@ -33,8 +33,6 @@ services:
       - ./client:/home/node/app
       - movieparkNuxtNM:/home/node/app/node_modules
     container_name: moviepark-client
-    # env_file:
-    #   - ./client/.env
     labels:
       - "traefik.enable=true"
       - "traefik.http.routers.moviepark-client.rule=Host(`localhost`)"
@@ -42,6 +40,7 @@ services:
     restart: always
     depends_on:
       - moviepark-traefik
+      - moviepark-server
     networks:
       - moviepark-network
   moviepark-server:
@@ -52,8 +51,6 @@ services:
       - ./server:/home/node/app
       - movieparkAdonisNM:/home/node/app/node_modules
     container_name: moviepark-server
-    # env_file:
-    #   - ./server/.env
     labels:
       - "traefik.enable=true"
       - "traefik.http.routers.moviepark-server.rule=Host(`api.localhost`)"

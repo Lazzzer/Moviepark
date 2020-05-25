@@ -1,6 +1,6 @@
 FROM node:lts-alpine
 
-RUN apk add --update --no-cache git
+RUN apk add --update --no-cache git && apk add --no-cache --virtual .gyp python make g++
 
 WORKDIR /home/node/app
 
@@ -10,6 +10,12 @@ RUN npm install
 
 COPY . /home/node/app/
 
+RUN node ace build --production
+
+WORKDIR /home/node/app/build
+
+RUN npm ci --production
+
 EXPOSE 3333
 
-CMD sh -c 'node ace serve --watch'
+CMD sh -c 'node server.js'

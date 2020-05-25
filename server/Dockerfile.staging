@@ -4,18 +4,12 @@ RUN apk add --update --no-cache git && apk add --no-cache --virtual .gyp python 
 
 WORKDIR /home/node/app
 
-COPY package.json  /home/node/app/
+COPY package.json package-lock.json /home/node/app/
 
 RUN npm install
 
 COPY . /home/node/app/
 
-RUN node ace build --production
-
-WORKDIR /home/node/app/build
-
-RUN npm ci --production
-
 EXPOSE 3333
 
-CMD sh -c 'node server.js'
+CMD sh -c 'node ace build --production && cd build && npm ci --production && node server.js'

@@ -21,11 +21,10 @@
 import Route from '@ioc:Adonis/Core/Route'
 
 Route.get('/', async () => {
-  return { message: 'Moviepark Adonis server' }
+  return 'Moviepark Server 1.0.0'
 })
 
 //TMDB General routes
-
 Route.get('/tmdb/trending', 'TmdbsController.getTrending')
 Route.get('/tmdb/nextTheaters', 'TmdbsController.getNextInTheaters')
 Route.get('/tmdb/genresList', 'TmdbsController.getGenresList')
@@ -36,3 +35,8 @@ Route.get('/tmdb/search/person/:query', 'TmdbsController.getPersonId')
 Route.get('/tmdb/search/defaultMovieList/:page', 'TmdbsController.getSearchDefaultMovieList')
 Route.get('/tmdb/search/byName/:name/:page', 'TmdbsController.getSearchedByNameMovieList')
 Route.get('/tmdb/search/withFilters/:query', 'TmdbsController.getSearchedWithFiltersMovieList')
+
+//Catch the rest
+Route.get('/*', async ({response}) => {
+  return response.status(404).json({ status: 404, error: 'Not Found' })
+})

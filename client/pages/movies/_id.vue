@@ -9,7 +9,7 @@
     </client-only>
     <Cast v-if="movieInfos.credits.cast.length > 0" :cast-infos="movieInfos.credits.cast" />
     <div v-else style="height:250px;"></div>
-    <div v-if="movieInfos.recommendations.total_results !== 0 && movieInfos.similar.total_results !== 0" class="mt-2 lg:mt-10 lg:flex lg:space-x-12">
+    <div v-if="movieInfos.recommendations.total_results !== 0 && movieInfos.similar.total_results !== 0" class="mt-2 lg:mt-10 lg:flex lg:space-x-10 xl:space-x-12">
       <MovieListing :component-title="'Recommendations'" :infos="movieInfos.recommendations.results" />
       <MovieListing :component-title="'Similar Movies'" :infos="movieInfos.similar.results" />
     </div>

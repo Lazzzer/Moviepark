@@ -45,14 +45,16 @@ module.exports = {
         'card-lg': '154px',
         'card-xl': '300px',
         detailedCard: '92px',
-        'yt-modal-lg': '750px'
+        'yt-modal-lg': '750px',
+        listing: '48%'
       },
       height: {
         card: '180px',
         'card-lg': '231px',
         'card-xl': '450px',
         detailedCard: '138px',
-        'yt-modal-lg': '422px'
+        'yt-modal-lg': '422px',
+        17: '4.8rem'
 
       }
     }

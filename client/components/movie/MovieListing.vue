@@ -1,5 +1,5 @@
 <template>
-  <section id="movie-listing" class="relative w-full mt-4 lg:mt-0 lg:w-1/2">
+  <section id="movie-listing" class="relative w-full mt-4 lg:mt-0 lg:w-listing">
     <div class="w-11/12 mx-auto sm:w-full">
       <h3 class="mb-1 text-2xl font-extrabold text-gray-300 md:ml-3 sm:mb-0">{{ componentTitle }}</h3>
       <div class="flex w-full mt-2 space-x-4 overflow-x-scroll rounded-md noScrollbar sm:scrollbar">

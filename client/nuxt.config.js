@@ -1,11 +1,15 @@
 
 export default {
   mode: 'universal',
+  server: {
+    host: '0.0.0.0',
+    port: '3000'
+  },
   /*
   ** Headers of the page
   */
   head: {
-    title: process.env.npm_package_name || '',
+    title: 'Moviepark',
     meta: [
       { charset: 'utf-8' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
@@ -30,7 +34,8 @@ export default {
   */
   plugins: [
     { src: '~/plugins/vue-js-modal.js', mode: 'client' },
-    '~/plugins/vee-validate.js'
+    '~/plugins/vee-validate.js',
+    '~/plugins/axios.js'
   ],
   /*
   ** Nuxt.js dev-modules
@@ -69,6 +74,7 @@ export default {
       theme_color: '#02182B'
     },
     manifest: {
+      name: 'Moviepark',
       short_name: 'Moviepark',
       orientation: 'portrait',
       background_color: '#02182B',

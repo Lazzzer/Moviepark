@@ -259,7 +259,7 @@ export default {
         }
         this.noPersonResult = false
         this.timeoutId = setTimeout(() => {
-          this.$axios.get(`${process.env.API_URL}/tmdb/search/person/${search}`)
+          this.$axios.get(`/tmdb/search/person/${search}`)
             .then((res) => {
               this.personNameResult = res.data.results
               if (this.personNameResult.length === 0) {

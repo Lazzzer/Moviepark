@@ -33,7 +33,7 @@ export default {
   },
   async asyncData ({ store, $axios, env, params, error }) {
     try {
-      const movieInfos = await $axios.get(`${env.API_URL}/tmdb/movie/${params.id}`)
+      const movieInfos = await $axios.get(`/tmdb/movie/${params.id}`)
       return { movieInfos: movieInfos.data }
     } catch (err) {
       if (err.response !== undefined) {

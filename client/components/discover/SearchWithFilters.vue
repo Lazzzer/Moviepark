@@ -268,12 +268,10 @@ export default {
               } else {
                 this.showPersonModal = true
               }
-              console.log('CALLING API FOR CAST', this.personNameResult)
             })
-            .catch((err) => {
+            .catch(() => {
               this.personNameResult = ''
               this.noPersonResult = true
-              console.log(err)
             })
         }, debounceDuration)
       }

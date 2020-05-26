@@ -1,4 +1,4 @@
-FROM node:lts-alpine
+FROM node:12.16.3-alpine
 
 RUN apk add --update --no-cache git && apk add --no-cache --virtual .gyp python make g++
 

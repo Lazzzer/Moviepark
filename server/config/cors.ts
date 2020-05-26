@@ -43,7 +43,11 @@ const corsConfig: CorsConfig = {
   |                     one of the above values.
   |
   */
-  origin: true,
+  origin: (origin) => {
+    const allowed = [process.env.CLIENT_URL, process.env.CLIENT_BROWSER_URL]
+
+    return allowed.includes(origin)
+  },
 
   /*
   |--------------------------------------------------------------------------

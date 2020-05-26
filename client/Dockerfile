@@ -2,9 +2,9 @@ FROM node:12.16.3-alpine
 
 WORKDIR /home/node/app
 
-COPY package.json  /home/node/app/
+COPY package.json package-lock.json /home/node/app/
 
-RUN npm install
+RUN npm install --ignore-scripts
 
 COPY . /home/node/app/
 

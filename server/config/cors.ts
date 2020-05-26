@@ -44,7 +44,7 @@ const corsConfig: CorsConfig = {
   |
   */
   origin: (origin) => {
-    const allowed = [process.env.CLIENT_URL, process.env.CLIENT_BROWSER_URL]
+    const allowed = [process.env.CLIENT_WWW_BROWSER_URL, process.env.CLIENT_BROWSER_URL]
 
     return allowed.includes(origin)
   },

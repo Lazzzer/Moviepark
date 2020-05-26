@@ -28,7 +28,7 @@ services:
   moviepark-client:
     build:
       context: ./client
-      dockerfile: Dockerfile.staging
+      dockerfile: Dockerfile
     volumes:
       - ./client:/home/node/app
       - movieparkNuxtNM:/home/node/app/node_modules
@@ -46,7 +46,7 @@ services:
   moviepark-server:
     build:
       context: ./server
-      dockerfile: Dockerfile.staging
+      dockerfile: Dockerfile
     volumes:
       - ./server:/home/node/app
       - movieparkAdonisNM:/home/node/app/node_modules

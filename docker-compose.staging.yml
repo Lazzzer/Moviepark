@@ -18,6 +18,7 @@ services:
       - "traefik.http.routers.api.rule=Host(`dashboard.localhost`)"
       - "traefik.http.routers.api.service=api@internal"
       - "traefik.http.routers.api.middlewares=auth"
+      #Hashed password => 'password'
       - "traefik.http.middlewares.auth.basicauth.users=lazar:$$2y$$10$$ciI3Y86xGCi9wyiCYLuHNuttnHs9HmWOWTXmeesFlVHt0JASoYGwC"
     ports:
       - 80:80

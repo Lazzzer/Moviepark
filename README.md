@@ -40,6 +40,7 @@ To check how it would look like in production with docker:
 ## Todo
 
 - [x] Release version 1.0 Yay!
+- [ ] Caching
 - [ ] Get streaming services for each movie with [Utelly's API](https://rapidapi.com/utelly/api/utelly)
 - [ ] More search filters (ex: search by company...)
 - [ ] Watchlist

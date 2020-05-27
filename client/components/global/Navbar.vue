@@ -70,6 +70,7 @@
     Menu open: "block", Menu closed: "hidden"
     -->
     <transition
+      :duration="{leave: 300}"
       enter-active-class="transition duration-500 ease-out"
       enter-class="transform -translate-y-8 opacity-0"
       enter-to-class="transform opacity-100"

@@ -30,6 +30,7 @@
               </div>
             </div>
             <transition
+              :duration="{leave: 300}"
               mode="out-in"
               enter-active-class="transition duration-300 ease-out"
               enter-class="transform -translate-y-4 opacity-0"

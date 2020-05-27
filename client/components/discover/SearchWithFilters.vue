@@ -286,7 +286,10 @@ export default {
     background-color: transparent;
     color:#014451;
     -webkit-appearance: none;
- }
+  }
+   input[type="date"] {
+    min-height: 2.625rem;
+  }
  .scrollbarDiv{
     scrollbar-width: none;
   }

@@ -28,6 +28,11 @@ export default {
           hid: 'description',
           name: 'description',
           content: 'Don\'t know what to watch? Let\'s search and discover hidden gems on Moviepark!'
+        },
+        {
+          hid: 'og:description',
+          name: 'og:description',
+          content: 'Don\'t know what to watch? Let\'s search and discover hidden gems on Moviepark!'
         }
       ]
     }

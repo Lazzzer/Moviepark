@@ -57,6 +57,11 @@ export default {
           hid: 'description',
           name: 'description',
           content: this.movieInfos.overview
+        },
+        {
+          hid: 'og:description',
+          name: 'og:description',
+          content: this.movieInfos.overview
         }
       ]
 

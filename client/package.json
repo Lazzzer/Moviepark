@@ -1,6 +1,6 @@
 {
   "name": "moviepark-client",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "A webapp made with Nuxt using the TMDB API",
   "author": "Lazar Pavicevic",
   "private": true,

@@ -34,7 +34,7 @@ To check how it would look like in production with docker:
 
 ```bash
 #In the root folder
-> docker-compose -f docker-compose.staging.yml up
+> docker-compose -f docker-compose.staging.yml up --build
 ```
 
 ## Todo

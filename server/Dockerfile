@@ -1,15 +1,34 @@
-FROM node:12.16.3-alpine
+#Build stage
+FROM node:12.16.3-alpine as builder
 
 RUN apk add --update --no-cache git && apk add --no-cache --virtual .gyp python make g++
 
+USER node
+
+RUN mkdir /home/node/app
+
 WORKDIR /home/node/app
 
-COPY package.json package-lock.json /home/node/app/
+COPY --chown=node:node package.json package-lock.json /home/node/app/
 
-RUN npm install
+RUN npm ci
 
-COPY . /home/node/app/
+COPY --chown=node:node  . /home/node/app/
+
+RUN node ace build --production && cd build && npm ci --production
+
+#Run stage
+FROM node:12.16.3-alpine as app
+
+USER node
+
+RUN mkdir /home/node/app
+
+WORKDIR /home/node/app
+
+COPY --chown=node:node --from=builder /home/node/app/node_modules ./node_modules
+COPY --chown=node:node --from=builder /home/node/app/build ./build
 
 EXPOSE 3333
 
-CMD sh -c 'node ace build --production && cd build && npm ci --production && node server.js'
+CMD sh -c 'cd build && node server.js'

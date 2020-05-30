@@ -27,11 +27,11 @@ services:
     networks:
       - moviepark-network
   moviepark-client:
+    image: moviepark-client:1.0
     build:
       context: ./client
       dockerfile: Dockerfile
     volumes:
-      - ./client:/home/node/app
       - movieparkNuxtNM:/home/node/app/node_modules
     container_name: moviepark-client
     labels:
@@ -45,11 +45,11 @@ services:
     networks:
       - moviepark-network
   moviepark-server:
+    image: moviepark-server:1.0
     build:
       context: ./server
       dockerfile: Dockerfile
     volumes:
-      - ./server:/home/node/app
       - movieparkAdonisNM:/home/node/app/node_modules
     container_name: moviepark-server
     labels:

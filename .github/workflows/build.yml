@@ -1,0 +1,17 @@
+name: Build
+on:
+  push:
+    branches: [ dev ]
+jobs:
+  build-client:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v1
+    - name: Build docker image
+      run: cd client && docker build .
+  build-server:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v1
+    - name: Build docker image
+      run: cd server && docker build .

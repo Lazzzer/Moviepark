@@ -1,9 +1,9 @@
-export default function ({ $axios }) {
+export default function ({ app, $axios }) {
   if (process.client) {
-    $axios.setBaseURL(process.env.API_BROWSER_URL)
+    $axios.setBaseURL(app.$env.API_BROWSER_URL)
   }
 
   if (process.server) {
-    $axios.setBaseURL(process.env.API_URL)
+    $axios.setBaseURL(app.$env.API_URL)
   }
 }

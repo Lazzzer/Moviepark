@@ -54,7 +54,14 @@ export default {
     '@nuxtjs/pwa',
     // Doc: https://github.com/nuxt-community/dotenv-module
     '@nuxtjs/dotenv',
-    '@nuxtjs/device'
+    '@nuxtjs/device',
+    ['nuxt-env', {
+      keys: [
+        { key: 'BASE_URL', default: 'http://0.0.0.0:3000' },
+        { key: 'API_URL', secret: true },
+        { key: 'API_BROWSER_URL' }
+      ]
+    }]
   ],
   /*
   ** Axios module configuration

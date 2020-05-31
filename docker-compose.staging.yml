@@ -8,7 +8,6 @@ services:
     command:
       - "--log.level=ERROR"
       - "--api.dashboard=true"
-      #- "--accesslog=true"
       - "--providers.docker=true"
       - "--providers.docker.exposedbydefault=false"
       - "--providers.docker.network=moviepark-network"
@@ -31,9 +30,11 @@ services:
     build:
       context: ./client
       dockerfile: Dockerfile
-    volumes:
-      - movieparkNuxtNM:/home/node/app/node_modules
     container_name: moviepark-client
+    environment:
+      - BASE_URL=http://0.0.0.0:3000
+      - API_URL=
+      - API_BROWSER_URL=
     labels:
       - "traefik.enable=true"
       - "traefik.http.routers.moviepark-client.rule=Host(`localhost`)"
@@ -49,9 +50,16 @@ services:
     build:
       context: ./server
       dockerfile: Dockerfile
-    volumes:
-      - movieparkAdonisNM:/home/node/app/node_modules
     container_name: moviepark-server
+    environment:
+      - PORT=3333
+      - HOST=0.0.0.0
+      - NODE_ENV=production
+      - APP_NAME=
+      - APP_KEY=
+      - TMDB_API_KEY=
+      - CLIENT_URL=
+      - CLIENT_BROWSER_URL=
     labels:
       - "traefik.enable=true"
       - "traefik.http.routers.moviepark-server.rule=Host(`api.localhost`)"
@@ -64,6 +72,3 @@ services:
 networks:
   moviepark-network:
     driver: bridge
-volumes:
-  movieparkNuxtNM:
-  movieparkAdonisNM:

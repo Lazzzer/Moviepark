@@ -8,10 +8,12 @@ WORKDIR /home/node/app
 
 COPY --chown=node:node package.json package-lock.json /home/node/app/
 
-RUN npm install --ignore-scripts
+RUN touch .env && npm ci
 
 COPY --chown=node:node . /home/node/app/
 
+RUN npm run build
+
 EXPOSE 3000
 
-CMD sh -c 'npm run build && npm run start'
+CMD sh -c 'npm run start'

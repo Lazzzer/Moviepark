@@ -1,5 +1,6 @@
 ![Moviepark Banner](https://raw.githubusercontent.com/Lazzzer/Moviepark/master/doc/images/banner.png)
 
+![Publish Docker images](https://github.com/Lazzzer/Moviepark/workflows/Publish%20Docker%20images/badge.svg)
 ## About Moviepark
 Moviepark is an open-source project using the TMDb API for its movie catalog.
 
@@ -30,7 +31,7 @@ Set your .env variables then:
 > node ace serve --watch
 ```
 
-To check how it would look like in production with docker:
+To check how it would look like in production with docker (don't forget to add your .env variables in the docker-compose file) :
 
 ```bash
 #In the root folder

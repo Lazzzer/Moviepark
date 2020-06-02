@@ -1,6 +1,6 @@
 import { HttpContextContract } from '@ioc:Adonis/Core/HttpContext'
 import tmdbApi from '../../Services/TmdbService'
-import fs from 'fs'
+import {promises as fs } from 'fs'
 import path from 'path'
 
 async function handleRequest (context: HttpContextContract, axiosPromise: Promise<any>) {
@@ -22,8 +22,12 @@ export default class TmdbsController {
   }
 
   public async getGenresList ({ response }: HttpContextContract) {
-    const genresList = fs.readFileSync(path.join(__dirname,'../../Files/genreslist.json'), 'utf-8')
-    response.status(200).json(JSON.parse(genresList))
+    try {
+      const genresList = await fs.readFile(path.join(__dirname,'../../Files/genreslist.json'), 'utf-8')
+      response.status(200).json(JSON.parse(genresList))
+    } catch (err) {
+      response.status(500).json({ status: 500, error: 'Server error' })
+    }
   }
 
   public async getMovieDetails (context: HttpContextContract) {

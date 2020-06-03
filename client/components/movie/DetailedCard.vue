@@ -49,7 +49,7 @@
 
         <div>
           <span
-            :class="movieInfos.vote_average > 5.1 ? 'bg-green-500' : movieInfos.vote_count === 0 ? 'bg-gray-500' : 'bg-red-500'"
+            :class="movieInfos.vote_average >= 6.0 ? 'bg-green-500' : movieInfos.vote_average >= 4.0 ? 'bg-orange-500' : movieInfos.vote_count === 0 ? 'bg-gray-500' : 'bg-red-500'"
             class="inline-flex items-center justify-center w-6 h-6 -mr-1 text-xs rounded-full right-1 bottom-1"
           >
             <span class="font-bold text-m-blue-900">{{ movieInfos.vote_count === 0 ? 'N/A' : movieInfos.vote_average }}</span>

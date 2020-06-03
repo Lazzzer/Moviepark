@@ -6,7 +6,7 @@
         :style="movieInfos.backdrop_path !== null ? 'background:url('+ backdropPath + movieInfos.backdrop_path + ') top center / cover no-repeat,linear-gradient(#000E1B,#02182B);opacity:0.2;' : ''"
       ></div>
       <span
-        :class="movieInfos.vote_average > 5.1 ? 'bg-green-500' : movieInfos.vote_count === 0 ? 'bg-gray-500' : 'bg-red-500'"
+        :class="movieInfos.vote_average >= 6.0 ? 'bg-green-500' : movieInfos.vote_average >= 4.0 ? 'bg-orange-500' : movieInfos.vote_count === 0 ? 'bg-gray-500' : 'bg-red-500'"
         class="absolute flex items-center justify-center w-10 h-10 text-sm border border-gray-300 rounded-full right-3 bottom-3"
       >
         <span class="font-bold text-m-blue-900">{{ movieInfos.vote_count === 0 ? 'N/A' : movieInfos.vote_average }}</span>

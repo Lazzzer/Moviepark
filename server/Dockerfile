@@ -1,5 +1,5 @@
 #Build stage
-FROM node:12.16.3-alpine as builder
+FROM node:12-alpine as builder
 
 RUN apk add --update --no-cache git && apk add --no-cache --virtual .gyp python make g++
 
@@ -18,7 +18,7 @@ COPY --chown=node:node  . /home/node/app/
 RUN node ace build --production && cd build && npm ci --production
 
 #Run stage
-FROM node:12.16.3-alpine as app
+FROM node:12-alpine as app
 
 USER node
 

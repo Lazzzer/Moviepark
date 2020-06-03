@@ -1,83 +1,53 @@
 import { HttpContextContract } from '@ioc:Adonis/Core/HttpContext'
 import tmdbApi from '../../Services/TmdbService'
-import fs from 'fs'
+import {promises as fs } from 'fs'
 import path from 'path'
 
+async function handleRequest (context: HttpContextContract, axiosPromise: Promise<any>) {
+  try {
+    const { data } = await axiosPromise
+    context.response.status(200).send(data)
+  } catch (err) {
+    console.log(err.response)
+    context.response.status(err.response.status).json({ status: err.response.status, error: err.response.statusText })
+  }
+}
 export default class TmdbsController {
-  public async getTrending ({ response }:HttpContextContract) {
+  public async getTrending (context: HttpContextContract) {
+    return handleRequest(context, tmdbApi.getTrending())
+  }
+
+  public async getNextInTheaters (context: HttpContextContract) {
+    return handleRequest(context, tmdbApi.getNextInTheaters())
+  }
+
+  public async getGenresList ({ response }: HttpContextContract) {
     try {
-      const { data } = await tmdbApi.getTrending()
-      response.status(200).send(data)
+      const genresList = await fs.readFile(path.join(__dirname,'../../Files/genreslist.json'), 'utf-8')
+      response.status(200).json(JSON.parse(genresList))
     } catch (err) {
-      console.log(err.response)
-      response.status(err.response.status).json({ status: err.response.status, error: err.response.statusText })
+      response.status(500).json({ status: 500, error: 'Server error' })
     }
   }
 
-  public async getNextInTheaters ({ response }:HttpContextContract) {
-    try {
-      const { data } = await tmdbApi.getNextInTheaters()
-      response.status(200).send(data)
-    } catch (err) {
-      console.log(err.response)
-      response.status(err.response.status).json({ status: err.response.status, error: err.response.statusText })
-    }
-  }
-
-  public async getGenresList ({ response }:HttpContextContract) {
-    const genresList:any = fs.readFileSync(path.join(__dirname,'../../Files/genreslist.json'))
-    response.status(200).json(JSON.parse(genresList))
-  }
-
-  public async getMovieDetails ({ response, params }:HttpContextContract) {
-    try {
-      const { data } = await tmdbApi.getMovieDetails(params.id)
-      response.status(200).send(data)
-    } catch (err) {
-      console.log(err.response)
-      response.status(err.response.status).json({ status: err.response.status, error: err.response.statusText })
-    }
+  public async getMovieDetails (context: HttpContextContract) {
+    return handleRequest(context, tmdbApi.getMovieDetails(context.params.id))
   }
 
   //SEARCH
-
-  public async getPersonId ({ response, params }:HttpContextContract) {
-    try {
-      const { data } = await tmdbApi.getPersonId(params.query)
-      response.status(200).send(data)
-    } catch (err) {
-      console.log(err.response)
-      response.status(err.response.status).json({ status: err.response.status, error: err.response.statusText })
-    }
+  public async getPersonId (context: HttpContextContract) {
+    return handleRequest(context, tmdbApi.getPersonId(context.params.query))
   }
 
-  public async getSearchDefaultMovieList ({ response, params }:HttpContextContract) {
-    try {
-      const { data } = await tmdbApi.getSearchDefaultMovieList(params.page)
-      response.status(200).send(data)
-    } catch (err) {
-      console.log(err.response)
-      response.status(err.response.status).json({ status: err.response.status, error: err.response.statusText })
-    }
+  public async getSearchDefaultMovieList (context: HttpContextContract) {
+    return handleRequest(context, tmdbApi.getSearchDefaultMovieList(context.params.page))
   }
 
-  public async getSearchedByNameMovieList ({ response, params }:HttpContextContract) {
-    try {
-      const { data } = await tmdbApi.getSearchedByNameMovieList(params.name, params.page)
-      response.status(200).send(data)
-    } catch (err) {
-      console.log(err.response)
-      response.status(err.response.status).json({ status: err.response.status, error: err.response.statusText })
-    }
+  public async getSearchedByNameMovieList (context: HttpContextContract) {
+    return handleRequest(context, tmdbApi.getSearchedByNameMovieList(context.params.name, context.params.page))
   }
 
-  public async getSearchedWithFiltersMovieList ({ response, params }:HttpContextContract) {
-    try {
-      const { data } = await tmdbApi.getSearchedWithFiltersMovieList(params.query)
-      response.status(200).send(data)
-    } catch (err) {
-      console.log(err.response)
-      response.status(err.response.status).json({ status: err.response.status, error: err.response.statusText })
-    }
+  public async getSearchedWithFiltersMovieList (context: HttpContextContract) {
+    return handleRequest(context, tmdbApi.getSearchedWithFiltersMovieList(context.params.query))
   }
 }

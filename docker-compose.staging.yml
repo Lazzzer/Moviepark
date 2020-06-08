@@ -60,6 +60,10 @@ services:
       - TMDB_API_KEY=
       - CLIENT_URL=
       - CLIENT_BROWSER_URL=
+      - REDIS_CONNECTION=
+      - REDIS_HOST=
+      - REDIS_PORT=
+      - REDIS_PASSWORD=
     labels:
       - "traefik.enable=true"
       - "traefik.http.routers.moviepark-server.rule=Host(`api.localhost`)"
@@ -67,8 +71,19 @@ services:
     restart: always
     depends_on:
       - moviepark-traefik
+      - moviepark-redis
+    networks:
+      - moviepark-network
+  moviepark-redis:
+    image: redis:6-alpine
+    container_name: moviepark-redis
+    volumes:
+      - moviepark-redisData:/data
+    restart: always
     networks:
       - moviepark-network
 networks:
   moviepark-network:
     driver: bridge
+volumes:
+  moviepark-redisData: 

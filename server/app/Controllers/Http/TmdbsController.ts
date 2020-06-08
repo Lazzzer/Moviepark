@@ -55,7 +55,7 @@ export default class TmdbsController {
     if (!isNaN(context.params.id)) {
       return handleRequestWithCache(context, tmdbApi.getMovieDetails(context.params.id), context.params.id, 10800)
     }
-    return context.response.status(404).json({status: 404, error: 'Not Found'})
+    return context.response.status(404).json({ status: 404, error: 'Not Found' })
   }
 
   //SEARCH

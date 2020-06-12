@@ -28,7 +28,7 @@ Route.get('/', async () => {
 Route.get('/tmdb/trending', 'TmdbsController.getTrending')
 Route.get('/tmdb/nextTheaters', 'TmdbsController.getNextInTheaters')
 Route.get('/tmdb/genresList', 'TmdbsController.getGenresList')
-Route.get('/tmdb/movie/:id', 'TmdbsController.getMovieDetails')
+Route.get('/tmdb/movie/:id', 'TmdbsController.getMovieDetails').where('id', /^[0-9]+$/)
 
 //TMDB Search routes
 Route.get('/tmdb/search/person/:query', 'TmdbsController.getPersonId')

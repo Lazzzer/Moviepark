@@ -46,7 +46,7 @@ services:
     networks:
       - moviepark-network
   moviepark-server:
-    image: moviepark-server:1.0
+    image: moviepark-server:1.1
     build:
       context: ./server
       dockerfile: Dockerfile

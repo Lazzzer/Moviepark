@@ -52,17 +52,20 @@ export default {
     // Doc: https://axios.nuxtjs.org/usage
     '@nuxtjs/axios',
     '@nuxtjs/pwa',
-    // Doc: https://github.com/nuxt-community/dotenv-module
-    '@nuxtjs/dotenv',
-    '@nuxtjs/device',
-    ['nuxt-env', {
-      keys: [
-        { key: 'BASE_URL', default: 'http://0.0.0.0:3000' },
-        { key: 'API_URL', secret: true },
-        { key: 'API_BROWSER_URL' }
-      ]
-    }]
+    '@nuxtjs/device'
   ],
+
+  /*
+  ** Runtime Env variables
+  */
+  publicRuntimeConfig: {
+    baseURL: process.env.BASE_URL || 'http://0.0.0.0:3000',
+    apiBrowserURL: process.env.API_BROWSER_URL
+  },
+  privateRuntimeConfig: {
+    apiURL: process.env.API_URL
+  },
+
   /*
   ** Axios module configuration
   ** See https://axios.nuxtjs.org/options

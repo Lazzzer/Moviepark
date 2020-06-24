@@ -8,7 +8,7 @@ WORKDIR /home/node/app
 
 COPY --chown=node:node package.json package-lock.json /home/node/app/
 
-RUN touch .env && npm ci
+RUN npm ci
 
 COPY --chown=node:node . /home/node/app/
 

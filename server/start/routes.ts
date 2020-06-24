@@ -24,11 +24,15 @@ Route.get('/', async () => {
   return 'Moviepark Server 1.0.0'
 })
 
+Route.get('/robots.txt', async () => {
+  return 'User-agent: *\nDisallow: /'
+})
+
 //TMDB General routes
 Route.get('/tmdb/trending', 'TmdbsController.getTrending')
 Route.get('/tmdb/nextTheaters', 'TmdbsController.getNextInTheaters')
 Route.get('/tmdb/genresList', 'TmdbsController.getGenresList')
-Route.get('/tmdb/movie/:id', 'TmdbsController.getMovieDetails')
+Route.get('/tmdb/movie/:id', 'TmdbsController.getMovieDetails').where('id', /^[0-9]+$/)
 
 //TMDB Search routes
 Route.get('/tmdb/search/person/:query', 'TmdbsController.getPersonId')

@@ -21,7 +21,7 @@ module.exports = {
     'vue/max-attributes-per-line': 'off',
     'vue/no-v-html': 'off',
     'vue/attributes-order': ['error', {
-      'order': [
+      order: [
         'DEFINITION',
         'LIST_RENDERING',
         'CONDITIONALS',
@@ -35,7 +35,7 @@ module.exports = {
         'OTHER_ATTR'
       ]
     }],
-    'quotes': [2, 'single', { 'avoidEscape': true }],
-    'semi': [2, 'never'],
+    quotes: [2, 'single', { avoidEscape: true }],
+    semi: [2, 'never']
   }
 }

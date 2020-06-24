@@ -40,6 +40,10 @@ Route.get('/tmdb/search/defaultMovieList/:page', 'TmdbsController.getSearchDefau
 Route.get('/tmdb/search/byName/:name/:page', 'TmdbsController.getSearchedByNameMovieList')
 Route.get('/tmdb/search/withFilters/:query', 'TmdbsController.getSearchedWithFiltersMovieList')
 
+//Utelly route
+Route.get('/utelly/:source_id/:country', 'UtellyController.getStreamingServicesById').where('source_id', /^[0-9]+$/)
+Route.get('/utellyDummy/:source_id/:country', 'UtellyController.getStreamingServicesByIdDummy').where('source_id', /^[0-9]+$/)
+
 //Catch the rest
 Route.get('/*', async ({response}) => {
   return response.status(404).json({ status: 404, error: 'Not Found' })

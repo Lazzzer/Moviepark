@@ -58,6 +58,7 @@ services:
       - APP_NAME=
       - APP_KEY=
       - TMDB_API_KEY=
+      - UTELLY_API_KEY=
       - CLIENT_URL=
       - CLIENT_BROWSER_URL=
       - REDIS_CONNECTION=

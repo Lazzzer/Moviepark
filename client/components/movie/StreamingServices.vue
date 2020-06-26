@@ -3,8 +3,8 @@
     <div class="w-11/12 mx-auto sm:w-full">
       <h3 class="mb-1 text-2xl font-extrabold text-center text-gray-300 sm:text-left md:ml-3 sm:mb-0 sm:text-2xl">Watch</h3>
     </div>
-    <div class="flex flex-wrap items-center justify-center flex-shrink-0 w-11/12 mx-auto mt-4 sm:justify-start sm:w-full">
-      <span v-for="(service, index) in infos.collection.locations" :key="index" class="mb-2 mr-2">
+    <div class="flex flex-wrap items-center justify-center flex-shrink-0 w-11/12 mx-auto mt-3 sm:justify-start sm:w-full">
+      <span v-for="(service, index) in filteredServicesList" :key="index" class="m-2 sm:m-0 sm:mb-2 sm:mr-2">
         <a v-if="service.name.includes('iTunesIVA')" :href="service.url" target="_blank" rel="noopener">
           <svg width="100" class="w-auto h-20 border border-transparent rounded-lg hover:border-teal-500" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
             <rect width="100" height="100" fill="#000E1B" />
@@ -163,7 +163,12 @@ export default {
   },
   data () {
     return {
-
+      servicesList: ['iTunesIVAUS', 'AmazonInstantVideoIVAUS', 'GooglePlayIVAUS', 'HBOMaxIVAUS', 'DisneyPlusIVAUS', 'AmazonPrimeVideoIVAUS', 'NetflixIVAUS', 'HuluIVAUS', 'AppleTvPlusIVAUS']
+    }
+  },
+  computed: {
+    filteredServicesList () {
+      return this.infos.collection.locations.filter(service => this.servicesList.includes(service.name))
     }
   }
 }

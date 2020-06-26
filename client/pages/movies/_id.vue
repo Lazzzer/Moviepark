@@ -37,7 +37,7 @@ export default {
   async asyncData ({ store, $axios, env, params, error }) {
     try {
       const movieInfos = await $axios.get(`/tmdb/movie/${params.id}`)
-      const streamingInfos = await $axios.get(`/utellyDummy/${params.id}/US`)
+      const streamingInfos = await $axios.get(`/utelly/${params.id}`)
       return { movieInfos: movieInfos.data, streamingInfos: streamingInfos.data }
     } catch (err) {
       if (err.response !== undefined) {
@@ -55,7 +55,7 @@ export default {
   },
   head () {
     return {
-      title: this.movieInfos.original_title,
+      title: this.movieInfos.title,
       meta: [
         {
           hid: 'description',

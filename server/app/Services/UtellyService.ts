@@ -11,7 +11,7 @@ const utellyApi = axios.create({
   },
 })
 export default {
-  getStreamingServicesById (source_id, country) {
-    return utellyApi.get('idlookup', {params: {'source':'tmdb','source_id':source_id, 'country':country} })
+  getStreamingServicesById (source_id) {
+    return utellyApi.get('idlookup', {params: {'source':'tmdb','source_id':source_id, 'country':'US'} })
   },
 }

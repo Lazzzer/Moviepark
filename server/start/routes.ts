@@ -41,8 +41,7 @@ Route.get('/tmdb/search/byName/:name/:page', 'TmdbsController.getSearchedByNameM
 Route.get('/tmdb/search/withFilters/:query', 'TmdbsController.getSearchedWithFiltersMovieList')
 
 //Utelly route
-Route.get('/utelly/:source_id/:country', 'UtellyController.getStreamingServicesById').where('source_id', /^[0-9]+$/)
-Route.get('/utellyDummy/:source_id/:country', 'UtellyController.getStreamingServicesByIdDummy').where('source_id', /^[0-9]+$/)
+Route.get('/utelly/:id', 'UtellyController.getStreamingServicesById').where('id', /^[0-9]+$/)
 
 //Catch the rest
 Route.get('/*', async ({response}) => {

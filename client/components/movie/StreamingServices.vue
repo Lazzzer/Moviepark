@@ -40,10 +40,8 @@
         <a v-if="service.name.includes('AppleTvPlusIV')" :href="service.url" target="_blank" rel="noopener">
           <svg-icon class="w-20 h-20 border border-transparent rounded-lg hover:border-teal-500" name="appleTvPlus" />
         </a>
-
       </span>
     </div>
-
   </section>
 </template>
 

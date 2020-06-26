@@ -17,6 +17,7 @@
     "@nuxtjs/axios": "^5.11.0",
     "@nuxtjs/device": "^1.2.7",
     "@nuxtjs/pwa": "^3.0.0-0",
+    "@nuxtjs/svg-sprite": "^0.4.11",
     "@tailwindcss/ui": "^0.3.0",
     "nuxt": "^2.13.0",
     "vee-validate": "^3.3.4",

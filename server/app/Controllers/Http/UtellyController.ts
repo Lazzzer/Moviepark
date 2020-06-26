@@ -18,7 +18,7 @@ export default class UtellyController {
       }
       return context.response.status(200).send(redisData)
     } catch (err) {
-      return context.response.status(500).json({status: 500, error: 'Server ror'})
+      return context.response.status(500).json({status: 500, error: 'Server error'})
     }
   }
 }

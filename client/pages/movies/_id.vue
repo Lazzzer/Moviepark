@@ -7,6 +7,7 @@
         <iframe class="rounded-md w-yt-modal-lg h-yt-modal-lg" :src="'https://www.youtube-nocookie.com/embed/' + trailerId" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
       </modal>
     </client-only>
+    <StreamingServices v-if="streamingInfos.collection.locations.length > 0" :infos="streamingInfos" />
     <Cast v-if="movieInfos.credits.cast.length > 0" :cast-infos="movieInfos.credits.cast" />
     <div v-else style="height:250px;"></div>
     <div v-if="movieInfos.recommendations.total_results !== 0 && movieInfos.similar.total_results !== 0" class="mt-2 lg:mt-10 lg:flex lg:space-x-10 xl:space-x-12">
@@ -21,6 +22,7 @@
 import MovieDetails from '@/components/movie/MovieDetails'
 import MobileMovieDetails from '@/components/movie/MobileMovieDetails'
 
+import StreamingServices from '@/components/movie/StreamingServices'
 import Cast from '@/components/movie/Cast'
 import MovieListing from '@/components/movie/MovieListing'
 
@@ -28,13 +30,15 @@ export default {
   components: {
     MovieDetails,
     MobileMovieDetails,
+    StreamingServices,
     Cast,
     MovieListing
   },
   async asyncData ({ store, $axios, env, params, error }) {
     try {
       const movieInfos = await $axios.get(`/tmdb/movie/${params.id}`)
-      return { movieInfos: movieInfos.data }
+      const streamingInfos = await $axios.get(`/utelly/${params.id}`)
+      return { movieInfos: movieInfos.data, streamingInfos: streamingInfos.data }
     } catch (err) {
       if (err.response !== undefined) {
         return error({ statusCode: err.response.status, message: err.response.statusText })
@@ -51,7 +55,7 @@ export default {
   },
   head () {
     return {
-      title: this.movieInfos.original_title,
+      title: this.movieInfos.title,
       meta: [
         {
           hid: 'description',

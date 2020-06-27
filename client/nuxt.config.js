@@ -52,7 +52,8 @@ export default {
     // Doc: https://axios.nuxtjs.org/usage
     '@nuxtjs/axios',
     '@nuxtjs/pwa',
-    '@nuxtjs/device'
+    '@nuxtjs/device',
+    '@nuxtjs/svg-sprite'
   ],
 
   /*
@@ -66,6 +67,9 @@ export default {
     apiURL: process.env.API_URL
   },
 
+  svgSprite: {
+
+  },
   /*
   ** Axios module configuration
   ** See https://axios.nuxtjs.org/options

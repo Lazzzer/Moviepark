@@ -1,6 +1,6 @@
 {
   "name": "moviepark-client",
-  "version": "1.0.5",
+  "version": "1.1.0",
   "description": "A webapp made with Nuxt using the TMDB API",
   "author": "Lazar Pavicevic",
   "private": true,
@@ -17,9 +17,10 @@
     "@nuxtjs/axios": "^5.11.0",
     "@nuxtjs/device": "^1.2.7",
     "@nuxtjs/pwa": "^3.0.0-0",
+    "@nuxtjs/svg-sprite": "^0.4.11",
     "@tailwindcss/ui": "^0.3.0",
-    "nuxt": "^2.13.0",
-    "vee-validate": "^3.3.4",
+    "nuxt": "^2.13.2",
+    "vee-validate": "^3.3.5",
     "vue-js-modal": "^2.0.0-rc.3"
   },
   "devDependencies": {
@@ -29,7 +30,7 @@
     "@vue/test-utils": "^1.0.3",
     "babel-eslint": "^10.0.1",
     "babel-jest": "^24.1.0",
-    "eslint": "^7.2.0",
+    "eslint": "^7.3.1",
     "eslint-plugin-nuxt": "^1.0.0",
     "jest": "^24.1.0",
     "vue-jest": "^4.0.0-beta.3"

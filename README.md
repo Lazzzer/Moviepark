@@ -15,6 +15,7 @@ Moviepark is an open-source project using the TMDb API for its movie catalog.
 - [Node.js >= 12.0.0](https://nodejs.org/en/)
 - [Docker](https://docs.docker.com/get-docker/)
 - [a TMDb API key](https://developers.themoviedb.org/3/getting-started/introduction)
+- [an Utelly API key](https://rapidapi.com/utelly/api/utelly)
 
 ## Project setup
 
@@ -43,6 +44,6 @@ To check how it would look like in production with docker (don't forget to add y
 
 - [x] Release version 1.0 Yay!
 - [x] Caching
-- [ ] Get streaming services for each movie with [Utelly's API](https://rapidapi.com/utelly/api/utelly)
+- [x] Get streaming services for each movie with Utelly's API
 - [ ] More search filters (ex: search by company...)
 - [ ] Watchlist

@@ -26,7 +26,7 @@ services:
     networks:
       - moviepark-network
   moviepark-client:
-    image: moviepark-client:1.0
+    image: moviepark-client:1.1
     build:
       context: ./client
       dockerfile: Dockerfile
@@ -46,7 +46,7 @@ services:
     networks:
       - moviepark-network
   moviepark-server:
-    image: moviepark-server:1.1
+    image: moviepark-server:1.2
     build:
       context: ./server
       dockerfile: Dockerfile
@@ -58,6 +58,7 @@ services:
       - APP_NAME=
       - APP_KEY=
       - TMDB_API_KEY=
+      - UTELLY_API_KEY=
       - CLIENT_URL=
       - CLIENT_BROWSER_URL=
       - REDIS_CONNECTION=

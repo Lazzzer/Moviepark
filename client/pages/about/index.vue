@@ -18,7 +18,10 @@
         <a href="https://unsplash.com/photos/evlkOfkQ5rE" target="_blank" rel="noopener" class="font-bold">Background image</a> by <a class="italic" href="https://unsplash.com/@felixmooneeram?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText" target="_blank" rel="noopener">Felix Mooneeram</a>
       </p>
       <p class="mt-2 text-justify">
-        <span class="font-bold">Posters, backdrop images and content</span> provided by <a class="italic" href="https://www.themoviedb.org/" target="_blank" rel="noopener">TMDb*</a>.
+        <span class="font-bold">Posters, backdrop images and content</span> provided by <a class="italic" href="https://www.themoviedb.org/" target="_blank" rel="noopener">TMDb*</a>
+      </p>
+      <p class="mt-2 text-justify">
+        <span class="font-bold">Streaming services data</span> provided by <a class="italic" href="https://rapidapi.com/utelly/api/utelly/details" target="_blank" rel="noopener">Utelly</a>
       </p>
       <p class="mt-4 text-sm italic text-justify">
         *Moviepark uses the TMDb API but is not endorsed or certified by TMDb.

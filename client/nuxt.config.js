@@ -53,7 +53,8 @@ export default {
     '@nuxtjs/axios',
     '@nuxtjs/pwa',
     '@nuxtjs/device',
-    '@nuxtjs/svg-sprite'
+    '@nuxtjs/svg-sprite',
+    '@nuxtjs/auth'
   ],
 
   /*
@@ -70,11 +71,42 @@ export default {
   svgSprite: {
 
   },
+
+  auth: {
+    plugins: [{ src: '~/plugins/axios', ssr: true }],
+    cookie: {
+      prefix: 'moviepark-auth.',
+      options: {
+        path: '/',
+        domain: process.env.COOKIE_DOMAIN,
+        secure: true
+      }
+    },
+    redirect: {
+      login: '/login',
+      logout: '/',
+      callback: '/login',
+      home: '/'
+    },
+    strategies: {
+      local: {
+        endpoints: {
+          login: { url: '/login', method: 'post' },
+          logout: { url: '/logout', method: 'post' },
+          user: { url: '/check', method: 'get', propertyName: 'user' }
+        },
+        tokenRequired: false,
+        tokenType: false
+      }
+    }
+  },
+
   /*
   ** Axios module configuration
   ** See https://axios.nuxtjs.org/options
   */
   axios: {
+    credentials: true
   },
   /*
   ** Build configuration

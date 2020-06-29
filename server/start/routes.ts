@@ -31,7 +31,7 @@ Route.get('/robots.txt', async () => {
 Route.post('/register', 'AuthController.register')
 Route.post('/login', 'AuthController.login')
 Route.post('/logout', 'AuthController.logout').middleware('auth')
-Route.post('/check', 'AuthController.check')
+Route.get('/check', 'AuthController.check')
 
 //TMDB General routes
 Route.get('/tmdb/trending', 'TmdbsController.getTrending')

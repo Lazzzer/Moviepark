@@ -28,10 +28,10 @@ export default class AuthController {
     await user.save()
 
     await auth.login(user)
-    return response.created({status:201, message:'User created & logged', username: user.username})
+    return response.created({status:201, message:'User created & logged', user: { username: user.username }})
   }
 
-  public async login ({ auth, request }: HttpContextContract) {
+  public async login ({ auth, request, response }: HttpContextContract) {
     const validationSchema = schema.create({
       username: schema.string({ trim: true }, [
         rules.required(),
@@ -45,7 +45,8 @@ export default class AuthController {
       schema: validationSchema,
     })
 
-    return await auth.attempt(userDetails.username, userDetails.password)
+    const user = await auth.attempt(userDetails.username, userDetails.password)
+    return response.accepted({status:202, message:'User logged', user: { username: user.username }})
   }
 
   public async logout ({ auth, response }: HttpContextContract) {
@@ -54,7 +55,11 @@ export default class AuthController {
   }
 
   public async check ({ auth, response }: HttpContextContract) {
-    const user = await auth.authenticate()
-    return response.accepted({status:202, message:'User authenticated', username: user.username})
+    try{
+      const user = await auth.authenticate()
+      return response.accepted({status:202, message:'User authenticated', user: { username: user.username }})
+    } catch {
+      return response.ok({status:204, message:'User not found', user: undefined})
+    }
   }
 }

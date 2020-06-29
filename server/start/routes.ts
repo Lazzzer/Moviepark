@@ -28,6 +28,11 @@ Route.get('/robots.txt', async () => {
   return 'User-agent: *\nDisallow: /'
 })
 
+Route.post('/register', 'AuthController.register')
+Route.post('/login', 'AuthController.login')
+Route.post('/logout', 'AuthController.logout').middleware('auth')
+Route.post('/check', 'AuthController.check')
+
 //TMDB General routes
 Route.get('/tmdb/trending', 'TmdbsController.getTrending')
 Route.get('/tmdb/nextTheaters', 'TmdbsController.getNextInTheaters')

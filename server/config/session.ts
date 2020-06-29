@@ -34,7 +34,7 @@ const sessionConfig: SessionConfig = {
   | The name of the cookie that will hold the session id.
   |
   */
-  cookieName: 'adonis-session',
+  cookieName: 'moviepark-session',
 
   /*
   |--------------------------------------------------------------------------
@@ -75,7 +75,8 @@ const sessionConfig: SessionConfig = {
   cookie: {
     path: '/',
     httpOnly: true,
-    sameSite: false,
+    domain: Env.get('COOKIE_DOMAIN', 'localhost')?.toString(),
+    sameSite: true,
   },
 
   /*

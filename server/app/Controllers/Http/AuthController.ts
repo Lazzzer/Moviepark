@@ -18,8 +18,13 @@ export default class AuthController {
       ]),
     })
 
+    const messages = {
+      'username.unique': 'The name is already taken.',
+    }
+
     const userDetails = await request.validate({
       schema: validationSchema,
+      messages: messages,
     })
 
     const user = new User()

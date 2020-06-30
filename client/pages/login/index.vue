@@ -16,52 +16,100 @@
           </nuxt-link>
         </p>
       </div>
-      <form @submit.prevent="userLogin" class="mt-8">
-        <input type="hidden" name="remember" value="true" />
-        <div class="rounded-md shadow-sm">
+      <ValidationObserver ref="form" v-slot="{ handleSubmit, errors, invalid}">
+        <form @submit.prevent class="mt-8">
+          <input type="hidden" name="remember" value="true" />
+          <div class="rounded-md shadow-sm">
+            <div>
+              <ValidationProvider
+                v-slot="{ validated, failed }"
+                vid="username"
+                name="username"
+                mode="eager"
+                rules="required|alpha_dash"
+              >
+                <input v-model="login.username" aria-label="Username" name="username" type="username" required
+                       :class="validated && failed ? 'text-red-400' : 'text-gray-300'"
+                       class="relative block w-full px-3 py-2 text-gray-300 placeholder-gray-400 border border-transparent rounded-none appearance-none bg-m-blue-900 rounded-t-md focus:outline-none focus:border-teal-700 focus:z-10 sm:text-sm sm:leading-5" placeholder="Username"
+                />
+              </ValidationProvider>
+            </div>
+            <div class="-mt-px">
+              <ValidationProvider
+                v-slot="{ validated, failed }"
+                vid="password"
+                name="password"
+                mode="eager"
+                rules="required"
+              >
+                <input v-model="login.password" aria-label="Password" name="password" type="password" required
+                       :class="validated && failed ? 'text-red-400' : 'text-gray-300'"
+                       class="relative block w-full px-3 py-2 text-gray-300 placeholder-gray-400 border border-transparent rounded-none appearance-none bg-m-blue-900 rounded-b-md focus:outline-none focus:border-teal-700 focus:z-10 sm:text-sm sm:leading-5" placeholder="Password"
+                />
+              </ValidationProvider>
+            </div>
+          </div>
+
+          <div class="flex items-center justify-center mt-6">
+            <div class="flex items-center">
+
+              <input v-model="login.remember_me" id="remember_me" type="checkbox"
+                     class="w-4 h-4 transition duration-150 ease-in-out border-transparent cursor-pointer bg-m-blue-900 text-m-burgundy-600 form-checkbox focus:outline-none focus:bg-m-burgundy-800 active:bg-m-burgundy-800 focus:shadow-none focus:border-teal-700"
+              />
+
+              <label for="remember_me" class="block ml-2 text-sm leading-5 text-gray-300 cursor-pointer">
+                Remember me
+              </label>
+            </div>
+          </div>
+
+          <div class="mt-6">
+            <button @click="handleSubmit(userLogin)" :disabled="invalid" type="submit" class="relative flex justify-center w-full px-4 py-2 text-sm font-medium leading-5 text-white transition duration-150 ease-in-out border border-transparent rounded-md bg-m-burgundy-600 group hover:bg-m-burgundy-700 focus:outline-none focus:bg-m-burgundy-800 active:bg-m-burgundy-800 ">
+              <span class="absolute inset-y-0 left-0 flex items-center pl-3">
+                <svg class="w-5 h-5 text-white transition duration-150 ease-in-out group-hover:text-white" fill="currentColor" viewBox="0 0 20 20">
+                  <path fill-rule="evenodd" d="M5 9V7a5 5 0 0110 0v2a2 2 0 012 2v5a2 2 0 01-2 2H5a2 2 0 01-2-2v-5a2 2 0 012-2zm8-2v2H7V7a3 3 0 016 0z" clip-rule="evenodd" />
+                </svg>
+              </span>
+              Log in
+            </button>
+          </div>
+
           <div>
-            <input v-model="login.username" aria-label="Username" name="username" type="username" required class="relative block w-full px-3 py-2 text-gray-300 placeholder-gray-400 border border-transparent rounded-none appearance-none bg-m-blue-900 rounded-t-md focus:outline-none focus:border-teal-700 focus:z-10 sm:text-sm sm:leading-5" placeholder="Username" />
+            <div v-if="errors.username" class="mt-6 text-sm italic leading-4">
+              <div v-if="errors.username[0] !== undefined" class="flex items-center px-4 py-3 bg-red-400 rounded-md font-sm text-m-blue-900">
+                <svg-icon name="alertCircle" class="w-4 h-4 mr-2 text-m-blue-900" />
+                <div>
+                  {{ errors.username[0] !== undefined ? 'Username: ' + errors.username[0] : '' }}
+                </div>
+              </div>
+            </div>
+            <p v-if="errors.password" class="mt-3 text-sm italic leading-4 text-red-400">{{ errors.password[0] !== undefined ? '• Password: ' + errors.password[0] : '' }}</p>
+            <p v-if="errorLogin" class="mt-3 text-sm italic leading-4 text-red-400">• Wrong Credentials</p>
           </div>
-          <div class="-mt-px">
-            <input v-model="login.password" aria-label="Password" name="password" type="password" required class="relative block w-full px-3 py-2 text-gray-300 placeholder-gray-400 border border-transparent rounded-none appearance-none bg-m-blue-900 rounded-b-md focus:outline-none focus:border-teal-700 focus:z-10 sm:text-sm sm:leading-5" placeholder="Password" />
-          </div>
-        </div>
-
-        <div class="flex items-center justify-center mt-6">
-          <div class="flex items-center">
-            <input v-model="login.remember_me" id="remember_me" type="checkbox" class="w-4 h-4 transition duration-150 ease-in-out border-transparent cursor-pointer bg-m-blue-900 text-m-burgundy-600 form-checkbox focus:outline-none focus:shadow-none focus:border-teal-700" />
-            <label for="remember_me" class="block ml-2 text-sm leading-5 text-gray-300 cursor-pointer">
-              Remember me
-            </label>
-          </div>
-        </div>
-
-        <div class="mt-6">
-          <button type="submit" class="relative flex justify-center w-full px-4 py-2 text-sm font-medium leading-5 text-white transition duration-150 ease-in-out border border-transparent rounded-md bg-m-burgundy-600 group hover:bg-m-burgundy-700 focus:outline-none focus:border-m-burgundy-700 active:bg-m-burgundy-700 ">
-            <span class="absolute inset-y-0 left-0 flex items-center pl-3">
-              <svg class="w-5 h-5 text-white transition duration-150 ease-in-out group-hover:text-white" fill="currentColor" viewBox="0 0 20 20">
-                <path fill-rule="evenodd" d="M5 9V7a5 5 0 0110 0v2a2 2 0 012 2v5a2 2 0 01-2 2H5a2 2 0 01-2-2v-5a2 2 0 012-2zm8-2v2H7V7a3 3 0 016 0z" clip-rule="evenodd" />
-              </svg>
-            </span>
-            Log in
-          </button>
-        </div>
-      </form>
+        </form>
+      </ValidationObserver>
     </div>
   </div>
 </template>
 
 <script>
+import { ValidationProvider, ValidationObserver } from 'vee-validate'
+
 export default {
   middleware: 'auth',
   auth: 'guest',
+  components: {
+    ValidationProvider,
+    ValidationObserver
+  },
   data () {
     return {
       login: {
         username: '',
         password: '',
         remember_me: false
-      }
+      },
+      errorLogin: false
     }
   },
   methods: {
@@ -69,7 +117,13 @@ export default {
       try {
         await this.$auth.loginWith('local', { data: this.login })
       } catch (err) {
-        console.log(err)
+        console.log(err.response.data)
+        if (err.response.data.errors[0].message === 'Invalid user credentials') {
+          this.errorLogin = true
+        } else {
+          const payload = err.response.data.errors.reduce((acc, curr) => ({ ...acc, [curr.field]: [curr.message] }), {})
+          this.$refs.form.setErrors(payload)
+        }
       }
     }
   },

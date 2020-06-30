@@ -7,7 +7,7 @@ export default class AuthController {
     const validationSchema = schema.create({
       username: schema.string({ trim: true }, [
         rules.minLength(3),
-        rules.maxLength(60),
+        rules.maxLength(20),
         rules.required(),
         rules.unique({ table: 'users', column: 'username' }),
       ]),
@@ -39,13 +39,14 @@ export default class AuthController {
       password: schema.string({ trim: true }, [
         rules.required(),
       ]),
+      remember_me: schema.boolean(),
     })
 
     const userDetails = await request.validate({
       schema: validationSchema,
     })
 
-    const user = await auth.attempt(userDetails.username, userDetails.password)
+    const user = await auth.attempt(userDetails.username, userDetails.password, userDetails.remember_me)
     return response.accepted({status:202, message:'User logged', user: { username: user.username }})
   }
 

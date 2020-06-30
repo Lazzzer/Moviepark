@@ -16,7 +16,7 @@
             </nuxt-link>
           </div>
         </div>
-        <div class="flex justify-center flex-1 px-2 lg:ml-6 lg:justify-end">
+        <div class="flex justify-center flex-1 pr-2 lg:ml-6 lg:justify-end">
           <!-- Quick Search Movies -->
           <QuickSearch></QuickSearch>
           <nuxt-link to="/discover" class="hidden ml-4 lg:block nav-button">Discover</nuxt-link>
@@ -24,6 +24,10 @@
           <nuxt-link to="/about" class="hidden ml-4 lg:block nav-button">About</nuxt-link>
           <nuxt-link v-if="!$auth.loggedIn" to="/Login" class="hidden ml-4 lg:block nav-button">Login</nuxt-link>
           <nuxt-link v-if="!$auth.loggedIn" to="/Register" class="hidden ml-4 lg:block nav-button">Register</nuxt-link>
+          <div v-if="$auth.loggedIn" @click="logout()" class="hidden px-3 py-2 ml-4 text-sm font-medium leading-5 text-gray-300 transition duration-150 ease-in-out rounded-md cursor-pointer lg:flex lg:justify-center lg:items-center hover:bg-m-burgundy-600 hover:text-white focus:outline-none focus:text-white focus:bg-m-burgundy-600">
+            <span>{{ $auth.user.username }} </span>
+            <svg-icon name="logOut" class="inline w-4 h-4 ml-1" />
+          </div>
 
         </div>
         <div class="flex lg:hidden">
@@ -98,7 +102,7 @@
                 <p class="ml-3 text-base font-medium leading-6 text-white">{{ $auth.user.username }}</p>
               </div>
 
-              <div @click="logout()" class="px-4 py-2 text-sm text-white rounded-md bg-m-burgundy-600 focus:bg-m-burgundy-700 hover:bg-m-burgundy-700">Logout</div>
+              <div @click="logout()" class="px-4 py-2 text-sm text-white rounded-md cursor-pointer bg-m-burgundy-600 focus:bg-m-burgundy-700 hover:bg-m-burgundy-700">Logout</div>
             </div>
           </div>
 

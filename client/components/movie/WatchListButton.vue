@@ -4,7 +4,7 @@
       v-if="!isInWatchList"
       @click="add"
       type="button"
-      class="inline-flex items-center w-full px-3 py-2 text-sm font-medium leading-4 text-white transition duration-150 ease-in-out bg-teal-700 border border-transparent rounded-md cursor-pointer hover:bg-teal-800 focus:outline-none focus:shadow-outline-none active:bg-teal-800 focus:bg-teal-800"
+      class="inline-flex items-center w-full px-3 py-2 text-sm font-medium leading-4 text-white transition duration-150 ease-in-out bg-teal-700 border border-transparent rounded-lg cursor-pointer hover:bg-teal-800 focus:outline-none focus:shadow-outline-none active:bg-teal-800 focus:bg-teal-800"
     >
       <svg-icon name="plus-circle" class="w-4 h-4" />
       <span class="ml-1">Add to watchlist</span>
@@ -13,7 +13,7 @@
 
       <div
         v-if="isWatched"
-        class="inline-flex items-center px-3 py-2 text-sm font-medium leading-4 text-white transition duration-150 ease-in-out bg-gray-500 border border-transparent rounded-lg focus:outline-none focus:shadow-outline-none"
+        class="inline-flex items-center px-3 py-2 text-sm font-medium leading-4 text-white transition duration-150 ease-in-out bg-gray-500 border border-transparent rounded-lg hover:bg-gray-600 focus:outline-none focus:shadow-outline-none"
       >
         <svg-icon name="eye" class="w-4 h-4" />
         <span class="ml-1">Watched</span>
@@ -23,7 +23,7 @@
       </div>
 
       <div v-else
-           class="inline-flex items-center px-3 py-2 text-sm font-medium leading-4 text-white transition duration-150 ease-in-out bg-teal-700 border border-transparent rounded-lg focus:outline-none focus:shadow-outline-none"
+           class="inline-flex items-center px-3 py-2 text-sm font-medium leading-4 text-white transition duration-150 ease-in-out border border-transparent rounded-lg bg-m-burgundy-600 hover:bg-m-burgundy-700 focus:outline-none focus:shadow-outline-none"
       >
         <svg-icon name="bookmark" class="w-4 h-4" />
         <span class="ml-1">In watchlist</span>
@@ -46,12 +46,18 @@
           <div class="rounded-md bg-m-blue-800" role="menu" aria-orientation="vertical" aria-labelledby="options-menu">
             <div class="py-1">
 
-              <div v-if="isWatched" class="flex items-center px-4 py-2 text-sm leading-5 text-gray-300 cursor-pointer group hover:bg-teal-900 hover:text-white focus:outline-none focus:bg-teal-900 focus:text-white" role="menuitem">
+              <div v-if="isWatched"
+                   @click="update(false)"
+                   class="flex items-center px-4 py-2 text-sm leading-5 text-gray-300 cursor-pointer group hover:bg-teal-900 hover:text-white focus:outline-none focus:bg-teal-900 focus:text-white" role="menuitem"
+              >
                 <svg-icon name="eye-off" class="w-5 h-5 mr-3 text-gray-300 group-hover:text-white group-focus:text-white" />
                 Mark as unwatched
               </div>
 
-              <div v-else class="flex items-center px-4 py-2 text-sm leading-5 text-gray-300 cursor-pointer group hover:bg-teal-900 hover:text-white focus:outline-none focus:bg-teal-900 focus:text-white" role="menuitem">
+              <div v-else
+                   @click="update(true)"
+                   class="flex items-center px-4 py-2 text-sm leading-5 text-gray-300 cursor-pointer group hover:bg-teal-900 hover:text-white focus:outline-none focus:bg-teal-900 focus:text-white" role="menuitem"
+              >
                 <svg-icon name="eye" class="w-5 h-5 mr-3 text-gray-300 group-hover:text-white group-focus:text-white" />
                 Mark as watched
               </div>
@@ -100,6 +106,10 @@ export default {
   methods: {
     async add () {
       await this.$axios.post('/watchlist/addMovie', { movieId: this.movieId })
+      await this.$store.dispatch('watchlist/setWatchList')
+    },
+    async update (state) {
+      await this.$axios.put('/watchlist/updateMovie', { movieId: this.movieId, watched: state })
       await this.$store.dispatch('watchlist/setWatchList')
     }
   }

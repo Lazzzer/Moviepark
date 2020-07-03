@@ -128,6 +128,7 @@ export default {
     async userLogin () {
       try {
         await this.$auth.loginWith('local', { data: this.login })
+        await this.$store.dispatch('watchlist/setWatchList')
       } catch (err) {
         console.log(err.response.data)
         if (err.response.data.errors[0].message === 'Invalid user credentials') {

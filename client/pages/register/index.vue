@@ -158,6 +158,7 @@ export default {
       try {
         await this.$axios.post('/register', this.register)
         await this.$auth.loginWith('local', { data: { username: this.register.username, password: this.register.password, remember_me: false } })
+        await this.$store.dispatch('watchlist/setWatchList', true)
       } catch (err) {
         const payload = err.response.data.errors.reduce((acc, curr) => ({ ...acc, [curr.field]: [curr.message] }), {})
         this.$refs.form.setErrors(payload)

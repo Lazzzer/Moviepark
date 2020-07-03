@@ -127,6 +127,7 @@ export default {
   methods: {
     async logout () {
       await this.$auth.logout()
+      await this.$store.dispatch('watchlist/setWatchList', true)
     }
   }
 }

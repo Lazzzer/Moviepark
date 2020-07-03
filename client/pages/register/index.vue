@@ -30,7 +30,7 @@
           >Log in!</nuxt-link>
         </p>
       </div>
-      <ValidationObserver ref="form" v-slot="{ handleSubmit, errors, invalid}">
+      <ValidationObserver ref="form" v-slot="{ handleSubmit, errors}">
         <form @submit.prevent class="mt-8">
           <div class="rounded-md shadow-sm">
             <div>
@@ -98,13 +98,12 @@
           <div class="mt-6">
             <button
               @click="handleSubmit(userRegister)"
-              :disabled="invalid"
               type="submit"
               class="relative flex justify-center w-full px-4 py-2 text-sm font-medium leading-5 text-white transition duration-150 ease-in-out border border-transparent rounded-md bg-m-burgundy-600 group hover:bg-m-burgundy-700 focus:outline-none focus:bg-m-burgundy-800 active:bg-m-burgundy-800"
             >Create</button>
           </div>
-          <div>
-            <div v-if="errors.username" class="mt-6 text-sm italic leading-4">
+          <div class="pt-2">
+            <div v-if="errors.username" class="mt-3 text-sm italic leading-4">
               <div v-if="errors.username[0] !== undefined" class="flex items-center px-4 py-3 bg-red-400 rounded-md font-sm text-m-blue-900">
                 <svg-icon name="alertCircle" class="flex-shrink-0 w-4 h-4 mr-2 text-m-blue-900" />
                 <div>
@@ -112,9 +111,22 @@
                 </div>
               </div>
             </div>
-            <!-- <p v-if="errors.username" class="mt-6 text-sm italic leading-4 text-red-400">{{ errors.username[0] !== undefined ? '• Username: ' + errors.username[0] : '' }}</p> -->
-            <p v-if="errors.password" class="mt-3 text-sm italic leading-4 text-red-400">{{ errors.password[0] !== undefined ? '• Password: ' + errors.password[0] : '' }}</p>
-            <p v-if="errors.password_confirmation" class="mt-3 text-sm italic leading-4 text-red-400">{{ errors.password_confirmation[0] !== undefined ? '• Confirm Password: ' + errors.password_confirmation[0] : '' }}</p>
+            <div v-if="errors.password" class="mt-3 text-sm italic leading-4">
+              <div v-if="errors.password[0] !== undefined" class="flex items-center px-4 py-3 bg-red-400 rounded-md font-sm text-m-blue-900">
+                <svg-icon name="alertCircle" class="flex-shrink-0 w-4 h-4 mr-2 text-m-blue-900" />
+                <div>
+                  {{ errors.password[0] !== undefined ? 'Password: ' + errors.password[0] : '' }}
+                </div>
+              </div>
+            </div>
+            <div v-if="errors.password_confirmation" class="mt-3 text-sm italic leading-4">
+              <div v-if="errors.password_confirmation[0] !== undefined" class="flex items-center px-4 py-3 bg-red-400 rounded-md font-sm text-m-blue-900">
+                <svg-icon name="alertCircle" class="flex-shrink-0 w-4 h-4 mr-2 text-m-blue-900" />
+                <div>
+                  {{ errors.password_confirmation[0] !== undefined ? 'Confirm Password: ' + errors.password_confirmation[0] : '' }}
+                </div>
+              </div>
+            </div>
           </div>
         </form>
       </ValidationObserver>

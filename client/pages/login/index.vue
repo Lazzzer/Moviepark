@@ -16,7 +16,7 @@
           </nuxt-link>
         </p>
       </div>
-      <ValidationObserver ref="form" v-slot="{ handleSubmit, errors, invalid}">
+      <ValidationObserver ref="form" v-slot="{ handleSubmit, errors}">
         <form @submit.prevent class="mt-8">
           <input type="hidden" name="remember" value="true" />
           <div class="rounded-md shadow-sm">
@@ -64,7 +64,7 @@
           </div>
 
           <div class="mt-6">
-            <button @click="handleSubmit(userLogin)" :disabled="invalid" type="submit" class="relative flex justify-center w-full px-4 py-2 text-sm font-medium leading-5 text-white transition duration-150 ease-in-out border border-transparent rounded-md bg-m-burgundy-600 group hover:bg-m-burgundy-700 focus:outline-none focus:bg-m-burgundy-800 active:bg-m-burgundy-800 ">
+            <button @click="handleSubmit(userLogin)" type="submit" class="relative flex justify-center w-full px-4 py-2 text-sm font-medium leading-5 text-white transition duration-150 ease-in-out border border-transparent rounded-md bg-m-burgundy-600 group hover:bg-m-burgundy-700 focus:outline-none focus:bg-m-burgundy-800 active:bg-m-burgundy-800 ">
               <span class="absolute inset-y-0 left-0 flex items-center pl-3">
                 <svg class="w-5 h-5 text-white transition duration-150 ease-in-out group-hover:text-white" fill="currentColor" viewBox="0 0 20 20">
                   <path fill-rule="evenodd" d="M5 9V7a5 5 0 0110 0v2a2 2 0 012 2v5a2 2 0 01-2 2H5a2 2 0 01-2-2v-5a2 2 0 012-2zm8-2v2H7V7a3 3 0 016 0z" clip-rule="evenodd" />
@@ -74,17 +74,29 @@
             </button>
           </div>
 
-          <div>
-            <div v-if="errors.username" class="mt-6 text-sm italic leading-4">
+          <div class="pt-2">
+            <div v-if="errors.username" class="mt-3 text-sm italic leading-4">
               <div v-if="errors.username[0] !== undefined" class="flex items-center px-4 py-3 bg-red-400 rounded-md font-sm text-m-blue-900">
-                <svg-icon name="alertCircle" class="w-4 h-4 mr-2 text-m-blue-900" />
+                <svg-icon name="alertCircle" class="flex-shrink-0 w-4 h-4 mr-2 text-m-blue-900" />
                 <div>
                   {{ errors.username[0] !== undefined ? 'Username: ' + errors.username[0] : '' }}
                 </div>
               </div>
             </div>
-            <p v-if="errors.password" class="mt-3 text-sm italic leading-4 text-red-400">{{ errors.password[0] !== undefined ? '• Password: ' + errors.password[0] : '' }}</p>
-            <p v-if="errorLogin" class="mt-3 text-sm italic leading-4 text-red-400">• Wrong Credentials</p>
+            <div v-if="errors.password" class="mt-3 text-sm italic leading-4">
+              <div v-if="errors.password[0] !== undefined" class="flex items-center px-4 py-3 bg-red-400 rounded-md font-sm text-m-blue-900">
+                <svg-icon name="alertCircle" class="flex-shrink-0 w-4 h-4 mr-2 text-m-blue-900" />
+                <div>
+                  {{ errors.password[0] !== undefined ? 'Password: ' + errors.password[0] : '' }}
+                </div>
+              </div>
+            </div>
+            <div v-if="errorLogin" class="mt-3 text-sm italic leading-4">
+              <div class="flex items-center px-4 py-3 bg-red-400 rounded-md font-sm text-m-blue-900">
+                <svg-icon name="alertCircle" class="flex-shrink-0 w-4 h-4 mr-2 text-m-blue-900" />
+                <div>Wrong Credentials</div>
+              </div>
+            </div>
           </div>
         </form>
       </ValidationObserver>

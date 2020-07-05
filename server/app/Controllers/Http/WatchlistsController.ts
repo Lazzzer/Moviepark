@@ -20,7 +20,15 @@ export default class WatchlistsController {
 
     const query = await MovieUser.query().where('user_id', auth.user!.id).where('movie_id', movieId).update({ watched: watched})
 
-    return query[0] === 1 ? response.ok({status:201, message:'Updated successfully'}) : response.ok({status:204, message:'No update'})
+    return query[0] === 1 ? response.ok({status:200, message:'Updated successfully'}) : response.ok({status:204, message:'No update'})
+  }
+
+  public async deleteMovie ({ auth, request, response}: HttpContextContract) {
+    const { movieId } = request.all()
+
+    const query = await MovieUser.query().where('user_id', auth.user!.id).where('movie_id', movieId).delete()
+
+    return query[0] === 1 ? response.ok({status:200, message:'Deleted successfully'}) : response.ok({status:204, message:'No delete'})
   }
 
   public async getList ({ auth }: HttpContextContract) {

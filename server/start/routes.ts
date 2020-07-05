@@ -38,6 +38,7 @@ Route.get('/check', 'AuthController.check')
 Route.get('/watchlist/get', 'WatchlistsController.getList').middleware('auth')
 Route.post('/watchlist/addMovie', 'WatchlistsController.addMovie').middleware('auth')
 Route.put('/watchlist/updateMovie', 'WatchlistsController.updateMovie').middleware('auth')
+Route.delete('/watchlist/deleteMovie', 'WatchlistsController.deleteMovie').middleware('auth')
 
 //TMDB General routes
 Route.get('/tmdb/trending', 'TmdbsController.getTrending')

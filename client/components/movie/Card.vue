@@ -21,6 +21,21 @@
         <div slot="preloader" class="rounded-md md:w-card-lg md:h-card-lg w-card h-card placeholder-content"></div>
       </VueLoadImage>
 
+      <span v-if="$auth.loggedIn" class="absolute left-1 bottom-1">
+        <div
+          v-if="watched"
+          class="p-2 bg-gray-500 rounded-full cursor-pointer focus:outline-none focus:shadow-outline-none"
+        >
+          <svg-icon name="eye" class="w-4 h-4 text-m-blue-900" />
+        </div>
+        <div
+          v-if="notWatched"
+          class="p-2 rounded-full cursor-pointer bg-m-burgundy-600 focus:outline-none focus:shadow-outline-none"
+        >
+          <svg-icon name="bookmark" class="w-4 h-4 text-m-blue-900" />
+        </div>
+
+      </span>
       <span
         :class="movieInfos.vote_average >= 6.0 ? 'bg-green-500' : movieInfos.vote_average >= 4.0 ? 'bg-orange-500' : movieInfos.vote_count === 0 ? 'bg-gray-500' : 'bg-red-500'"
         class="absolute flex items-center justify-center w-8 h-8 text-xs border border-gray-300 rounded-full right-1 bottom-1"
@@ -34,7 +49,9 @@
 </template>
 
 <script>
+import { mapGetters } from 'vuex'
 import VueLoadImage from '@/components/global/VueLoadImage'
+
 export default {
   components: {
     VueLoadImage
@@ -56,6 +73,15 @@ export default {
   data () {
     return {
       imgPath: 'https://image.tmdb.org/t/p/w154'
+    }
+  },
+  computed: {
+    ...mapGetters('watchlist', ['watchedMovieList', 'notWatchedMovieList']),
+    watched () {
+      return this.watchedMovieList.some(movie => movie.movie_id === this.movieInfos.id)
+    },
+    notWatched () {
+      return this.notWatchedMovieList.some(movie => movie.movie_id === this.movieInfos.id)
     }
   }
 }

@@ -8,7 +8,7 @@
       ></div>
       <VueLoadImage class="relative flex-shrink-0 rounded-md w-detailedCard h-detailedCard">
         <img slot="image"
-             class="relative object-cover h-auto rounded-md w-detailedCard h-detailedCard"
+             class="relative object-cover rounded-md w-detailedCard h-detailedCard"
              :src="movieInfos.poster_path !== null ? imgPath + movieInfos.poster_path : require('~/assets/img/noPoster.jpg')"
              :alt="'Poster of ' + movieInfos.title "
              :title="movieInfos.title"
@@ -67,13 +67,29 @@
           <span
             class="w-full mt-2 ml-2 text-xs italic text-gray-300 sm:ml-0"
           >{{ formateDate(movieInfos.release_date) }}</span>
+
+          <span v-if="$auth.loggedIn" class="absolute bottom-0 right-0">
+            <div
+              v-if="watched"
+              class="p-1.5 bg-gray-500 rounded-full cursor-pointer focus:outline-none focus:shadow-outline-none"
+            >
+              <svg-icon name="eye" class="w-3 h-3 text-m-blue-900" />
+            </div>
+            <div
+              v-if="notWatched"
+              class="p-1.5 rounded-full cursor-pointer bg-m-burgundy-600 focus:outline-none focus:shadow-outline-none"
+            >
+              <svg-icon name="bookmark" class="w-3 h-3 text-m-blue-900" />
+            </div>
+          </span>
+
         </div>
       </div>
     </nuxt-link>
   </div>
 </template>
 <script>
-import { mapState } from 'vuex'
+import { mapState, mapGetters } from 'vuex'
 import VueLoadImage from '@/components/global/VueLoadImage'
 export default {
   components: {
@@ -97,7 +113,14 @@ export default {
   },
   computed: {
     ...mapState({
-      genresList: state => state.tmdb.genresList
+      genresList: state => state.tmdb.genresList,
+      ...mapGetters('watchlist', ['watchedMovieList', 'notWatchedMovieList']),
+      watched () {
+        return this.watchedMovieList.some(movie => movie.movie_id === this.movieInfos.id)
+      },
+      notWatched () {
+        return this.notWatchedMovieList.some(movie => movie.movie_id === this.movieInfos.id)
+      }
     })
   },
   methods: {

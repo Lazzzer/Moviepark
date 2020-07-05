@@ -9,6 +9,9 @@ export default class AuthController {
         rules.minLength(3),
         rules.maxLength(20),
         rules.required(),
+        rules.alpha({
+          allow: ['underscore', 'dash'],
+        }),
         rules.unique({ table: 'users', column: 'username' }),
       ]),
       password: schema.string({ trim: true }, [
@@ -40,6 +43,9 @@ export default class AuthController {
     const validationSchema = schema.create({
       username: schema.string({ trim: true }, [
         rules.required(),
+        rules.alpha({
+          allow: ['underscore', 'dash'],
+        }),
       ]),
       password: schema.string({ trim: true }, [
         rules.required(),

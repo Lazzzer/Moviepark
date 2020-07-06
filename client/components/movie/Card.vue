@@ -21,7 +21,7 @@
         <div slot="preloader" class="rounded-md md:w-card-lg md:h-card-lg w-card h-card placeholder-content"></div>
       </VueLoadImage>
 
-      <span v-if="$auth.loggedIn" class="absolute left-1 bottom-1">
+      <span v-if="$auth.loggedIn && !watchlist" class="absolute left-1 bottom-1">
         <div
           v-if="watched"
           class="p-2 bg-gray-500 rounded-full cursor-pointer focus:outline-none focus:shadow-outline-none"
@@ -68,6 +68,11 @@ export default {
     isSearched: {
       type: Boolean,
       required: true
+    },
+    watchlist: {
+      type: Boolean,
+      required: false,
+      default: false
     }
   },
   data () {

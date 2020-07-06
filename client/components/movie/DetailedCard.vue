@@ -15,7 +15,7 @@
         />
         <div slot="preloader" class="rounded-md w-detailedCard h-detailedCard placeholder-content"></div>
       </VueLoadImage>
-      <div class="relative h-full mx-2">
+      <div class="relative w-full h-full mx-2">
         <!-- Display xl-->
         <div class="hidden xl:block">
           <p
@@ -54,21 +54,34 @@
           >
             <span class="font-bold text-m-blue-900">{{ movieInfos.vote_count === 0 ? 'N/A' : movieInfos.vote_average }}</span>
           </span>
+          <span v-if="watchlist">
+            <span
+              v-for="(genre, index) in movieInfos.genres.slice(0,2)"
+              :key="index"
+              class="items-center hidden px-3 py-1 ml-2 text-xs font-medium leading-4 text-gray-300 bg-teal-900 rounded-md sm:inline-flex"
+            >{{ genre.name }}</span>
+            <span
+              v-if="movieInfos.genres.length > 2"
+              class="items-center hidden px-3 py-1 text-xs font-medium leading-4 text-gray-300 bg-teal-900 rounded-md sm:inline-flex"
+            >+{{ ' ' + movieInfos.genres.length - 2 }}</span>
+          </span>
+          <span v-else>
+            <span
+              v-for="(id, index) in movieInfos.genre_ids.slice(0,2)"
+              :key="index"
+              class="items-center hidden px-3 py-1 ml-2 text-xs font-medium leading-4 text-gray-300 bg-teal-900 rounded-md sm:inline-flex"
+            >{{ genresList.find(genre => genre.id === id).name }}</span>
+            <span
+              v-if="movieInfos.genre_ids.length > 2"
+              class="items-center hidden px-3 py-1 text-xs font-medium leading-4 text-gray-300 bg-teal-900 rounded-md sm:inline-flex"
+            >+{{ ' ' + movieInfos.genre_ids.length - 2 }}</span>
+          </span>
 
-          <span
-            v-for="(id, index) in movieInfos.genre_ids.slice(0,2)"
-            :key="index"
-            class="items-center hidden px-3 py-1 ml-2 text-xs font-medium leading-4 text-gray-300 bg-teal-900 rounded-md sm:inline-flex"
-          >{{ genresList.find(genre => genre.id === id).name }}</span>
-          <span
-            v-if="movieInfos.genre_ids.length > 2"
-            class="items-center hidden px-3 py-1 text-xs font-medium leading-4 text-gray-300 bg-teal-900 rounded-md sm:inline-flex"
-          >+{{ ' ' + movieInfos.genre_ids.length - 2 }}</span>
           <span
             class="w-full mt-2 ml-2 text-xs italic text-gray-300 sm:ml-0"
           >{{ formateDate(movieInfos.release_date) }}</span>
 
-          <span v-if="$auth.loggedIn" class="absolute bottom-0 right-0">
+          <span v-if="$auth.loggedIn && !watchlist" class="absolute bottom-0 right-0">
             <div
               v-if="watched"
               class="p-1.5 bg-gray-500 rounded-full cursor-pointer focus:outline-none focus:shadow-outline-none"
@@ -103,6 +116,11 @@ export default {
     isSearched: {
       type: Boolean,
       required: true
+    },
+    watchlist: {
+      type: Boolean,
+      required: false,
+      default: false
     }
   },
   data () {

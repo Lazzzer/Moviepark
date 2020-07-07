@@ -1,5 +1,5 @@
 <template>
-  <div class="relative w-full mt-6 md:mt-10">
+  <div class="relative w-full mt-6 md:mt-10" style="min-height:45vh">
     <div class="flex justify-center mb-2">
       <div class="flex items-center mr-3 space-x-2 md:mr-4">
         <span
@@ -37,12 +37,26 @@
       </div>
     </div>
 
-    <div v-if="!detailed" class="flex flex-wrap justify-center w-full mt-6">
-      <Card v-for="(card,index) in toggledMovieList()" :key="index" class="m-2" :movie-infos="card" :animation="true" :is-searched="false" :watchlist="false"></Card>
+    <div v-if="toggledMovieList().length === 0">
+      <div class="flex flex-col items-center w-full mt-6 ">
+        <div class="flex flex-col items-center justify-center p-10 mt-10 rounded-lg bg-m-blue-900">
+          <svg-icon name="bookmark" class="w-10 h-10 text-gray-300" />
+          <p class="mt-2 text-xl italic text-gray-300">List is empty</p>
+
+        </div>
+      </div>
     </div>
-    <div v-else class="w-full mx-auto my-6 md:w-11/12">
-      <DetailedCard v-for="(card,index) in toggledMovieList()" :key="index" class :movie-infos="card" :is-searched="false" :watchlist="true"></DetailedCard>
+    <div v-else>
+      <div v-if="!detailed" class="flex flex-wrap justify-center w-full mt-6">
+        <Card v-for="(card,index) in toggledMovieList()" :key="index" class="m-2" :movie-infos="card" :animation="false" :is-searched="false" :watchlist="true"></Card>
+      </div>
+      <div v-else class="w-full mx-auto my-6 md:w-11/12">
+        <div v-if="toggledMovieList().length > 0">
+          <DetailedCard v-for="(card,index) in toggledMovieList()" :key="index" class :movie-infos="card" :animation="false" :is-searched="false" :watchlist="true"></DetailedCard>
+        </div>
+      </div>
     </div>
+
   </div>
 </template>
 

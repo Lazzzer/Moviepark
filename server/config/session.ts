@@ -76,7 +76,7 @@ const sessionConfig: SessionConfig = {
     path: '/',
     httpOnly: true,
     domain: Env.get('COOKIE_DOMAIN', 'localhost')?.toString(),
-    sameSite: true,
+    sameSite: 'strict',
   },
 
   /*

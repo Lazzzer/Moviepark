@@ -87,6 +87,11 @@ const databaseConfig: DatabaseConfig & { orm: Partial<OrmConfig> } = {
         password: Env.get('DB_PASSWORD', 'lucid') as string,
         database: Env.get('DB_NAME', 'lucid') as string,
       },
+      migrations: {
+        paths: ['database/migrations'],
+        tableName: 'adonis_schema',
+        disableRollbacksInProduction: true,
+      },
       healthCheck: false,
     },
   },

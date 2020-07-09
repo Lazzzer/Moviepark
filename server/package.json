@@ -1,6 +1,6 @@
 {
   "name": "moviepark-server",
-  "version": "1.2.0",
+  "version": "1.3.0",
   "author": "Lazar Pavicevic",
   "private": true,
   "scripts": {
@@ -12,16 +12,16 @@
     "@adonisjs/assembler": "^2.1.3",
     "@types/node-schedule": "^1.3.0",
     "adonis-preset-ts": "^1.0.4",
-    "eslint": "^7.3.1",
-    "eslint-plugin-adonis": "^1.0.10",
+    "eslint": "^7.4.0",
+    "eslint-plugin-adonis": "^1.0.14",
     "pino-pretty": "^4.0.0",
-    "typescript": "^3.9.5",
+    "typescript": "^3.9.6",
     "youch": "^2.0.10",
     "youch-terminal": "^1.0.0"
   },
   "dependencies": {
     "@adonisjs/ace": "^6.9.3",
-    "@adonisjs/auth": "^4.2.3",
+    "@adonisjs/auth": "^4.2.4",
     "@adonisjs/core": "^5.0.0-preview-rc-1.9",
     "@adonisjs/fold": "^6.3.5",
     "@adonisjs/lucid": "^8.2.2",
@@ -29,7 +29,7 @@
     "@adonisjs/session": "^3.0.4",
     "axios": "^0.19.2",
     "node-schedule": "^1.3.2",
-    "pg": "^8.2.1",
+    "pg": "^8.3.0",
     "proxy-addr": "^2.0.6",
     "reflect-metadata": "^0.1.13",
     "source-map-support": "^0.5.19"

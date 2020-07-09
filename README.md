@@ -10,6 +10,7 @@ Moviepark is an open-source project using the TMDb API for its movie catalog.
 - [TailwindCSS](https://github.com/tailwindcss/tailwindcss)
 - [Traefik 2.2](https://github.com/containous/traefik/)
 - [Redis](https://redis.io/)
+- [PostgreSQL](https://www.postgresql.org/download/)
 
 ## Requirements
 - [Node.js >= 12.0.0](https://nodejs.org/en/)
@@ -46,4 +47,4 @@ To check how it would look like in production with docker (don't forget to add y
 - [x] Caching
 - [x] Get streaming services for each movie with Utelly's API
 - [ ] More search filters (ex: search by company...)
-- [ ] Watchlist
+- [x] Watchlist

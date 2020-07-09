@@ -7,7 +7,7 @@
         <iframe class="rounded-md w-yt-modal-lg h-yt-modal-lg" :src="'https://www.youtube-nocookie.com/embed/' + trailerId" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
       </modal>
     </client-only>
-    <StreamingServices v-if="streamingInfos.collection.locations.length > 0" :infos="streamingInfos" />
+    <StreamingServices v-if="Object.values(streamingInfos.collection).includes('location') && streamingInfos.collection.locations.length > 0" :infos="streamingInfos" />
     <Cast v-if="movieInfos.credits.cast.length > 0" :cast-infos="movieInfos.credits.cast" />
     <div v-else style="height:250px;"></div>
     <div v-if="movieInfos.recommendations.total_results !== 0 && movieInfos.similar.total_results !== 0" class="mt-2 lg:mt-10 lg:flex lg:space-x-10 xl:space-x-12">

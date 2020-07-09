@@ -5,41 +5,22 @@
     </div>
     <div class="flex flex-wrap items-center justify-center flex-shrink-0 w-11/12 mx-auto mt-3 sm:justify-start sm:w-full">
       <span v-for="(service, index) in filteredServicesList" :key="index" class="m-2 sm:m-0 sm:mb-2 sm:mr-2">
-        <a v-if="service.name.includes('iTunesIVA')" :href="service.url" target="_blank" rel="noopener">
-          <svg-icon class="w-20 h-20 border border-transparent rounded-lg hover:border-teal-500" name="itunes" />
+
+        <a :href="service.url" target="_blank" rel="noopener" class="relative block">
+          <svg-icon v-if="service.name.includes('IVAUS')" name="us-flag" class="absolute z-10 w-4 h-4 rounded opacity-75 top-2 right-2" />
+          <svg-icon v-if="service.name.includes('IVACH')" name="swiss-flag" class="absolute z-10 w-4 h-4 rounded opacity-75 top-2 right-2" />
+
+          <svg-icon v-if="service.name.includes('iTunesIVA')" class="relative w-20 h-20 border border-transparent rounded-lg hover:border-teal-500" name="itunes" />
+          <svg-icon v-if="service.name.includes('AmazonInstantVideoIV')" class="relative w-20 h-20 border border-transparent rounded-lg hover:border-teal-500" name="amazonInstantVideo" />
+          <svg-icon v-if="service.name.includes('GooglePlayIV')" class="relative w-20 h-20 border border-transparent rounded-lg hover:border-teal-500" name="googlePlay" />
+          <svg-icon v-if="service.name.includes('HBOMaxIV')" class="relative w-20 h-20 border border-transparent rounded-lg hover:border-teal-500" name="hboMax" />
+          <svg-icon v-if="service.name.includes('DisneyPlusIV')" class="relative w-20 h-20 border border-transparent rounded-lg hover:border-teal-500" name="disneyPlus" />
+          <svg-icon v-if="service.name.includes('AmazonPrimeVideoIV')" class="relative w-20 h-20 border border-transparent rounded-lg hover:border-teal-500" name="amazonPrimeVideo" />
+          <svg-icon v-if="service.name.includes('NetflixIV')" class="relative w-20 h-20 border border-transparent rounded-lg hover:border-teal-500" name="netflix" />
+          <svg-icon v-if="service.name.includes('HuluIV')" class="relative w-20 h-20 border border-transparent rounded-lg hover:border-teal-500" name="hulu" />
+          <svg-icon v-if="service.name.includes('AppleTvPlusIV')" class="relative w-20 h-20 border border-transparent rounded-lg hover:border-teal-500" name="appleTvPlus" />
         </a>
 
-        <a v-if="service.name.includes('AmazonInstantVideoIV')" :href="service.url" target="_blank" rel="noopener">
-          <svg-icon class="w-20 h-20 border border-transparent rounded-lg hover:border-teal-500" name="amazonInstantVideo" />
-        </a>
-
-        <a v-if="service.name.includes('GooglePlayIV')" :href="service.url" target="_blank" rel="noopener">
-          <svg-icon class="w-20 h-20 border border-transparent rounded-lg hover:border-teal-500" name="googlePlay" />
-        </a>
-
-        <a v-if="service.name.includes('HBOMaxIV')" :href="service.url" target="_blank" rel="noopener">
-          <svg-icon class="w-20 h-20 border border-transparent rounded-lg hover:border-teal-500" name="hboMax" />
-        </a>
-
-        <a v-if="service.name.includes('DisneyPlusIV')" :href="service.url" target="_blank" rel="noopener">
-          <svg-icon class="w-20 h-20 border border-transparent rounded-lg hover:border-teal-500" name="disneyPlus" />
-        </a>
-
-        <a v-if="service.name.includes('AmazonPrimeVideoIV')" :href="service.url" target="_blank" rel="noopener">
-          <svg-icon class="w-20 h-20 border border-transparent rounded-lg hover:border-teal-500" name="amazonPrimeVideo" />
-        </a>
-
-        <a v-if="service.name.includes('NetflixIV')" :href="service.url" target="_blank" rel="noopener">
-          <svg-icon class="w-20 h-20 border border-transparent rounded-lg hover:border-teal-500" name="netflix" />
-        </a>
-
-        <a v-if="service.name.includes('HuluIV')" :href="service.url" target="_blank" rel="noopener">
-          <svg-icon class="w-20 h-20 border border-transparent rounded-lg hover:border-teal-500" name="hulu" />
-        </a>
-
-        <a v-if="service.name.includes('AppleTvPlusIV')" :href="service.url" target="_blank" rel="noopener">
-          <svg-icon class="w-20 h-20 border border-transparent rounded-lg hover:border-teal-500" name="appleTvPlus" />
-        </a>
       </span>
     </div>
   </section>
@@ -55,7 +36,8 @@ export default {
   },
   data () {
     return {
-      servicesList: ['iTunesIVAUS', 'AmazonInstantVideoIVAUS', 'GooglePlayIVAUS', 'HBOMaxIVAUS', 'DisneyPlusIVAUS', 'AmazonPrimeVideoIVAUS', 'NetflixIVAUS', 'HuluIVAUS', 'AppleTvPlusIVAUS']
+      servicesList: ['iTunesIVAUS', 'AmazonInstantVideoIVAUS', 'GooglePlayIVAUS', 'HBOMaxIVAUS', 'DisneyPlusIVAUS', 'AmazonPrimeVideoIVAUS', 'NetflixIVAUS', 'HuluIVAUS', 'AppleTvPlusIVAUS',
+        'iTunesIVACH', 'AmazonInstantVideoIVACH', 'GooglePlayIVACH', 'HBOMaxIVACH', 'DisneyPlusIVACH', 'AmazonPrimeVideoIVACH', 'NetflixIVACH', 'HuluIVACH', 'AppleTvPlusIVACH']
     }
   },
   computed: {

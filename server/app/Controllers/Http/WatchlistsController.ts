@@ -51,7 +51,6 @@ export default class WatchlistsController {
       const query = await MovieUser.query().where('user_id', auth.user!.id).where('movie_id', payload.movieId).update({ watched: payload.watched, updated_at: new Date()})
       return query[0] === 1 ? response.ok({status:200, message:'Updated successfully'}) : response.ok({status:204, message:'No update'})
     } catch (err) {
-      console.log(err)
       return response.status(500).json({status: 500, error: 'Server error'})
     }
   }

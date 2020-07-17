@@ -1,7 +1,5 @@
 import { HttpContextContract } from '@ioc:Adonis/Core/HttpContext'
 import tmdbApi from '../../Services/TmdbService'
-import {promises as fs } from 'fs'
-import path from 'path'
 import Redis from '@ioc:Adonis/Addons/Redis'
 
 async function handleRequest (context: HttpContextContract, axiosPromise: Promise<any>) {
@@ -9,21 +7,19 @@ async function handleRequest (context: HttpContextContract, axiosPromise: Promis
     const { data } = await axiosPromise
     context.response.status(200).send(data)
   } catch (err) {
-    console.log(err.response)
     context.response.status(err.response.status).json({ status: err.response.status, error: err.response.statusText })
   }
 }
 
 async function handleRequestWithCache (context: HttpContextContract, axiosPromise: Promise<any>, key: string, expiration: number) {
   try {
-    const redisData = await Redis.connection().get(key)
+    const redisData = await Redis.get(key)
     if (redisData === null){
       try {
         const { data } = await axiosPromise
-        await Redis.connection().setex(key, expiration, JSON.stringify(data))
+        await Redis.setex(key, expiration, JSON.stringify(data))
         return context.response.status(200).send(data)
       } catch (err){
-        console.log(err.response)
         return context.response.status(err.response.status).json({ status: err.response.status, error: err.response.statusText })
       }
     }
@@ -42,13 +38,8 @@ export default class TmdbsController {
     return handleRequestWithCache(context, tmdbApi.getNextInTheaters(), 'nextInTheaters', 43200)
   }
 
-  public async getGenresList ({ response }: HttpContextContract) {
-    try {
-      const genresList = await fs.readFile(path.join(__dirname,'../../Files/genreslist.json'), 'utf-8')
-      response.status(200).json(JSON.parse(genresList))
-    } catch (err) {
-      response.status(500).json({ status: 500, error: 'Server error' })
-    }
+  public async getGenresList (context: HttpContextContract) {
+    return handleRequestWithCache(context, tmdbApi.getGenresList(), 'genreList', 86400)
   }
 
   public async getMovieDetails (context: HttpContextContract) {

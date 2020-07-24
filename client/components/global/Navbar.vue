@@ -16,11 +16,19 @@
             </nuxt-link>
           </div>
         </div>
-        <div class="flex justify-center flex-1 px-2 lg:ml-6 lg:justify-end">
+        <div class="flex justify-center flex-1 pr-2 lg:ml-6 lg:justify-end">
           <!-- Quick Search Movies -->
           <QuickSearch></QuickSearch>
           <nuxt-link to="/discover" class="hidden ml-4 lg:block nav-button">Discover</nuxt-link>
+          <nuxt-link v-if="$auth.loggedIn" to="/watchlist" class="hidden ml-4 lg:block nav-button">Watchlist</nuxt-link>
           <nuxt-link to="/about" class="hidden ml-4 lg:block nav-button">About</nuxt-link>
+          <nuxt-link v-if="!$auth.loggedIn" to="/Login" class="hidden ml-4 lg:block nav-button">Login</nuxt-link>
+          <nuxt-link v-if="!$auth.loggedIn" to="/Register" class="hidden ml-4 lg:block nav-button">Register</nuxt-link>
+          <div v-if="$auth.loggedIn" @click="logout()" class="hidden px-3 py-2 ml-4 text-sm font-medium leading-5 text-gray-300 transition duration-150 ease-in-out rounded-md cursor-pointer lg:flex lg:justify-center lg:items-center hover:bg-m-burgundy-600 hover:text-white focus:outline-none focus:text-white focus:bg-m-burgundy-600">
+            <span>{{ $auth.user.username }} </span>
+            <svg-icon name="logOut" class="inline w-4 h-4 ml-1" />
+          </div>
+
         </div>
         <div class="flex lg:hidden">
           <!-- Mobile menu button -->
@@ -81,7 +89,23 @@
       <div v-show="isOpen" class="border-b-2 border-teal-900 lg:hidden">
         <div class="px-2 pt-2 pb-3">
           <nuxt-link to="/discover" class="nav-button-mobile" active-class="">Discover</nuxt-link>
+          <nuxt-link v-if="$auth.loggedIn" to="/watchlist" class="nav-button-mobile" active-class="">Watchlist</nuxt-link>
+
           <nuxt-link to="/about" class="mt-1 nav-button-mobile" active-class="">About</nuxt-link>
+          <nuxt-link v-if="!$auth.loggedIn" to="/login" class="mt-1 nav-button-mobile" active-class="">Login</nuxt-link>
+          <nuxt-link v-if="!$auth.loggedIn" to="/register" class="mt-1 nav-button-mobile" active-class="">Register</nuxt-link>
+
+          <div v-if="$auth.loggedIn" class="mt-2">
+            <div class="flex items-center justify-between px-5 py-4 rounded-lg bg-m-blue-900">
+              <div class="flex items-center">
+                <svg-icon name="user" class="w-10 h-10 p-2 border rounded-md bg-m-blue-800 border-m-burgundy-600" />
+                <p class="ml-3 text-base font-medium leading-6 text-white">{{ $auth.user.username }}</p>
+              </div>
+
+              <div @click="logout()" class="px-4 py-2 text-sm text-white rounded-md cursor-pointer bg-m-burgundy-600 focus:bg-m-burgundy-700 hover:bg-m-burgundy-700">Logout</div>
+            </div>
+          </div>
+
         </div>
       </div>
     </transition>
@@ -98,6 +122,12 @@ export default {
     return {
       isOpen: false,
       profileIsOpen: false
+    }
+  },
+  methods: {
+    async logout () {
+      await this.$auth.logout()
+      await this.$store.dispatch('watchlist/setWatchList', true)
     }
   }
 }

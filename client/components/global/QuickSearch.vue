@@ -18,7 +18,7 @@
               id="search"
               for="quickSearchForm"
               :class=" failed && !changed ? 'border-red-400' : 'border-transparent'"
-              class="block w-full py-2 pl-10 pr-3 leading-5 text-white placeholder-gray-300 border border-transparent rounded-md lg:transition-all bg-m-blue-900 lg:bg-transparent focus:outline-none hover:bg-m-blue-900 focus:bg-m-blue-900 sm:text-sm lg:duration-300 lg:ease-in lg:w-40 lg:focus:w-96"
+              class="block w-full py-2 pl-10 pr-3 leading-5 text-white placeholder-gray-300 border border-transparent rounded-md lg:transition-all bg-m-blue-900 lg:bg-transparent focus:outline-none hover:bg-m-blue-900 focus:bg-m-blue-900 sm:text-sm lg:duration-300 lg:ease-in lg:w-40 lg:focus:w-80"
               placeholder="Quick search"
               type="search"
             />

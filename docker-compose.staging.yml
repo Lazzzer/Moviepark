@@ -26,7 +26,7 @@ services:
     networks:
       - moviepark-network
   moviepark-client:
-    image: moviepark-client:1.1
+    image: moviepark-client:1.2
     build:
       context: ./client
       dockerfile: Dockerfile
@@ -35,6 +35,7 @@ services:
       - BASE_URL=http://0.0.0.0:3000
       - API_URL=
       - API_BROWSER_URL=
+      - COOKIE_DOMAIN=
     labels:
       - "traefik.enable=true"
       - "traefik.http.routers.moviepark-client.rule=Host(`localhost`)"
@@ -46,7 +47,7 @@ services:
     networks:
       - moviepark-network
   moviepark-server:
-    image: moviepark-server:1.2
+    image: moviepark-server:1.3
     build:
       context: ./server
       dockerfile: Dockerfile
@@ -65,14 +66,24 @@ services:
       - REDIS_HOST=
       - REDIS_PORT=
       - REDIS_PASSWORD=
+      - DB_HOST=
+      - DB_CONNECTION=pg
+      - DB_USER=
+      - DB_PASSWORD=
+      - DB_NAME=
+      - SESSION_DRIVER=cookie
+      - COOKIE_DOMAIN=
     labels:
       - "traefik.enable=true"
-      - "traefik.http.routers.moviepark-server.rule=Host(`api.localhost`)"
+      - "traefik.http.routers.moviepark-server.rule=Host(`localhost`) && PathPrefix(`/api`)"
+      - "traefik.http.routers.moviepark-server.middlewares=moviepark-server-stripprefix"
+      - "traefik.http.middlewares.moviepark-server-stripprefix.stripprefix.prefixes=/api"
       - "traefik.http.routers.moviepark-server.entrypoints=web"
     restart: always
     depends_on:
       - moviepark-traefik
       - moviepark-redis
+      - moviepark-postgres
     networks:
       - moviepark-network
   moviepark-redis:
@@ -83,8 +94,21 @@ services:
     restart: always
     networks:
       - moviepark-network
+  moviepark-postgres:
+    image: postgres:12-alpine
+    container_name: moviepark-postgres
+    environment:
+      - POSTGRES_DB=
+      - POSTGRES_USER=
+      - POSTGRES_PASSWORD=
+    volumes:
+      - moviepark-postgresData:/data
+    restart: always
+    networks:
+      - moviepark-network
 networks:
   moviepark-network:
     driver: bridge
 volumes:
-  moviepark-redisData: 
+  moviepark-redisData:
+  moviepark-postgresData:

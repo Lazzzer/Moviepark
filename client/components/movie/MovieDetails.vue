@@ -1,5 +1,6 @@
 <template>
   <div class="relative p-8 rounded-md bg-m-blue-900">
+    <WatchListButton v-if="$auth.loggedIn" :movie-id="movieInfos.id" class="absolute z-10 top-6 right-8" />
     <div
       class="absolute top-0 right-0 z-0 w-full h-full bg-cover rounded-md"
       :style="movieInfos.backdrop_path !== null ? 'background:url('+ backdropPath + movieInfos.backdrop_path + ') top center / cover no-repeat,linear-gradient(#000E1B,#02182B);opacity:0.08;' : ''"
@@ -98,9 +99,12 @@
 
 <script>
 import VueLoadImage from '@/components/global/VueLoadImage'
+import WatchListButton from '@/components/movie/WatchListButton'
+
 export default {
   components: {
-    VueLoadImage
+    VueLoadImage,
+    WatchListButton
   },
   props: {
     movieInfos: {

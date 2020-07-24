@@ -11,7 +11,7 @@
 
       <h2 class="mt-10 mb-2 text-xl font-extrabold">Privacy</h2>
       <p class="mt-2 text-justify">
-        Moviepark itself doesn't store any personal data from its visitors nor it creates cookies.
+        Moviepark itself doesn't store any personal data from its visitors. The website creates essential cookies to keep the logged users' session and that's pretty much it.
       </p>
       <h2 class="mt-10 mb-2 text-xl font-extrabold">Credits</h2>
       <p class="mt-2 text-justify">

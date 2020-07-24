@@ -21,7 +21,10 @@
     },
     "types": [
       "@adonisjs/core",
-      "@adonisjs/redis"
+      "@adonisjs/redis",
+      "@adonisjs/lucid",
+      "@adonisjs/auth",
+      "@adonisjs/session"
     ]
   }
 }

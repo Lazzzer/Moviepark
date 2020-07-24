@@ -21,12 +21,24 @@
 import Route from '@ioc:Adonis/Core/Route'
 
 Route.get('/', async () => {
-  return 'Moviepark Server 1.0.0'
+  return 'Moviepark Server 1.3.0'
 })
 
 Route.get('/robots.txt', async () => {
   return 'User-agent: *\nDisallow: /'
 })
+
+// Auth routes
+Route.post('/register', 'AuthController.register')
+Route.post('/login', 'AuthController.login')
+Route.post('/logout', 'AuthController.logout').middleware('auth')
+Route.get('/check', 'AuthController.check')
+
+// Watchlist routes
+Route.get('/watchlist/get', 'WatchlistsController.getList').middleware('auth')
+Route.post('/watchlist/addMovie', 'WatchlistsController.addMovie').middleware('auth')
+Route.put('/watchlist/updateMovie', 'WatchlistsController.updateMovie').middleware('auth')
+Route.delete('/watchlist/deleteMovie', 'WatchlistsController.deleteMovie').middleware('auth')
 
 //TMDB General routes
 Route.get('/tmdb/trending', 'TmdbsController.getTrending')

@@ -1,5 +1,4 @@
 import { IocContract } from '@adonisjs/fold'
-import { updateGenresList } from '../app/Services/SchedulerService'
 
 export default class AppProvider {
   constructor (protected $container: IocContract) {
@@ -19,6 +18,5 @@ export default class AppProvider {
 
   public ready () {
     // App is ready
-    updateGenresList ()
   }
 }

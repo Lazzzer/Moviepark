@@ -1,5 +1,5 @@
 <template>
-  <div class="relative w-full mt-6 md:mt-10" style="min-height:45vh">
+  <div class="relative w-full mt-6 md:mt-10" style="min-height:58vh;">
     <div class="flex justify-center mb-2">
       <div class="flex items-center mr-3 space-x-2 md:mr-4">
         <span

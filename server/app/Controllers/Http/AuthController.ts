@@ -30,6 +30,21 @@ export default class AuthController {
       messages: messages,
     })
 
+    const checkUsername = await User
+      .query()
+      .where('username', 'ILIKE', userDetails.username)
+
+    if (checkUsername.length > 0){
+      return response.unprocessableEntity({
+        'errors': [
+          {
+            'rule': 'unique',
+            'field': 'username',
+            'message': 'The name is already taken.',
+          },
+        ] })
+    }
+
     const user = new User()
     user.username = userDetails.username
     user.password = userDetails.password

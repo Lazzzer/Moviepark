@@ -19,7 +19,7 @@
     "@nuxtjs/device": "^1.2.7",
     "@nuxtjs/pwa": "^3.0.0-0",
     "@nuxtjs/svg-sprite": "^0.4.11",
-    "@tailwindcss/ui": "^0.3.1",
+    "@tailwindcss/ui": "^0.4.0",
     "nuxt": "^2.13.3",
     "vee-validate": "^3.3.7",
     "vue-js-modal": "^2.0.0-rc.6"
@@ -27,11 +27,11 @@
   "devDependencies": {
     "@nuxtjs/eslint-config": "^3.0.0",
     "@nuxtjs/eslint-module": "^2.0.0",
-    "@nuxtjs/tailwindcss": "^2.0.0",
+    "@nuxtjs/tailwindcss": "^2.1.0",
     "@vue/test-utils": "^1.0.3",
     "babel-eslint": "^10.0.1",
     "babel-jest": "^24.1.0",
-    "eslint": "^7.4.0",
+    "eslint": "^7.5.0",
     "eslint-plugin-nuxt": "^1.0.0",
     "jest": "^24.1.0",
     "vue-jest": "^4.0.0-beta.4"

@@ -31,4 +31,4 @@ COPY --chown=node:node --from=builder /home/node/app/build ./build
 
 EXPOSE 3333
 
-CMD sh -c 'cd build && node server.js'
+CMD sh -c 'cd build && node ace migration:run --force && node server.js'

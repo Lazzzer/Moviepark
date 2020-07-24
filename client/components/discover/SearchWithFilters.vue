@@ -165,7 +165,7 @@
                     </div>
                     <div
                       v-if="noPersonResult && selectedPersonName.length > 2 && showPersonModal"
-                      class="absolute flex items-center justify-center block w-48 h-10 border rounded max-h-40 top-11 bg-m-blue-900 border-m-burgundy-700"
+                      class="absolute items-center justify-center block w-48 h-10 border rounded max-h-40 top-11 bg-m-blue-900 border-m-burgundy-700"
                     >
                       <span class="text-sm text-gray-300">Person not found</span>
                     </div>

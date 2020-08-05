@@ -23,7 +23,17 @@ export default class AuthMiddleware {
    * during the current request.
    */
   protected async authenticate (auth: HttpContextContract['auth'], guards: string[]) {
+    /**
+  	 * Hold reference to the guard last attempted within the for loop. We pass
+  	 * the reference of the guard to the "AuthenticationException", so that
+  	 * it can decide the correct response behavior based upon the guard
+  	 * driver
+  	 */
+    let guardLastAttempted: string
+
     for (let guard of guards) {
+      guardLastAttempted = guard
+
       if (await auth.use(guard).check()) {
         /**
          * Instruct auth to use the given guard as the default guard for
@@ -41,6 +51,7 @@ export default class AuthMiddleware {
     throw new AuthenticationException(
       'Unauthorized access',
       'E_UNAUTHORIZED_ACCESS',
+      guardLastAttempted,
       this.redirectTo,
     )
   }

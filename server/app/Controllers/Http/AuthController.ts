@@ -12,7 +12,7 @@ export default class AuthController {
         rules.alpha({
           allow: ['underscore', 'dash'],
         }),
-        rules.unique({ table: 'users', column: 'username' }),
+        rules.unique({ table: 'users', column: 'username', caseInsensitive: true }),
       ]),
       password: schema.string({ trim: true }, [
         rules.minLength(5),
@@ -29,21 +29,6 @@ export default class AuthController {
       schema: validationSchema,
       messages: messages,
     })
-
-    const checkUsername = await User
-      .query()
-      .where('username', 'ILIKE', userDetails.username)
-
-    if (checkUsername.length > 0){
-      return response.unprocessableEntity({
-        'errors': [
-          {
-            'rule': 'unique',
-            'field': 'username',
-            'message': 'The name is already taken.',
-          },
-        ] })
-    }
 
     const user = new User()
     user.username = userDetails.username
@@ -71,6 +56,14 @@ export default class AuthController {
     const userDetails = await request.validate({
       schema: validationSchema,
     })
+
+    const checkUsername = await User
+      .query()
+      .where('username', 'ILIKE', userDetails.username)
+
+    if (checkUsername.length > 0){
+      userDetails.username = checkUsername[0].username
+    }
 
     const user = await auth.attempt(userDetails.username, userDetails.password, userDetails.remember_me)
     return response.accepted({status:202, message:'User logged', user: { username: user.username }})

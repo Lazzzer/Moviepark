@@ -14,7 +14,8 @@ module.exports = {
       'layouts/**/*.vue',
       'pages/**/*.vue',
       'plugins/**/*.vue',
-      'nuxt.config.ts'
+      'nuxt.config.ts',
+      'nuxt.config.js'
     ]
   },
   theme: {

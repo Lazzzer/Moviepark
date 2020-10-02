@@ -1,6 +1,6 @@
 {
   "name": "moviepark-client",
-  "version": "1.2.2",
+  "version": "1.2.3",
   "description": "A webapp made with Nuxt using the TMDB API",
   "author": "Lazar Pavicevic",
   "private": true,
@@ -15,25 +15,25 @@
   },
   "dependencies": {
     "@nuxtjs/auth": "^4.9.1",
-    "@nuxtjs/axios": "^5.12.1",
+    "@nuxtjs/axios": "^5.12.2",
     "@nuxtjs/device": "^1.2.7",
-    "@nuxtjs/pwa": "^3.0.1",
-    "@nuxtjs/svg-sprite": "^0.4.11",
+    "@nuxtjs/pwa": "^3.0.2",
+    "@nuxtjs/svg-sprite": "^0.4.12",
     "@tailwindcss/ui": "^0.5.0",
-    "nuxt": "^2.14.3",
-    "vee-validate": "^3.3.9",
+    "nuxt": "^2.14.6",
+    "vee-validate": "^3.4.0",
     "vue-js-modal": "^2.0.0-rc.6"
   },
   "devDependencies": {
     "@nuxtjs/eslint-config": "^3.1.0",
     "@nuxtjs/eslint-module": "^2.0.0",
-    "@nuxtjs/tailwindcss": "^3.0.0",
-    "@vue/test-utils": "^1.0.4",
+    "@nuxtjs/tailwindcss": "^3.1.0",
+    "@vue/test-utils": "^1.1.0",
     "babel-eslint": "^10.0.1",
     "babel-jest": "^24.1.0",
-    "eslint": "^7.7.0",
+    "eslint": "^7.10.0",
     "eslint-plugin-nuxt": "^1.0.0",
     "jest": "^24.1.0",
-    "vue-jest": "^4.0.0-beta.5"
+    "vue-jest": "^4.0.0-rc.0"
   }
 }

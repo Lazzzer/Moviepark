@@ -33,8 +33,7 @@ export default {
   */
   plugins: [
     { src: '~/plugins/vue-js-modal.js', mode: 'client' },
-    '~/plugins/vee-validate.js',
-    '~/plugins/axios.js'
+    '~/plugins/vee-validate.js'
   ],
   /*
   ** Nuxt.js dev-modules
@@ -61,19 +60,19 @@ export default {
   ** Runtime Env variables
   */
   publicRuntimeConfig: {
-    baseURL: process.env.BASE_URL || 'http://0.0.0.0:3000',
-    apiBrowserURL: process.env.API_BROWSER_URL
+    axios: {
+      browserBaseURL: process.env.API_BROWSER_URL
+    }
   },
   privateRuntimeConfig: {
-    apiURL: process.env.API_URL
+    axios: {
+      baseURL: process.env.API_URL
+    }
   },
 
-  svgSprite: {
-
-  },
+  svgSprite: {},
 
   auth: {
-    plugins: [{ src: '~/plugins/axios', ssr: true }],
     cookie: {
       prefix: 'moviepark-auth.',
       options: {

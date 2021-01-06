@@ -28,7 +28,7 @@
     "@adonisjs/lucid": "^8.4.4",
     "@adonisjs/redis": "^4.1.2",
     "@adonisjs/session": "^3.1.2",
-    "axios": "^0.20.0",
+    "axios": "^0.21.1",
     "pg": "^8.3.3",
     "phc-bcrypt": "^1.0.3",
     "proxy-addr": "^2.0.6",

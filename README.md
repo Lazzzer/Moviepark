@@ -8,12 +8,12 @@ Moviepark is an open-source project using the TMDb API for its movie catalog.
 - [Nuxt.js](https://github.com/nuxt/nuxt.js)
 - [Adonis.js 5](https://github.com/adonisjs)
 - [TailwindCSS](https://github.com/tailwindcss/tailwindcss)
-- [Traefik 2.2](https://github.com/containous/traefik/)
+- [Traefik 2.3](https://github.com/containous/traefik/)
 - [Redis](https://redis.io/)
 - [PostgreSQL](https://www.postgresql.org/download/)
 
 ## Requirements
-- [Node.js >= 12.0.0](https://nodejs.org/en/)
+- [Node.js >= 14.0.0](https://nodejs.org/en/)
 - [Docker](https://docs.docker.com/get-docker/)
 - [a TMDb API key](https://developers.themoviedb.org/3/getting-started/introduction)
 - [an Utelly API key](https://rapidapi.com/utelly/api/utelly)

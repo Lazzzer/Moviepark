@@ -2,7 +2,7 @@ version: "3"
 services:
   moviepark-traefik:
     image:
-      traefik:v2.2
+      traefik:v2.3
     container_name: moviepark-traefik
     restart: always
     command:

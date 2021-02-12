@@ -21,7 +21,7 @@
 import Route from '@ioc:Adonis/Core/Route'
 
 Route.get('/', async () => {
-  return 'Moviepark Server 1.3.0'
+  return 'Moviepark Server 1.3.4'
 })
 
 Route.get('/robots.txt', async () => {

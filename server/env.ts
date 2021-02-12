@@ -9,7 +9,6 @@ export default Env.rules({
   UTELLY_API_KEY: Env.schema.string(),
   CLIENT_URL: Env.schema.string(),
   CLIENT_BROWSER_URL: Env.schema.string(),
-  CLIENT_WWW_BROWSER_URL: Env.schema.string(),
   REDIS_CONNECTION: Env.schema.string(),
   REDIS_HOST: Env.schema.string(),
   REDIS_PORT: Env.schema.string(),

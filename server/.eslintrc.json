@@ -1,8 +1,0 @@
-{
-  "extends": [
-    "plugin:adonis/typescriptApp"
-  ],
-  "rules": {
-    "max-len": 0
-  }
-}

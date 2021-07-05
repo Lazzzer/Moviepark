@@ -21,11 +21,13 @@ namespace ml_api
 
     public void ConfigureServices(IServiceCollection services)
     {
-      services.AddPredictionEnginePool<ReviewModel.Input, ReviewModel.Output>().FromFile("MLModels/ReviewModel.zip");
+      services.AddPredictionEnginePool<ReviewModel.Input, ReviewModel.Output>()
+              .FromUri(uri: "https://github.com/Lazzzer/Moviepark/raw/v2/ml-api/MLModels/ReviewModel.zip",
+                       period: System.TimeSpan.FromHours(1));
       services.AddControllers();
       services.AddSwaggerGen(c =>
       {
-        c.SwaggerDoc("v1", new OpenApiInfo { Title = "Moviepark ML Prediction API v1", Version = "v1" });
+        c.SwaggerDoc("v1", new OpenApiInfo { Title = "Moviepark ML Classifier API v1", Version = "v1" });
       });
     }
 
@@ -35,10 +37,8 @@ namespace ml_api
       {
         app.UseDeveloperExceptionPage();
         app.UseSwagger();
-        app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "Moviepark ML Prediction API v1"));
+        app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "Moviepark ML Classifier API v1"));
       }
-
-      app.UseHttpsRedirection();
 
       app.UseRouting();
 

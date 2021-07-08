@@ -3,7 +3,6 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Microsoft.Extensions.Logging;
 using Microsoft.OpenApi.Models;
 using Microsoft.Extensions.ML;
 using ml_api.Models;
@@ -24,6 +23,17 @@ namespace ml_api
       services.AddPredictionEnginePool<ReviewModel.Input, ReviewModel.Output>()
               .FromUri(uri: "https://github.com/Lazzzer/Moviepark/raw/v2/ml-api/MLModels/ReviewModel.zip",
                        period: System.TimeSpan.FromHours(1));
+
+      services.AddCors(options =>
+     {
+       options.AddPolicy(name: "AllowedOrigins",
+         builder =>
+         {
+           builder.WithOrigins(Configuration["ASPNETCORE_ALLOWED_ORIGIN"])
+                  .AllowAnyHeader()
+                  .AllowAnyMethod();
+         });
+     });
       services.AddControllers();
       services.AddSwaggerGen(c =>
       {
@@ -39,6 +49,8 @@ namespace ml_api
         app.UseSwagger();
         app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "Moviepark ML Classifier API v1"));
       }
+
+      app.UseCors("AllowedOrigins");
 
       app.UseRouting();
 

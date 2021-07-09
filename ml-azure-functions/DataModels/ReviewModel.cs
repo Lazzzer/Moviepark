@@ -1,11 +1,13 @@
+using System.ComponentModel.DataAnnotations;
 using Microsoft.ML.Data;
 
-namespace ml_api.Models
+namespace MovieparkML.Models
 {
   public partial class ReviewModel
   {
     public class Input
     {
+      [Required]
       [ColumnName(@"review")]
       public string Review { get; set; }
 

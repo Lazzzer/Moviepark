@@ -1,5 +1,4 @@
 client/.env
 docker-compose.prod.yml
 redis.conf
-.vscode/launch.json
 .vscode/tasks.json

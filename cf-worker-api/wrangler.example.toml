@@ -1,0 +1,25 @@
+name = "worker-api"
+type = "javascript"
+account_id = ""
+zone_id = ""
+workers_dev = true
+
+[dev]
+port=8000
+
+[[kv_namespaces]]
+binding = "CACHE"
+preview_id = ""
+id = ""
+
+[vars]
+TMDB_API_KEY = ""
+
+[build]
+command = "npm install && npm run build"
+
+[build.upload]
+format = "service-worker"
+
+[env.production]
+route = ""

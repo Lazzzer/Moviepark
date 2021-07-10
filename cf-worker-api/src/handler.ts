@@ -1,6 +1,6 @@
 declare const CACHE: KVNamespace;
 
-const ORIGIN = 'https://api.themoviedb.org/3/';
+const ORIGIN = 'https://api.themoviedb.org/3';
 
 export async function handleRequest(event: FetchEvent, url: URL, endpoint: string) : Promise<Response> {
   const originUrl = url.href.replace(url.href, ORIGIN + endpoint);

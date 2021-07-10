@@ -1,10 +1,10 @@
-import { handleRequest } from './handler'
+import { handleRequest } from './handler';
 
 declare const TMDB_API_KEY: string;
 
 addEventListener('fetch', event => {
   const url = new URL(event.request.url);
-  const userAgent = event.request.headers.get("User-Agent") || ""
+  const userAgent = event.request.headers.get("User-Agent") || "";
 
   // Blocking requests from bots
   if (userAgent.includes("bot")) {

@@ -4,7 +4,7 @@ const ORIGIN = 'https://api.themoviedb.org/3';
 
 export async function handleRequest(event: FetchEvent, url: URL, endpoint: string) : Promise<Response> {
   const originUrl = url.href.replace(url.href, ORIGIN + endpoint);
-  
+
   const init = {
     headers: {
       "content-type": "application/json;charset=UTF-8",
@@ -23,5 +23,5 @@ export async function handleRequest(event: FetchEvent, url: URL, endpoint: strin
   }
 
   event.passThroughOnException();
-  return new Response(cachedData, init)
+  return new Response(cachedData, init);
 }

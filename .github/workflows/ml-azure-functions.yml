@@ -4,8 +4,8 @@ on:
     branches: [v2]
 
 env:
-AZURE_FUNCTIONAPP_PACKAGE_PATH: './ml-azure-functions/'
-DOTNET_VERSION: '3.1.301'
+  AZURE_FUNCTIONAPP_PACKAGE_PATH: './ml-azure-functions/'
+  DOTNET_VERSION: '3.1.301'
 
 jobs:
   build-and-deploy:

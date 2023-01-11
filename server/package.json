@@ -22,7 +22,7 @@
   "dependencies": {
     "@adonisjs/auth": "^5.1.1",
     "@adonisjs/core": "^5.0.4-preview-rc-2.1",
-    "@adonisjs/lucid": "^10.0.0",
+    "@adonisjs/lucid": "^18.3.0",
     "@adonisjs/redis": "^4.1.2",
     "@adonisjs/session": "^3.1.2",
     "axios": "^0.21.1",
